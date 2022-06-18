@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="张同学的个人小站">
+  <link 
+    rel="icon" 
+    href="/imgs/logo.jpg">
+  <title>关于HTML5的回顾</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="关于HTML5的回顾">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://111zhanglan.github.io/2022/06/18/%E5%85%B3%E4%BA%8EHTML5%E7%9A%84%E5%9B%9E%E9%A1%BE/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="/imgs/logo.jpg">
+    
+    
+      <meta 
+        property="og:img" 
+        content="张同学的个人小站">
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2022-06-18">
+      <meta 
+        property="og:article:modified_time" 
+        content="2022-06-18">
+      <meta 
+        property="og:article:author" 
+        content="ZhangKai">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="HTML5">
+        
+      
+    
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <span class="navbar-logo-main">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="/imgs/logo.jpg" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">张同学的Blog</span>
+    </span>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          首页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          归档
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <a 
+      class="navbar-menu-item darknavbar" 
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </a>
+    <a 
+      class="navbar-menu-item searchnavbar" 
+      id="search">
+      <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i>
+    </a>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <main class="main-column">
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      关于HTML5的回顾
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2022-06-18T12:36:24.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2022-06-18</span>
+    </time>
+    
+    
+      <span class="dot"></span>
+      <span>1.5k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/HTML5/" 
+            class="post-meta-link">
+            HTML5
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h2 id="本文主要内容"><a href="#本文主要内容" class="headerlink" title="本文主要内容"></a>本文主要内容</h2><ul>
+<li><p>html 的常见元素</p>
+</li>
+<li><p>html 元素的分类</p>
+</li>
+<li><p>html 元素的嵌套关系</p>
+</li>
+<li><p>html 元素的默认样式和 CSS Reset</p>
+</li>
+<li><p>html 常见面试题</p>
+</li>
+</ul>
+<h2 id="html-的常见元素"><a href="#html-的常见元素" class="headerlink" title="html 的常见元素"></a>html 的常见元素</h2><p>html 的常见元素主要分为两类：head 区域的元素、body 区域的元素。下面来分别介绍。</p>
+<h3 id="1、head-区域的-html-元素"><a href="#1、head-区域的-html-元素" class="headerlink" title="1、head 区域的 html 元素"></a>1、head 区域的 html 元素</h3><blockquote>
+<p>head 区域的 html 元素，不会在页面上留下直接的内容。</p>
+</blockquote>
+<ul>
+<li><p>meta</p>
+</li>
+<li><p>title</p>
+</li>
+<li><p>style</p>
+</li>
+<li><p>link</p>
+</li>
+<li><p>script</p>
+</li>
+<li><p>base</p>
+</li>
+</ul>
+<p><strong>base元素的介绍</strong>：</p>
+<pre class="highlight"><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">base</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span><br></code></pre>
+
+<p>base 标签用于指定基础的路径。指定之后，所有的 a 链接都是以这个路径为基准。</p>
+<h3 id="2、html-元素（body-区域）"><a href="#2、html-元素（body-区域）" class="headerlink" title="2、html 元素（body 区域）"></a>2、html 元素（body 区域）</h3><blockquote>
+<p>body 区域的 html 元素，会直接出现在页面上。</p>
+</blockquote>
+<ul>
+<li><p>div、section、article、aside、header、footer</p>
+</li>
+<li><p>p</p>
+</li>
+<li><p>span、em、strong</p>
+</li>
+<li><p>表格元素：table、thead、tbody、tr、td</p>
+</li>
+<li><p>列表元素：ul、ol、dl、dt、dd</p>
+</li>
+<li><p>a</p>
+</li>
+<li><p>表单元素：form、input、select、textarea、button</p>
+</li>
+</ul>
+<p>div 是最常见的元素，大多数场景下，都可以用div（实在不行就多包几层div）。可见，<strong>div 是比较通用的元素，这也决定了 div 的的语义并不是很明确</strong>。</p>
+<p><strong>常见标签的重要属性</strong>：</p>
+<ul>
+<li>a[href,target]</li>
+<li>img[src,alt]</li>
+<li>table td[colspan,rowspan]。设置当前单元格占据几行几列。在合并单元格时，会用到。</li>
+<li>form[action,method,enctype]</li>
+<li>input[type,value]</li>
+<li>button[type]</li>
+<li>selection&gt;option[value]</li>
+<li>label[for]</li>
+</ul>
+<h3 id="html-文档的大纲"><a href="#html-文档的大纲" class="headerlink" title="html 文档的大纲"></a>html 文档的大纲</h3><p>我们平时在写论文或者其他文档的时候，一般会先列出大纲，然后再写具体的内容。</p>
+<p>同样，html 网页也可以看成是一种文档，也有属于它的大纲。</p>
+<p>一个常见的html文档，它的结构可以是：</p>
+<pre class="highlight"><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>一级标题<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>二级标题<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>段落内容<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>二级标题<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>段落内容<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>广告内容<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>某某公司出品<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span><br></code></pre>
+
+<h3 id="查看网页大纲的工具"><a href="#查看网页大纲的工具" class="headerlink" title="查看网页大纲的工具"></a>查看网页大纲的工具</h3><p>我们可以通过 <a target="_blank" rel="noopener" href="http://h5o.github.io/">http://h5o.github.io/</a> 这个工具查看一个网页的大纲。</p>
+<p><strong>使用方法</strong>：</p>
+<p>（1）将网址 <a target="_blank" rel="noopener" href="http://h5o.github.io/">http://h5o.github.io/</a> 保存到书签栏</p>
+<p>（2）去目标网页，点击书签栏的网址，即可查看该网页的大纲。</p>
+<p>这个工具非常好用，既可以查看网页的大纲，也可以查看 markdown 在线文档的结构。</p>
+<h2 id="html-元素的分类"><a href="#html-元素的分类" class="headerlink" title="html 元素的分类"></a>html 元素的分类</h2><p>按照样式分类：</p>
+<ul>
+<li><p>块级元素</p>
+</li>
+<li><p>行内元素</p>
+</li>
+<li><p>inline-block：比如<code>form</code>表单元素。对外的表现是行内元素（不会独占一行），对内的表现是块级元素（可以设置宽高）。</p>
+</li>
+</ul>
+<p>按照内容分类：</p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="http://img.smyhvae.com/20191003_1946.png" class="lozad post-image"src="http://img.smyhvae.com/20191003_1946.png"></p>
+<p>图片来源：<a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/dom.html#kinds-of-content">https://html.spec.whatwg.org/multipage/dom.html#kinds-of-content</a></p>
+<h2 id="html-元素的嵌套关系"><a href="#html-元素的嵌套关系" class="headerlink" title="html 元素的嵌套关系"></a>html 元素的嵌套关系</h2><ul>
+<li><p>块级元素可以包含行内元素。</p>
+</li>
+<li><p>块级元素<strong>不一定</strong>能包含块级元素。比如 div 中可以包含 div，但 p 标签中不能包含 div。</p>
+</li>
+<li><p>行内元素<strong>一般</strong>不能包含块级元素。比如 span 中不能包含 div。但有个特例：在 HTML5 中， a 标签中可以包含 div。</p>
+</li>
+</ul>
+<p><strong>注意</strong>：在 HTML5 中 <code>a &gt; div</code> 是合法的， <code>div &gt; a &gt; div</code>是不合法的 ；但是在 html 4.0.1 中， <code>a &gt; div</code> 仍然是不合法的。</p>
+<h2 id="html-元素的默认样式和-CSS-Reset"><a href="#html-元素的默认样式和-CSS-Reset" class="headerlink" title="html 元素的默认样式和 CSS Reset"></a>html 元素的默认样式和 CSS Reset</h2><p>比如下拉框这种比较复杂的元素，是自带默认样式的。如果没有这个默认样式，则该元素在页面上不会有任何表现，则必然增加一些工作量。</p>
+<p>同时，默认样式也会带来一些问题：比如，有些默认样式我们是不需要的；有些默认样式甚至无法去掉。</p>
+<p>如果我们不需要默认的样式，这里就需要引入一个概念：<strong>CSS Reset</strong>。</p>
+<h3 id="常见的-CSS-Reset-方案"><a href="#常见的-CSS-Reset-方案" class="headerlink" title="常见的 CSS Reset 方案"></a>常见的 CSS Reset 方案</h3><p><strong>方案一</strong>：</p>
+<p>CSS Tools: Reset CSS。链接：<a target="_blank" rel="noopener" href="https://meyerweb.com/eric/tools/css/reset/">https://meyerweb.com/eric/tools/css/reset/</a></p>
+<p><strong>方案二</strong>：</p>
+<p>雅虎的 CSS Reset。链接：<a target="_blank" rel="noopener" href="https://yuilibrary.com/yui/docs/cssreset/">https://yuilibrary.com/yui/docs/cssreset/</a></p>
+<p>我们可以直接通过 CDN 的方式引入：</p>
+<pre class="highlight"><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css&quot;</span>&gt;</span><br></code></pre>
+
+<p><strong>方式三</strong>：（比较有争议）</p>
+<pre class="highlight"><code class="hljs css">*&#123;<br>    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre>
+
+<p>上面何种写法，比较简洁，但也有争议。有争议的地方在于，可能会导致 css 选择器的性能问题。</p>
+<h3 id="Normalize-css"><a href="#Normalize-css" class="headerlink" title="Normalize.css"></a>Normalize.css</h3><p>上面的几种 css reset 的解决思路是：将所有的默认样式清零。</p>
+<p>但是，<a target="_blank" rel="noopener" href="https://necolas.github.io/normalize.css/">Normalize.css</a> 的思路是：既然浏览器提供了这些默认样式，那它就是有意义的。<strong>既然不同浏览器的默认样式不一致，那么，<code>Normalize.css</code>就将这些默认样式设置为一致</strong>。</p>
+<h2 id="html-常见面试题"><a href="#html-常见面试题" class="headerlink" title="html 常见面试题"></a>html 常见面试题</h2><h3 id="doctype-的意义是什么"><a href="#doctype-的意义是什么" class="headerlink" title="doctype 的意义是什么"></a>doctype 的意义是什么</h3><ul>
+<li><p>让浏览器以标准模式渲染</p>
+</li>
+<li><p>让浏览器知道元素的合法性</p>
+</li>
+</ul>
+<h3 id="HTML、XHTML、HTML5的区别"><a href="#HTML、XHTML、HTML5的区别" class="headerlink" title="HTML、XHTML、HTML5的区别"></a>HTML、XHTML、HTML5的区别</h3><ul>
+<li><p>HTML 属于 SGML</p>
+</li>
+<li><p>XHTML 属于 XML，是 HTML 进行 XML 严格化的结果</p>
+</li>
+<li><p>HTML5 不属于SGML，也不属于 XML（HTML5有自己独立的一套规范），比 XHTML 宽松。</p>
+</li>
+</ul>
+<h3 id="HTML5-有什么新的变化"><a href="#HTML5-有什么新的变化" class="headerlink" title="HTML5 有什么新的变化"></a>HTML5 有什么新的变化</h3><ul>
+<li><p>新的语义化元素</p>
+</li>
+<li><p>表单增强</p>
+</li>
+<li><p>新的API：离线、音视频、图形、实时通信、本地存储、设备能力等。</p>
+</li>
+</ul>
+<h3 id="em-和-i-的区别"><a href="#em-和-i-的区别" class="headerlink" title="em 和 i 的区别"></a>em 和 i 的区别</h3><p>共同点：二者都是表示斜体。</p>
+<p>区别：</p>
+<ul>
+<li><p>em 是语义化的标签，表示强调。</p>
+</li>
+<li><p>i 是纯样式的标签，表示斜体。HTML5 中不推荐使用。</p>
+</li>
+</ul>
+<h3 id="语义化的意义是什么"><a href="#语义化的意义是什么" class="headerlink" title="语义化的意义是什么"></a>语义化的意义是什么</h3><ul>
+<li><p>开发者容易理解，便于维护。</p>
+</li>
+<li><p>机器（搜索引擎、读屏软件等）容易理解结构</p>
+</li>
+<li><p>有助于 SEO</p>
+</li>
+</ul>
+<h3 id="哪些元素可以自闭合"><a href="#哪些元素可以自闭合" class="headerlink" title="哪些元素可以自闭合"></a>哪些元素可以自闭合</h3><blockquote>
+<p>自闭合的元素中不能再嵌入别的元素。且 HTML5 中要求加斜杠。</p>
+</blockquote>
+<ul>
+<li><p>表单元素 input</p>
+</li>
+<li><p>图片 img</p>
+</li>
+<li><p>br、hr</p>
+</li>
+<li><p>meta、link</p>
+</li>
+</ul>
+<h3 id="form-表单的作用"><a href="#form-表单的作用" class="headerlink" title="form 表单的作用"></a>form 表单的作用</h3><ul>
+<li><p>直接提交表单</p>
+</li>
+<li><p>使用 submit &#x2F; reset 按钮</p>
+</li>
+<li><p>便于浏览器保存表单</p>
+</li>
+<li><p>第三方库（比如 jQuery）可以整体获取值</p>
+</li>
+<li><p>第三方库可以进行表单验证</p>
+</li>
+</ul>
+<p>所以，如果我们是通过 Ajax 提交表单数据，也建议加上 form。</p>
+
+  </div>
+  <div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2022/06/17/6-17%E9%9A%8F%E7%AC%94/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">6.17随笔 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9"><span class="toc-text">本文主要内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E7%9A%84%E5%B8%B8%E8%A7%81%E5%85%83%E7%B4%A0"><span class="toc-text">html 的常见元素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81head-%E5%8C%BA%E5%9F%9F%E7%9A%84-html-%E5%85%83%E7%B4%A0"><span class="toc-text">1、head 区域的 html 元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81html-%E5%85%83%E7%B4%A0%EF%BC%88body-%E5%8C%BA%E5%9F%9F%EF%BC%89"><span class="toc-text">2、html 元素（body 区域）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#html-%E6%96%87%E6%A1%A3%E7%9A%84%E5%A4%A7%E7%BA%B2"><span class="toc-text">html 文档的大纲</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%BD%91%E9%A1%B5%E5%A4%A7%E7%BA%B2%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="toc-text">查看网页大纲的工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E5%85%83%E7%B4%A0%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">html 元素的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E5%85%83%E7%B4%A0%E7%9A%84%E5%B5%8C%E5%A5%97%E5%85%B3%E7%B3%BB"><span class="toc-text">html 元素的嵌套关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E5%85%83%E7%B4%A0%E7%9A%84%E9%BB%98%E8%AE%A4%E6%A0%B7%E5%BC%8F%E5%92%8C-CSS-Reset"><span class="toc-text">html 元素的默认样式和 CSS Reset</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84-CSS-Reset-%E6%96%B9%E6%A1%88"><span class="toc-text">常见的 CSS Reset 方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Normalize-css"><span class="toc-text">Normalize.css</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">html 常见面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#doctype-%E7%9A%84%E6%84%8F%E4%B9%89%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">doctype 的意义是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML%E3%80%81XHTML%E3%80%81HTML5%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">HTML、XHTML、HTML5的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML5-%E6%9C%89%E4%BB%80%E4%B9%88%E6%96%B0%E7%9A%84%E5%8F%98%E5%8C%96"><span class="toc-text">HTML5 有什么新的变化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#em-%E5%92%8C-i-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">em 和 i 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E4%B9%89%E5%8C%96%E7%9A%84%E6%84%8F%E4%B9%89%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">语义化的意义是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%AA%E4%BA%9B%E5%85%83%E7%B4%A0%E5%8F%AF%E4%BB%A5%E8%87%AA%E9%97%AD%E5%90%88"><span class="toc-text">哪些元素可以自闭合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#form-%E8%A1%A8%E5%8D%95%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">form 表单的作用</span></a></li></ol></li></ol>
+</div></main>
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="/imgs/logo.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">ZhangKai</p>
+<p class="author-description">designed by zhangkai</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>6</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>0</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>5</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/389569434?spm_id_from=333.1007.0.0">
+          <i class="iconfont icon-bilibili society-icon"></i>
+        </a>
+      </div>
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://gitee.com/zhang-lanxxx">
+          <i class="iconfont icon-github society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9"><span class="toc-text">本文主要内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E7%9A%84%E5%B8%B8%E8%A7%81%E5%85%83%E7%B4%A0"><span class="toc-text">html 的常见元素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81head-%E5%8C%BA%E5%9F%9F%E7%9A%84-html-%E5%85%83%E7%B4%A0"><span class="toc-text">1、head 区域的 html 元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81html-%E5%85%83%E7%B4%A0%EF%BC%88body-%E5%8C%BA%E5%9F%9F%EF%BC%89"><span class="toc-text">2、html 元素（body 区域）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#html-%E6%96%87%E6%A1%A3%E7%9A%84%E5%A4%A7%E7%BA%B2"><span class="toc-text">html 文档的大纲</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%BD%91%E9%A1%B5%E5%A4%A7%E7%BA%B2%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="toc-text">查看网页大纲的工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E5%85%83%E7%B4%A0%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">html 元素的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E5%85%83%E7%B4%A0%E7%9A%84%E5%B5%8C%E5%A5%97%E5%85%B3%E7%B3%BB"><span class="toc-text">html 元素的嵌套关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E5%85%83%E7%B4%A0%E7%9A%84%E9%BB%98%E8%AE%A4%E6%A0%B7%E5%BC%8F%E5%92%8C-CSS-Reset"><span class="toc-text">html 元素的默认样式和 CSS Reset</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84-CSS-Reset-%E6%96%B9%E6%A1%88"><span class="toc-text">常见的 CSS Reset 方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Normalize-css"><span class="toc-text">Normalize.css</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">html 常见面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#doctype-%E7%9A%84%E6%84%8F%E4%B9%89%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">doctype 的意义是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML%E3%80%81XHTML%E3%80%81HTML5%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">HTML、XHTML、HTML5的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML5-%E6%9C%89%E4%BB%80%E4%B9%88%E6%96%B0%E7%9A%84%E5%8F%98%E5%8C%96"><span class="toc-text">HTML5 有什么新的变化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#em-%E5%92%8C-i-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">em 和 i 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E4%B9%89%E5%8C%96%E7%9A%84%E6%84%8F%E4%B9%89%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">语义化的意义是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%AA%E4%BA%9B%E5%85%83%E7%B4%A0%E5%8F%AF%E4%BB%A5%E8%87%AA%E9%97%AD%E5%90%88"><span class="toc-text">哪些元素可以自闭合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#form-%E8%A1%A8%E5%8D%95%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">form 表单的作用</span></a></li></ol></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E5%88%86%E4%BA%AB/" 
+        title="分享">
+        <div class="tags-list-item">分享</div>
+      </a>
+    
+      <a 
+        href="/tags/js%E6%8F%92%E4%BB%B6/" 
+        title="js插件">
+        <div class="tags-list-item">js插件</div>
+      </a>
+    
+      <a 
+        href="/tags/JavaScript/" 
+        title="JavaScript">
+        <div class="tags-list-item">JavaScript</div>
+      </a>
+    
+      <a 
+        href="/tags/Vue/" 
+        title="Vue">
+        <div class="tags-list-item">Vue</div>
+      </a>
+    
+      <a 
+        href="/tags/HTML5/" 
+        title="HTML5">
+        <div class="tags-list-item">HTML5</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9"><span class="toc-text">本文主要内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E7%9A%84%E5%B8%B8%E8%A7%81%E5%85%83%E7%B4%A0"><span class="toc-text">html 的常见元素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81head-%E5%8C%BA%E5%9F%9F%E7%9A%84-html-%E5%85%83%E7%B4%A0"><span class="toc-text">1、head 区域的 html 元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81html-%E5%85%83%E7%B4%A0%EF%BC%88body-%E5%8C%BA%E5%9F%9F%EF%BC%89"><span class="toc-text">2、html 元素（body 区域）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#html-%E6%96%87%E6%A1%A3%E7%9A%84%E5%A4%A7%E7%BA%B2"><span class="toc-text">html 文档的大纲</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%BD%91%E9%A1%B5%E5%A4%A7%E7%BA%B2%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="toc-text">查看网页大纲的工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E5%85%83%E7%B4%A0%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">html 元素的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E5%85%83%E7%B4%A0%E7%9A%84%E5%B5%8C%E5%A5%97%E5%85%B3%E7%B3%BB"><span class="toc-text">html 元素的嵌套关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E5%85%83%E7%B4%A0%E7%9A%84%E9%BB%98%E8%AE%A4%E6%A0%B7%E5%BC%8F%E5%92%8C-CSS-Reset"><span class="toc-text">html 元素的默认样式和 CSS Reset</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84-CSS-Reset-%E6%96%B9%E6%A1%88"><span class="toc-text">常见的 CSS Reset 方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Normalize-css"><span class="toc-text">Normalize.css</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html-%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">html 常见面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#doctype-%E7%9A%84%E6%84%8F%E4%B9%89%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">doctype 的意义是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML%E3%80%81XHTML%E3%80%81HTML5%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">HTML、XHTML、HTML5的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML5-%E6%9C%89%E4%BB%80%E4%B9%88%E6%96%B0%E7%9A%84%E5%8F%98%E5%8C%96"><span class="toc-text">HTML5 有什么新的变化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#em-%E5%92%8C-i-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">em 和 i 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E4%B9%89%E5%8C%96%E7%9A%84%E6%84%8F%E4%B9%89%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">语义化的意义是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%AA%E4%BA%9B%E5%85%83%E7%B4%A0%E5%8F%AF%E4%BB%A5%E8%87%AA%E9%97%AD%E5%90%88"><span class="toc-text">哪些元素可以自闭合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#form-%E8%A1%A8%E5%8D%95%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">form 表单的作用</span></a></li></ol></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-06-18</div>
+        <a href="/2022/06/18/%E5%85%B3%E4%BA%8EHTML5%E7%9A%84%E5%9B%9E%E9%A1%BE/"><div class="recent-posts-item-content">关于HTML5的回顾</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-06-17</div>
+        <a href="/2022/06/17/6-17%E9%9A%8F%E7%AC%94/"><div class="recent-posts-item-content">6.17随笔</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-06-17</div>
+        <a href="/2022/06/17/String%E7%9A%84%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/"><div class="recent-posts-item-content">String的内置方法</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-06-16</div>
+        <a href="/2022/06/16/JS%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/"><div class="recent-posts-item-content">JS基本数据类型与引用类型</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2020
+          
+          
+                - 
+                2022
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          张同学的Blog
+        </a>
+      </div>
+    </div>
+
+    
+      <div class="footer-dsc">
+        
+          Powered by
+          <a 
+            href="https://hexo.io/" 
+            class="footer-link" 
+            target="_blank" 
+            rel="nofollow noopener noreferrer">
+            &nbsp;Hexo
+          </a>
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          Theme -
+          <a 
+            href="https://github.com/theme-kaze" 
+            class="footer-link" 
+            target="_blank"
+            rel="nofollow noopener noreferrer">
+            &nbsp;Kaze
+          </a>
+        
+      </div>
+    
+    
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+     
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>
