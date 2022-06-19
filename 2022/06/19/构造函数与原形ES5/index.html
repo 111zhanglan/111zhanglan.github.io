@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/imgs/logo.jpg">
-  <title>JS基本数据类型与引用类型</title>
+  <title>构造函数与原型ES5</title>
   
     
       <meta 
         property="og:title" 
-        content="JS基本数据类型与引用类型">
+        content="构造函数与原型ES5">
     
     
       <meta 
         property="og:url" 
-        content="https://111zhanglan.github.io/2022/06/16/JS%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/index.html">
+        content="https://111zhanglan.github.io/2022/06/19/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8E%9F%E5%BD%A2ES5/index.html">
     
     
       <meta 
@@ -46,10 +46,10 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2022-06-16">
+        content="2022-06-19">
       <meta 
         property="og:article:modified_time" 
-        content="2022-06-16">
+        content="2022-06-19">
       <meta 
         property="og:article:author" 
         content="ZhangKai">
@@ -268,21 +268,21 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      JS基本数据类型与引用类型
+      构造函数与原型ES5
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2022-06-16T04:48:46.000Z">
+    <time datetime="2022-06-19T09:17:30.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2022-06-16</span>
+      <span>2022-06-19</span>
     </time>
     
     
       <span class="dot"></span>
-      <span>544 字</span>
+      <span>710 字</span>
     
   </div>
   
@@ -309,38 +309,44 @@
   <div 
     id="section" 
     class="post-content">
-    <h2 id="数据分类"><a href="#数据分类" class="headerlink" title="数据分类"></a>数据分类</h2><p>数据分为：静态数据，动态数据</p>
-<h4 id="静态数据"><a href="#静态数据" class="headerlink" title="静态数据"></a>静态数据</h4><p>注：静态数据是指一些永久性的数据。一般是以文件的形式存储在硬盘上，比如文档，照片，视频等文件</p>
-<p>电脑关闭后，静态数据仍然还在，</p>
-<p>动态数据：是指在程序的运行中，动态的产生的临时数据，一般都存储在内存中</p>
-<p>电脑关闭后，这些数据就无了</p>
-<p>前提：javascript 是一种弱类型语言，JS的变量数据类型，是在程序运行的过程中，根据等号右边的值来确定的。</p>
-<p>&#x3D;&#x3D;面试高频点&#x3D;&#x3D;</p>
-<h3 id="JS中一共有八种数据类型："><a href="#JS中一共有八种数据类型：" class="headerlink" title="JS中一共有八种数据类型："></a>JS中一共有八种数据类型：</h3><ul>
-<li><p><strong>基本数据类型(值类型)：</strong>String 字符串 、Number 数值、Bigint 大型数值、Boolean 布尔值、Null 空值、Undefined 未定义、Symbol。</p>
+    <h3 id="构造函数和原型-ES5"><a href="#构造函数和原型-ES5" class="headerlink" title="构造函数和原型  ES5"></a>构造函数和原型  ES5</h3><p>在 ES6 之前，对象不是基于类创建的，而是用一种称为 构造函数的特殊函数 来定义对象和他们的特性</p>
+<p>创建对象可以通过以下三种方法：</p>
+<ol>
+<li><p>对象字面量</p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">let</span> obj1 = &#123;&#125; ;<br></code></pre>
 </li>
-<li><p><strong>引用数据类型(引用类型)：</strong>Object对象</p>
-<p>注意：内置对象 Function Array Data RegExp Error 都是属于Object 类型</p>
-<p>Bigint 与 Symol是ES6中新增的类型</p>
+<li><p>new Object()</p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">let</span> obj2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>();<br></code></pre>
 </li>
-</ul>
-<p><strong>数据类型之间最大的区别：</strong></p>
-<ul>
-<li>基本数据类型：参数赋值的时候，传数组</li>
-<li>引用数据类型：参数赋值的时候，传地址</li>
-</ul>
-<p><strong>栗子</strong></p>
-<p><strong>基本数据类型举例</strong>：</p>
-<pre class="highlight"><span class="line"><span class="keyword">let</span> a = <span class="number">23</span> </span><br><span class="line"><span class="keyword">let</span> b = a </span><br><span class="line">a++</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// 24</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// 23</span></span><br></pre>
+<li><p>自定义构造函数 </p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Star</span>(<span class="hljs-params">name,age</span>)&#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span> = age;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">sing</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;i can sing&#x27;</span>)<br>    &#125;<br>&#125; <br><span class="hljs-keyword">let</span> ldh = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Star</span>(<span class="hljs-string">&#x27;刘德华&#x27;</span>，<span class="hljs-number">18</span>);<br><span class="hljs-keyword">let</span> zxy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Star</span>(<span class="hljs-string">&#x27;zxy&#x27;</span>,<span class="hljs-number">20</span>);<br><br></code></pre></li>
+</ol>
+<h3 id="new在执行的时-会做四件事情"><a href="#new在执行的时-会做四件事情" class="headerlink" title="new在执行的时 会做四件事情"></a>new在执行的时 会做四件事情</h3><ol>
+<li><strong>在内存中 创建一个新的空对象</strong> </li>
+<li><strong>让this指向这个新的对象</strong> </li>
+<li><strong>执行构造函数里面的代码，给这个新对象添加属性和方法</strong></li>
+<li><strong>返回这个新对象（ 所以构造函数里面不需要 return ）</strong></li>
+</ol>
+<h3 id="静态成员-与-实例成员"><a href="#静态成员-与-实例成员" class="headerlink" title="静态成员 与 实例成员"></a>静态成员 与 实例成员</h3><p> 实例成员就是构造函数内部通过 this 添加成员 例如  name age 就是  实例成员</p>
+<p> 实例成员只能通过实例化的对象来进行访问</p>
+<p> 静态成员只能通过构造函数来访问</p>
+<p> <strong>构造函数的问题</strong></p>
+<p>存在浪费内存的问题 </p>
+<h3 id="构造函数原型-prototype"><a href="#构造函数原型-prototype" class="headerlink" title="构造函数原型 prototype"></a>构造函数原型 prototype</h3><p>注： 构造函数通过原型分配的函数是所有对象所共享的</p>
+<p>每一个构造函数都有 一个 prototype 属性 （原型对象），指向另一个对象，注意这个prototype 就是一个对象，这个对象所有的属性和方法都会被构造函数所拥有</p>
+<p>注：我们可以把那些不变的方法，直接定义在prototype 对象上，这样所有的对象的实例就可以共享这些方法~</p>
+<h3 id="对象原形-proto"><a href="#对象原形-proto" class="headerlink" title="对象原形 proto"></a>对象原形 <strong>proto</strong></h3><p>对象都会有一个属性__proto__指向构造函数的prototype原形对象，只所以我们对象可以使用构造函数 prototype原形对象上的属性和方法，就是因为对象有__proto__原形的存在</p>
+<p>详解</p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Star</span>(<span class="hljs-params">name,age</span>)&#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span> = age;<br>   <span class="hljs-comment">// this.sing = function()&#123;</span><br>   <span class="hljs-comment">//     console.log(&#x27;i can sing&#x27;)</span><br>   <span class="hljs-comment">// &#125;</span><br>&#125;<br><span class="hljs-comment">// 把公共方法挂到原型对象上</span><br><span class="hljs-title class_">Star</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">sing</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;i can sing&#x27;</span>)<br>&#125;<br><br><br><span class="hljs-keyword">let</span> ldh = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Star</span>(<span class="hljs-string">&#x27;刘德华&#x27;</span>，<span class="hljs-number">18</span>);<br><span class="hljs-keyword">let</span> zxy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Star</span>(<span class="hljs-string">&#x27;zxy&#x27;</span>,<span class="hljs-number">20</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(ldh)<span class="hljs-comment">//对象身上系统自己添加一个__proto__指向构造函数的prototype的原形对象上</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( ldh.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Star</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>) <span class="hljs-comment">// true </span><br><br></code></pre>
 
-<p>上面的代码中：a 和 b 都是基本数据类型，让 b 等于 a，然后<strong>改变 a 的值之后，发现 b 的值并没有被改变</strong>。</p>
-<p><strong>引用数据类型举例</strong>：</p>
-<pre class="highlight"><span class="line"><span class="keyword">let</span> obj1 = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line">obj1.<span class="property">name</span> = <span class="string">&#x27;zhangkai&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj2 = obj1 </span><br><span class="line"></span><br><span class="line"><span class="comment">//修改obj1</span></span><br><span class="line">obj1.<span class="property">name</span> = <span class="string">&#x27;zk&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">name</span>) <span class="comment">// zk</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj2.<span class="property">name</span>) <span class="comment">// zk </span></span><br></pre>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/06/19/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8E%9F%E5%BD%A2ES5/1.png" class="lozad post-image"src="/2022/06/19/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8E%9F%E5%BD%A2ES5/1.png"></p>
+<h3 id="constructor-构造函数"><a href="#constructor-构造函数" class="headerlink" title="constructor 构造函数"></a>constructor 构造函数</h3><p>对象原形 <strong>proto</strong> 和 构造函数prototype 原形对象里面都有一个属性 constructor 属性，constructor我们成为构造函数，因为它指回构造函数本身</p>
+<p>constructor 主要用于记录该对象引用哪个构造函数，它可以让原形对象重新指向原来的构造函数</p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Star</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">constructor</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(ldh.<span class="hljs-property">__proto__</span>.<span class="hljs-property">constructor</span>);<br><br></code></pre>
 
-<p>我们首先记住一句话：JS 中，所有的<strong>变量</strong>都是保存在<strong>栈内存</strong>中的。</p>
-<p><strong>总结</strong></p>
-<p>基本数据类型，是直接保存在&#x3D;&#x3D;栈内存&#x3D;&#x3D;中的。值与值都是独立存在的</p>
-<p>引用数据类型，对象是保存在&#x3D;&#x3D;堆内存&#x3D;&#x3D;中的，而<strong>变量保存了对象的内存地址</strong>（对象的引用），保存在栈内存当中。如果两个变量保存了同一个对象的引用，当一个通过一个变量修改属性时，另一个也会受到影响。</p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/06/19/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8E%9F%E5%BD%A2ES5/2.png" class="lozad post-image"src="/2022/06/19/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8E%9F%E5%BD%A2ES5/2.png"></p>
+<h3 id="原形链"><a href="#原形链" class="headerlink" title="原形链"></a>原形链</h3><p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/06/19/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8E%9F%E5%BD%A2ES5/3.png" class="lozad post-image"src="/2022/06/19/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8E%9F%E5%BD%A2ES5/3.png"></p>
+<p> 原形对象函数里面的this指向的是实例对象ldh</p>
 
   </div>
   <div>
@@ -349,29 +355,15 @@
 </article>
 <div class="nav">
   
-    <div class="nav-item-prev">
-      <a 
-        href="/2022/06/17/String%E7%9A%84%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">String的内置方法 </div>
-          
-        </div>
-      </a>
-    </div>
-  
   
     <div class="nav-item-next">
       <a 
-        href="/2022/06/15/Mock-js/" 
+        href="/2022/06/18/%E5%85%B3%E4%BA%8EHTML5%E7%9A%84%E5%9B%9E%E9%A1%BE/" 
         class="nav-link">
         <div>
           <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">Mock.js </div>
+            <div class="nav-title">关于HTML5的回顾 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -389,7 +381,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E7%B1%BB"><span class="toc-text">数据分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE"><span class="toc-text">静态数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E4%B8%AD%E4%B8%80%E5%85%B1%E6%9C%89%E5%85%AB%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-text">JS中一共有八种数据类型：</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%8E%9F%E5%9E%8B-ES5"><span class="toc-text">构造函数和原型  ES5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#new%E5%9C%A8%E6%89%A7%E8%A1%8C%E7%9A%84%E6%97%B6-%E4%BC%9A%E5%81%9A%E5%9B%9B%E4%BB%B6%E4%BA%8B%E6%83%85"><span class="toc-text">new在执行的时 会做四件事情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98-%E4%B8%8E-%E5%AE%9E%E4%BE%8B%E6%88%90%E5%91%98"><span class="toc-text">静态成员 与 实例成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B-prototype"><span class="toc-text">构造函数原型 prototype</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%8E%9F%E5%BD%A2-proto"><span class="toc-text">对象原形 proto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#constructor-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">constructor 构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%BD%A2%E9%93%BE"><span class="toc-text">原形链</span></a></li></ol>
 </div></main>
             <aside class="left-column">
               
@@ -453,7 +445,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E7%B1%BB"><span class="toc-text">数据分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE"><span class="toc-text">静态数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E4%B8%AD%E4%B8%80%E5%85%B1%E6%9C%89%E5%85%AB%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-text">JS中一共有八种数据类型：</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%8E%9F%E5%9E%8B-ES5"><span class="toc-text">构造函数和原型  ES5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#new%E5%9C%A8%E6%89%A7%E8%A1%8C%E7%9A%84%E6%97%B6-%E4%BC%9A%E5%81%9A%E5%9B%9B%E4%BB%B6%E4%BA%8B%E6%83%85"><span class="toc-text">new在执行的时 会做四件事情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98-%E4%B8%8E-%E5%AE%9E%E4%BE%8B%E6%88%90%E5%91%98"><span class="toc-text">静态成员 与 实例成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B-prototype"><span class="toc-text">构造函数原型 prototype</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%8E%9F%E5%BD%A2-proto"><span class="toc-text">对象原形 proto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#constructor-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">constructor 构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%BD%A2%E9%93%BE"><span class="toc-text">原形链</span></a></li></ol>
       </div>
     </article>
   
@@ -530,7 +522,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E7%B1%BB"><span class="toc-text">数据分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE"><span class="toc-text">静态数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E4%B8%AD%E4%B8%80%E5%85%B1%E6%9C%89%E5%85%AB%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-text">JS中一共有八种数据类型：</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%8E%9F%E5%9E%8B-ES5"><span class="toc-text">构造函数和原型  ES5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#new%E5%9C%A8%E6%89%A7%E8%A1%8C%E7%9A%84%E6%97%B6-%E4%BC%9A%E5%81%9A%E5%9B%9B%E4%BB%B6%E4%BA%8B%E6%83%85"><span class="toc-text">new在执行的时 会做四件事情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98-%E4%B8%8E-%E5%AE%9E%E4%BE%8B%E6%88%90%E5%91%98"><span class="toc-text">静态成员 与 实例成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B-prototype"><span class="toc-text">构造函数原型 prototype</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%8E%9F%E5%BD%A2-proto"><span class="toc-text">对象原形 proto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#constructor-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">constructor 构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%BD%A2%E9%93%BE"><span class="toc-text">原形链</span></a></li></ol>
     </article>
   
   
