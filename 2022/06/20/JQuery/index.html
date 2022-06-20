@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/imgs/logo.jpg">
-  <title>构造函数与原型ES5</title>
+  <title>JQuery</title>
   
     
       <meta 
         property="og:title" 
-        content="构造函数与原型ES5">
+        content="JQuery">
     
     
       <meta 
         property="og:url" 
-        content="https://111zhanglan.github.io/2022/06/19/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8E%9F%E5%BD%A2ES5/index.html">
+        content="https://111zhanglan.github.io/2022/06/20/JQuery/index.html">
     
     
       <meta 
@@ -46,10 +46,10 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2022-06-19">
+        content="2022-06-20">
       <meta 
         property="og:article:modified_time" 
-        content="2022-06-19">
+        content="2022-06-20">
       <meta 
         property="og:article:author" 
         content="ZhangKai">
@@ -57,7 +57,7 @@
         
           <meta 
             property="og:article:tag" 
-            content="JavaScript">
+            content="js插件">
         
       
     
@@ -268,21 +268,21 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      构造函数与原型ES5
+      JQuery
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2022-06-19T09:17:30.000Z">
+    <time datetime="2022-06-20T12:06:34.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2022-06-19</span>
+      <span>2022-06-20</span>
     </time>
     
     
       <span class="dot"></span>
-      <span>710 字</span>
+      <span>748 字</span>
     
   </div>
   
@@ -297,9 +297,9 @@
         
           
           <a 
-            href="/tags/JavaScript/" 
+            href="/tags/js%E6%8F%92%E4%BB%B6/" 
             class="post-meta-link">
-            JavaScript
+            js插件
           </a>
         
       </div>
@@ -309,44 +309,62 @@
   <div 
     id="section" 
     class="post-content">
-    <h3 id="构造函数和原型-ES5"><a href="#构造函数和原型-ES5" class="headerlink" title="构造函数和原型  ES5"></a>构造函数和原型  ES5</h3><p>在 ES6 之前，对象不是基于类创建的，而是用一种称为 构造函数的特殊函数 来定义对象和他们的特性</p>
-<p>创建对象可以通过以下三种方法：</p>
-<ol>
-<li><p>对象字面量</p>
-<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">let</span> obj1 = &#123;&#125; ;<br></code></pre>
+    <h3 id="jQuery-的介绍"><a href="#jQuery-的介绍" class="headerlink" title="jQuery 的介绍"></a>jQuery 的介绍</h3><p>在用 js 写代码时，会遇到一些问题：</p>
+<ul>
+<li><p>window.onload 事件有事件覆盖的问题，因此只能写一个事件。</p>
 </li>
-<li><p>new Object()</p>
-<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">let</span> obj2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>();<br></code></pre>
+<li><p>代码容错性差。</p>
 </li>
-<li><p>自定义构造函数 </p>
-<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Star</span>(<span class="hljs-params">name,age</span>)&#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span> = age;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">sing</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;i can sing&#x27;</span>)<br>    &#125;<br>&#125; <br><span class="hljs-keyword">let</span> ldh = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Star</span>(<span class="hljs-string">&#x27;刘德华&#x27;</span>，<span class="hljs-number">18</span>);<br><span class="hljs-keyword">let</span> zxy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Star</span>(<span class="hljs-string">&#x27;zxy&#x27;</span>,<span class="hljs-number">20</span>);<br><br></code></pre></li>
-</ol>
-<h3 id="new在执行的时-会做四件事情"><a href="#new在执行的时-会做四件事情" class="headerlink" title="new在执行的时 会做四件事情"></a>new在执行的时 会做四件事情</h3><ol>
-<li><strong>在内存中 创建一个新的空对象</strong> </li>
-<li><strong>让this指向这个新的对象</strong> </li>
-<li><strong>执行构造函数里面的代码，给这个新对象添加属性和方法</strong></li>
-<li><strong>返回这个新对象（ 所以构造函数里面不需要 return ）</strong></li>
-</ol>
-<h3 id="静态成员-与-实例成员"><a href="#静态成员-与-实例成员" class="headerlink" title="静态成员 与 实例成员"></a>静态成员 与 实例成员</h3><p> 实例成员就是构造函数内部通过 this 添加成员 例如  name age 就是  实例成员</p>
-<p> 实例成员只能通过实例化的对象来进行访问</p>
-<p> 静态成员只能通过构造函数来访问</p>
-<p> <strong>构造函数的问题</strong></p>
-<p>存在浪费内存的问题 </p>
-<h3 id="构造函数原型-prototype"><a href="#构造函数原型-prototype" class="headerlink" title="构造函数原型 prototype"></a>构造函数原型 prototype</h3><p>注： 构造函数通过原型分配的函数是所有对象所共享的</p>
-<p>每一个构造函数都有 一个 prototype 属性 （原型对象），指向另一个对象，注意这个prototype 就是一个对象，这个对象所有的属性和方法都会被构造函数所拥有</p>
-<p>注：我们可以把那些不变的方法，直接定义在prototype 对象上，这样所有的对象的实例就可以共享这些方法~</p>
-<h3 id="对象原形-proto"><a href="#对象原形-proto" class="headerlink" title="对象原形 proto"></a>对象原形 <strong>proto</strong></h3><p>对象都会有一个属性__proto__指向构造函数的prototype原形对象，只所以我们对象可以使用构造函数 prototype原形对象上的属性和方法，就是因为对象有__proto__原形的存在</p>
-<p>详解</p>
-<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Star</span>(<span class="hljs-params">name,age</span>)&#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span> = age;<br>   <span class="hljs-comment">// this.sing = function()&#123;</span><br>   <span class="hljs-comment">//     console.log(&#x27;i can sing&#x27;)</span><br>   <span class="hljs-comment">// &#125;</span><br>&#125;<br><span class="hljs-comment">// 把公共方法挂到原型对象上</span><br><span class="hljs-title class_">Star</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">sing</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;i can sing&#x27;</span>)<br>&#125;<br><br><br><span class="hljs-keyword">let</span> ldh = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Star</span>(<span class="hljs-string">&#x27;刘德华&#x27;</span>，<span class="hljs-number">18</span>);<br><span class="hljs-keyword">let</span> zxy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Star</span>(<span class="hljs-string">&#x27;zxy&#x27;</span>,<span class="hljs-number">20</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(ldh)<span class="hljs-comment">//对象身上系统自己添加一个__proto__指向构造函数的prototype的原形对象上</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( ldh.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Star</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>) <span class="hljs-comment">// true </span><br><br></code></pre>
+<li><p>浏览器兼容性问题。</p>
+</li>
+<li><p>书写很繁琐，代码量多。</p>
+</li>
+<li><p>代码很乱，各个页面到处都是。</p>
+</li>
+<li><p>动画效果很难实现。</p>
+</li>
+</ul>
+<p>jQuery 是 js 的一个库，封装了我们开发过程中常用的一些功能，方便我们调用，提高开发效率。</p>
+<h3 id="学习jQuery，主要是学什么"><a href="#学习jQuery，主要是学什么" class="headerlink" title="学习jQuery，主要是学什么"></a>学习jQuery，主要是学什么</h3><p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/06/20/JQuery/.%5CJQuery%5C1.png" class="lozad post-image"src="/2022/06/20/JQuery/.%5CJQuery%5C1.png"></p>
+<p>主要学习如何使用jQuery操作DOM，其实就是学习jQuery封装好的那些API。</p>
+<p>这些API的共同特点是：几乎全都是方法。所以，在使用jQuery的API时，都是方法调用，也就是说要加小括号()，小括号里面是相应的参数，参数不同，功能不同。</p>
+<h3 id="jQuery-的两大特点"><a href="#jQuery-的两大特点" class="headerlink" title="jQuery 的两大特点"></a>jQuery 的两大特点</h3><p>（1）<strong>链式编程</strong>：比如<code>.show()</code>和<code>.html()</code>可以连写成<code>.show().html()</code>。</p>
+<p>链式编程原理：return this。</p>
+<p>通常情况下，只有设置操作才能把链式编程延续下去。因为获取操作的时候，会返回获取到的相应的值，无法返回 this。</p>
+<p>（2）<strong>隐式迭代</strong>：隐式 对应的是 显式。隐式迭代的意思是：在方法的内部会为匹配到的所有元素进行循环遍历，执行相应的方法；而不用我们再进行循环，简化我们的操作，方便我们调用。</p>
+<p>如果获取的是多元素的值，大部分情况下返回的是第一个元素的值。</p>
+<h3 id="jQuery-的使用"><a href="#jQuery-的使用" class="headerlink" title="jQuery 的使用"></a>jQuery 的使用</h3><p>（1）引包</p>
+<p>（2）入口函数</p>
+<p>（3）功能实现代码（事件处理）</p>
+<h3 id="jQuery-的入口函数和-符号"><a href="#jQuery-的入口函数和-符号" class="headerlink" title="jQuery 的入口函数和 $ 符号"></a>jQuery 的入口函数和 <code>$</code> 符号</h3><pre class="highlight"><code class="hljs js"><span class="hljs-comment">//2.文档加载完毕，图片不加载的时候，就可以执行这个函数。</span><br>$(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-number">1</span>);<br>&#125;);<br></code></pre>
 
-<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/06/19/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8E%9F%E5%BD%A2ES5/1.png" class="lozad post-image"src="/2022/06/19/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8E%9F%E5%BD%A2ES5/1.png"></p>
-<h3 id="constructor-构造函数"><a href="#constructor-构造函数" class="headerlink" title="constructor 构造函数"></a>constructor 构造函数</h3><p>对象原形 <strong>proto</strong> 和 构造函数prototype 原形对象里面都有一个属性 constructor 属性，constructor我们成为构造函数，因为它指回构造函数本身</p>
-<p>constructor 主要用于记录该对象引用哪个构造函数，它可以让原形对象重新指向原来的构造函数</p>
-<pre class="highlight"><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Star</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">constructor</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(ldh.<span class="hljs-property">__proto__</span>.<span class="hljs-property">constructor</span>);<br><br></code></pre>
+<p>jQuery的入口函数，是在文档加载完成后，就执行。文档加载完成指的是：DOM树加载完成后，就可以操作DOM了，不用等到所有的<strong>外部资源</strong>都加载完成。</p>
+<h2 id="js中的DOM对象-和-jQuery对象-比较（重点，难点）"><a href="#js中的DOM对象-和-jQuery对象-比较（重点，难点）" class="headerlink" title="js中的DOM对象 和 jQuery对象 比较（重点，难点）"></a>js中的DOM对象 和 jQuery对象 比较（重点，难点）</h2><p>二者的区别</p>
+<p>通过 jQuery 获取的元素是一个<strong>数组</strong>，数组中包含着原生JS中的DOM对象。举例：</p>
+<p>二者的相互转换</p>
+<p><strong>1、 DOM 对象 转为 jQuery对象</strong>：</p>
+<pre class="highlight"><code class="hljs javascript">$(js对象);<br></code></pre>
 
-<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/06/19/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8E%9F%E5%BD%A2ES5/2.png" class="lozad post-image"src="/2022/06/19/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8E%9F%E5%BD%A2ES5/2.png"></p>
-<h3 id="原形链"><a href="#原形链" class="headerlink" title="原形链"></a>原形链</h3><p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/06/19/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8E%9F%E5%BD%A2ES5/3.png" class="lozad post-image"src="/2022/06/19/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8E%9F%E5%BD%A2ES5/3.png"></p>
-<p> 原形对象函数里面的this指向的是实例对象ldh</p>
+<p>举例：（拿上一段的代码举例）</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-comment">//转换。</span><br>jqBox1 = $(myBox);<br>jqBox2 = $(boxArr);<br>jqBox3 = $(divArr);<br></code></pre>
+
+<p>DOM 对象转换成了 jquery 对象之后，上面的功能可以直接调用。</p>
+<p><strong>2、jQuery对象 转为 DOM 对象</strong>：</p>
+<pre class="highlight"><code class="hljs javascript">jquery对象[index];      <span class="hljs-comment">//方式1（推荐）</span><br><br>jquery对象.<span class="hljs-title function_">get</span>(index);  <span class="hljs-comment">//方式2</span><br></code></pre>
+
+<p>jQuery对象转换成了 DOM 对象之后，可以直接调用 DOM 提供的一些功能。如：</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-comment">//jquery对象转换成 DOM 对象之后</span><br>jqBox3[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-property">backgroundColor</span> = <span class="hljs-string">&quot;black&quot;</span>;<br>jqBox3.<span class="hljs-title function_">get</span>(<span class="hljs-number">4</span>).<span class="hljs-property">style</span>.<span class="hljs-property">backgroundColor</span> = <span class="hljs-string">&quot;pink&quot;</span>;<br></code></pre>
+
+<p><strong>总结</strong>：如果想要用哪种方式设置属性或方法，必须转换成该类型。</p>
+<h3 id="jQuery-选择器"><a href="#jQuery-选择器" class="headerlink" title="jQuery 选择器"></a>jQuery 选择器</h3><p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/06/20/JQuery/.%5CJQuery%5C2.png" class="lozad post-image"src="/2022/06/20/JQuery/.%5CJQuery%5C2.png"></p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/06/20/JQuery/.%5CJQuery%5C3.png" class="lozad post-image"src="/2022/06/20/JQuery/.%5CJQuery%5C3.png"></p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/06/20/JQuery/.%5CJQuery%5C4.png" class="lozad post-image"src="/2022/06/20/JQuery/.%5CJQuery%5C4.png"></p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/06/20/JQuery/.%5CJQuery%5C6.png" class="lozad post-image"src="/2022/06/20/JQuery/.%5CJQuery%5C6.png"></p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/06/20/JQuery/.%5CJQuery%5C7.png" class="lozad post-image"src="/2022/06/20/JQuery/.%5CJQuery%5C7.png"></p>
+<h3 id="jQuery-事件"><a href="#jQuery-事件" class="headerlink" title="jQuery 事件"></a>jQuery 事件</h3><p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/06/20/JQuery/.%5CJQuery%5C8.png" class="lozad post-image"src="/2022/06/20/JQuery/.%5CJQuery%5C8.png"></p>
+<pre class="highlight"><code class="hljs js">$(<span class="hljs-string">&quot;p&quot;</span>).<span class="hljs-title function_">click</span>();<br>$(<span class="hljs-string">&quot;p&quot;</span>).<span class="hljs-title function_">click</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-comment">// 动作触发后执行的代码!!</span><br>&#125;);<br></code></pre>
+
+<p>……..</p>
 
   </div>
   <div>
@@ -355,29 +373,13 @@
 </article>
 <div class="nav">
   
-    <div class="nav-item-prev">
-      <a 
-        href="/2022/06/19/6-18-JavaScript%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">6.18-JavaScript面向对象 </div>
-          
-        </div>
-      </a>
-    </div>
-  
   
     <div class="nav-item-next">
       <a 
-        href="/2022/06/18/%E5%85%B3%E4%BA%8EHTML5%E7%9A%84%E5%9B%9E%E9%A1%BE/" 
+        href="/2022/06/20/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8E%9F%E5%BD%A2ES5/js%E7%9F%A5%E8%AF%86%E7%82%B9/" 
         class="nav-link">
         <div>
           <div class="nav-label">下一篇</div>
-          
-            <div class="nav-title">关于HTML5的回顾 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -395,7 +397,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%8E%9F%E5%9E%8B-ES5"><span class="toc-text">构造函数和原型  ES5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#new%E5%9C%A8%E6%89%A7%E8%A1%8C%E7%9A%84%E6%97%B6-%E4%BC%9A%E5%81%9A%E5%9B%9B%E4%BB%B6%E4%BA%8B%E6%83%85"><span class="toc-text">new在执行的时 会做四件事情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98-%E4%B8%8E-%E5%AE%9E%E4%BE%8B%E6%88%90%E5%91%98"><span class="toc-text">静态成员 与 实例成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B-prototype"><span class="toc-text">构造函数原型 prototype</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%8E%9F%E5%BD%A2-proto"><span class="toc-text">对象原形 proto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#constructor-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">constructor 构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%BD%A2%E9%93%BE"><span class="toc-text">原形链</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="toc-text">jQuery 的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0jQuery%EF%BC%8C%E4%B8%BB%E8%A6%81%E6%98%AF%E5%AD%A6%E4%BB%80%E4%B9%88"><span class="toc-text">学习jQuery，主要是学什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E7%9A%84%E4%B8%A4%E5%A4%A7%E7%89%B9%E7%82%B9"><span class="toc-text">jQuery 的两大特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">jQuery 的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E7%9A%84%E5%85%A5%E5%8F%A3%E5%87%BD%E6%95%B0%E5%92%8C-%E7%AC%A6%E5%8F%B7"><span class="toc-text">jQuery 的入口函数和 $ 符号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js%E4%B8%AD%E7%9A%84DOM%E5%AF%B9%E8%B1%A1-%E5%92%8C-jQuery%E5%AF%B9%E8%B1%A1-%E6%AF%94%E8%BE%83%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%8C%E9%9A%BE%E7%82%B9%EF%BC%89"><span class="toc-text">js中的DOM对象 和 jQuery对象 比较（重点，难点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">jQuery 选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E4%BA%8B%E4%BB%B6"><span class="toc-text">jQuery 事件</span></a></li></ol>
 </div></main>
             <aside class="left-column">
               
@@ -459,7 +461,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%8E%9F%E5%9E%8B-ES5"><span class="toc-text">构造函数和原型  ES5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#new%E5%9C%A8%E6%89%A7%E8%A1%8C%E7%9A%84%E6%97%B6-%E4%BC%9A%E5%81%9A%E5%9B%9B%E4%BB%B6%E4%BA%8B%E6%83%85"><span class="toc-text">new在执行的时 会做四件事情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98-%E4%B8%8E-%E5%AE%9E%E4%BE%8B%E6%88%90%E5%91%98"><span class="toc-text">静态成员 与 实例成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B-prototype"><span class="toc-text">构造函数原型 prototype</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%8E%9F%E5%BD%A2-proto"><span class="toc-text">对象原形 proto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#constructor-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">constructor 构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%BD%A2%E9%93%BE"><span class="toc-text">原形链</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="toc-text">jQuery 的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0jQuery%EF%BC%8C%E4%B8%BB%E8%A6%81%E6%98%AF%E5%AD%A6%E4%BB%80%E4%B9%88"><span class="toc-text">学习jQuery，主要是学什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E7%9A%84%E4%B8%A4%E5%A4%A7%E7%89%B9%E7%82%B9"><span class="toc-text">jQuery 的两大特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">jQuery 的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E7%9A%84%E5%85%A5%E5%8F%A3%E5%87%BD%E6%95%B0%E5%92%8C-%E7%AC%A6%E5%8F%B7"><span class="toc-text">jQuery 的入口函数和 $ 符号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js%E4%B8%AD%E7%9A%84DOM%E5%AF%B9%E8%B1%A1-%E5%92%8C-jQuery%E5%AF%B9%E8%B1%A1-%E6%AF%94%E8%BE%83%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%8C%E9%9A%BE%E7%82%B9%EF%BC%89"><span class="toc-text">js中的DOM对象 和 jQuery对象 比较（重点，难点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">jQuery 选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E4%BA%8B%E4%BB%B6"><span class="toc-text">jQuery 事件</span></a></li></ol>
       </div>
     </article>
   
@@ -536,7 +538,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%8E%9F%E5%9E%8B-ES5"><span class="toc-text">构造函数和原型  ES5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#new%E5%9C%A8%E6%89%A7%E8%A1%8C%E7%9A%84%E6%97%B6-%E4%BC%9A%E5%81%9A%E5%9B%9B%E4%BB%B6%E4%BA%8B%E6%83%85"><span class="toc-text">new在执行的时 会做四件事情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98-%E4%B8%8E-%E5%AE%9E%E4%BE%8B%E6%88%90%E5%91%98"><span class="toc-text">静态成员 与 实例成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B-prototype"><span class="toc-text">构造函数原型 prototype</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%8E%9F%E5%BD%A2-proto"><span class="toc-text">对象原形 proto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#constructor-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">constructor 构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%BD%A2%E9%93%BE"><span class="toc-text">原形链</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="toc-text">jQuery 的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0jQuery%EF%BC%8C%E4%B8%BB%E8%A6%81%E6%98%AF%E5%AD%A6%E4%BB%80%E4%B9%88"><span class="toc-text">学习jQuery，主要是学什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E7%9A%84%E4%B8%A4%E5%A4%A7%E7%89%B9%E7%82%B9"><span class="toc-text">jQuery 的两大特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">jQuery 的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E7%9A%84%E5%85%A5%E5%8F%A3%E5%87%BD%E6%95%B0%E5%92%8C-%E7%AC%A6%E5%8F%B7"><span class="toc-text">jQuery 的入口函数和 $ 符号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js%E4%B8%AD%E7%9A%84DOM%E5%AF%B9%E8%B1%A1-%E5%92%8C-jQuery%E5%AF%B9%E8%B1%A1-%E6%AF%94%E8%BE%83%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%8C%E9%9A%BE%E7%82%B9%EF%BC%89"><span class="toc-text">js中的DOM对象 和 jQuery对象 比较（重点，难点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">jQuery 选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery-%E4%BA%8B%E4%BB%B6"><span class="toc-text">jQuery 事件</span></a></li></ol>
     </article>
   
   
