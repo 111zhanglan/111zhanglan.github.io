@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/imgs/logo.jpg">
-  <title>JS基本数据类型与引用类型</title>
+  <title>归档</title>
   
     
       <meta 
         property="og:title" 
-        content="JS基本数据类型与引用类型">
+        content="归档">
     
     
       <meta 
         property="og:url" 
-        content="https://111zhanglan.github.io/2022/06/16/JS%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/index.html">
+        content="https://111zhanglan.github.io/archives/2022/06/page/2/index.html">
     
     
       <meta 
@@ -40,26 +40,6 @@
         property="og:img" 
         content="张同学的个人小站">
     
-    
-      <meta 
-        property="og:type" 
-        content="article">
-      <meta 
-        property="og:article:published_time" 
-        content="2022-06-16">
-      <meta 
-        property="og:article:modified_time" 
-        content="2022-06-16">
-      <meta 
-        property="og:article:author" 
-        content="ZhangKai">
-      
-        
-          <meta 
-            property="og:article:tag" 
-            content="JavaScript">
-        
-      
     
   
   <script>
@@ -164,8 +144,6 @@
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
   
-    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
-  
 <meta name="generator" content="Hexo 6.2.0"></head>
 
   <body>
@@ -265,132 +243,50 @@
         <div class="container">
           <div class="columns">
             <main class="main-column">
-<article class="card card-content">
-  <header>
-    <h1 class="post-title">
-      JS基本数据类型与引用类型
-    </h1>
-  </header>
-  <div class="post-meta post-show-meta">
-    <time datetime="2022-06-16T04:48:46.000Z">
-      <i 
-        class="iconfont icon-calendar" 
-        style="margin-right: 2px;">
-      </i>
-      <span>2022-06-16</span>
-    </time>
-    
-    
-      <span class="dot"></span>
-      <span>544 字</span>
-    
-  </div>
+<div class="card card-content">
+  <h1 class="widget-title">归档</h1>
+</div>
+<div class="archive-timeline">
   
-    <div 
-      class="post-meta post-show-meta" 
-      style="margin-top: -10px;">
-      <div style="display: flex; align-items: center;">
-        <i 
-          class="iconfont icon-biaoqian" 
-          style="margin-right: 2px; font-size: 1.15rem;">
-        </i>
-        
-          
-          <a 
-            href="/tags/JavaScript/" 
-            class="post-meta-link">
-            JavaScript
-          </a>
-        
+  
+    
+      <div class="archive-timeline-tag"><span>2022</span></div>
+      
+    
+    <div class="archive-timeline-item">
+      <div class="archive-timeline-post">
+        <div class="card card-content">
+          <div class="archive-timeline-post-date">2022-06-15</div>
+          <div class="archive-timeline-post-content">
+            <a 
+              href="/2022/06/15/myblogs/"
+              class="archive-timeline-post-item">
+              利用HEXO+Github搭建属于自己的博客网站
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   
-  </header>
-  <div 
-    id="section" 
-    class="post-content">
-    <h2 id="数据分类"><a href="#数据分类" class="headerlink" title="数据分类"></a>数据分类</h2><p>数据分为：静态数据，动态数据</p>
-<h4 id="静态数据"><a href="#静态数据" class="headerlink" title="静态数据"></a>静态数据</h4><p>注：静态数据是指一些永久性的数据。一般是以文件的形式存储在硬盘上，比如文档，照片，视频等文件</p>
-<p>电脑关闭后，静态数据仍然还在，</p>
-<p>动态数据：是指在程序的运行中，动态的产生的临时数据，一般都存储在内存中</p>
-<p>电脑关闭后，这些数据就无了</p>
-<p>前提：javascript 是一种弱类型语言，JS的变量数据类型，是在程序运行的过程中，根据等号右边的值来确定的。</p>
-<p>&#x3D;&#x3D;面试高频点&#x3D;&#x3D;</p>
-<h3 id="JS中一共有八种数据类型："><a href="#JS中一共有八种数据类型：" class="headerlink" title="JS中一共有八种数据类型："></a>JS中一共有八种数据类型：</h3><ul>
-<li><p><strong>基本数据类型(值类型)：</strong>String 字符串 、Number 数值、Bigint 大型数值、Boolean 布尔值、Null 空值、Undefined 未定义、Symbol。</p>
-</li>
-<li><p><strong>引用数据类型(引用类型)：</strong>Object对象</p>
-<p>注意：内置对象 Function Array Data RegExp Error 都是属于Object 类型</p>
-<p>Bigint 与 Symol是ES6中新增的类型</p>
-</li>
-</ul>
-<p><strong>数据类型之间最大的区别：</strong></p>
-<ul>
-<li>基本数据类型：参数赋值的时候，传数组</li>
-<li>引用数据类型：参数赋值的时候，传地址</li>
-</ul>
-<p><strong>栗子</strong></p>
-<p><strong>基本数据类型举例</strong>：</p>
-<pre class="highlight"><span class="line"><span class="keyword">let</span> a = <span class="number">23</span> </span><br><span class="line"><span class="keyword">let</span> b = a </span><br><span class="line">a++</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// 24</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// 23</span></span><br></pre>
+</div>
 
-<p>上面的代码中：a 和 b 都是基本数据类型，让 b 等于 a，然后<strong>改变 a 的值之后，发现 b 的值并没有被改变</strong>。</p>
-<p><strong>引用数据类型举例</strong>：</p>
-<pre class="highlight"><span class="line"><span class="keyword">let</span> obj1 = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line">obj1.<span class="property">name</span> = <span class="string">&#x27;zhangkai&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj2 = obj1 </span><br><span class="line"></span><br><span class="line"><span class="comment">//修改obj1</span></span><br><span class="line">obj1.<span class="property">name</span> = <span class="string">&#x27;zk&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">name</span>) <span class="comment">// zk</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj2.<span class="property">name</span>) <span class="comment">// zk </span></span><br></pre>
-
-<p>我们首先记住一句话：JS 中，所有的<strong>变量</strong>都是保存在<strong>栈内存</strong>中的。</p>
-<p><strong>总结</strong></p>
-<p>基本数据类型，是直接保存在&#x3D;&#x3D;栈内存&#x3D;&#x3D;中的。值与值都是独立存在的</p>
-<p>引用数据类型，对象是保存在&#x3D;&#x3D;堆内存&#x3D;&#x3D;中的，而<strong>变量保存了对象的内存地址</strong>（对象的引用），保存在栈内存当中。如果两个变量保存了同一个对象的引用，当一个通过一个变量修改属性时，另一个也会受到影响。</p>
-
-  </div>
-  <div>
-    
-  </div>
-</article>
-<div class="nav">
+  <div class="nav">
   
     <div class="nav-item-prev">
       <a 
-        href="/2022/06/17/String%E7%9A%84%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/" 
+        href="/archives/2022/06/" 
         class="nav-link">
         <i class="iconfont icon-left nav-prev-icon"></i>
         <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">String的内置方法 </div>
+          <div class="nav-label">上一页</div>
           
         </div>
       </a>
     </div>
   
   
-    <div class="nav-item-next">
-      <a 
-        href="/2022/06/15/Mock-js/" 
-        class="nav-link">
-        <div>
-          <div class="nav-label">下一篇</div>
-          
-            <div class="nav-title">Mock.js </div>
-          
-        </div>
-        <i class="iconfont icon-right nav-next-icon"></i>
-      </a>
-    </div>
-  
 </div>
-
-<div 
-  class="card card-content toc-card" 
-  id="mobiletoc">
-  <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E7%B1%BB"><span class="toc-text">数据分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE"><span class="toc-text">静态数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E4%B8%AD%E4%B8%80%E5%85%B1%E6%9C%89%E5%85%AB%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-text">JS中一共有八种数据类型：</span></a></li></ol></li></ol>
-</div></main>
+</main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -445,18 +341,6 @@
                <div class="sticky-tablet">
   
   
-    <article class="display-when-two-columns spacer">
-      <div class="card card-content toc-card">
-        <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E7%B1%BB"><span class="toc-text">数据分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE"><span class="toc-text">静态数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E4%B8%AD%E4%B8%80%E5%85%B1%E6%9C%89%E5%85%AB%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-text">JS中一共有八种数据类型：</span></a></li></ol></li></ol>
-      </div>
-    </article>
-  
   
   <article class="card card-content categories-widget">
     <div class="categories-card">
@@ -483,9 +367,9 @@
   <div class="tags-list">
     
       <a 
-        href="/tags/%E5%88%86%E4%BA%AB/" 
-        title="分享">
-        <div class="tags-list-item">分享</div>
+        href="/tags/JavaScript/" 
+        title="JavaScript">
+        <div class="tags-list-item">JavaScript</div>
       </a>
     
       <a 
@@ -495,15 +379,9 @@
       </a>
     
       <a 
-        href="/tags/JavaScript/" 
-        title="JavaScript">
-        <div class="tags-list-item">JavaScript</div>
-      </a>
-    
-      <a 
-        href="/tags/Vue/" 
-        title="Vue">
-        <div class="tags-list-item">Vue</div>
+        href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" 
+        title="浏览器">
+        <div class="tags-list-item">浏览器</div>
       </a>
     
       <a 
@@ -513,9 +391,15 @@
       </a>
     
       <a 
-        href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" 
-        title="浏览器">
-        <div class="tags-list-item">浏览器</div>
+        href="/tags/Vue/" 
+        title="Vue">
+        <div class="tags-list-item">Vue</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%88%86%E4%BA%AB/" 
+        title="分享">
+        <div class="tags-list-item">分享</div>
       </a>
     
   </div>
@@ -523,21 +407,81 @@
   </article>
   
   
+    <article class="card card-content widescreen-archive archive-widget">
+      <div class="archive-card">
+  <div class="archive-card-header">
+    <i 
+      class="iconfont icon-wodebaobiao" 
+      style="padding-right: 2px;">
+    </i>归档
+  </div>
+  <div class="archive-card-list">
+    
+    
+    
+      
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+    
+      <a 
+        href="/archives/2022" 
+        class="archive-card-list-item">
+        2022
+        <span class="archive-card-list-item-badge">11</span>
+      </a>
+    
+  </div>
+</div>
+    </article>
+  
 </div>
             </aside>
             <aside class="right-column">
               <div class="sticky-widescreen">
   
-  
-    <article class="card card-content toc-card">
-      <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E7%B1%BB"><span class="toc-text">数据分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE"><span class="toc-text">静态数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E4%B8%AD%E4%B8%80%E5%85%B1%E6%9C%89%E5%85%AB%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-text">JS中一共有八种数据类型：</span></a></li></ol></li></ol>
-    </article>
   
   
   <article class="card card-content">
@@ -574,6 +518,76 @@
 </div>
   </article>
   
+  
+    <article class="card card-content">
+      <div class="archive-card">
+  <div class="archive-card-header">
+    <i 
+      class="iconfont icon-wodebaobiao" 
+      style="padding-right: 2px;">
+    </i>归档
+  </div>
+  <div class="archive-card-list">
+    
+    
+    
+      
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+    
+      <a 
+        href="/archives/2022" 
+        class="archive-card-list-item">
+        2022
+        <span class="archive-card-list-item-badge">11</span>
+      </a>
+    
+  </div>
+</div>
+    </article>
   
 </div>
             </aside>
@@ -689,36 +703,6 @@
 </a> 
      
      
-     
-      <script>
-  var addImgLayout = function () {
-    var img = document.querySelectorAll('.post-content img')
-    var i
-    for (i = 0; i < img.length; i++) {
-      var wrapper = document.createElement('a')
-      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
-      wrapper.setAttribute('aria-label', 'illustration')
-      wrapper.style.cssText =
-        'width: 100%; display: flex; justify-content: center;'
-      if (img[i].alt) wrapper.dataset.caption = img[i].alt
-      wrapper.dataset.nolink = true
-      img[i].before(wrapper)
-      wrapper.append(img[i])
-      var divWrap = document.createElement('div')
-      divWrap.classList.add('gallery')
-      wrapper.before(divWrap)
-      divWrap.append(wrapper)
-    }
-    baguetteBox.run('.gallery')
-  }
-</script>
-<script>
-  loadScript(
-    "/js/lib/lightbox/baguetteBox.min.js",
-    addImgLayout
-  )
-</script>
- 
      
      
     <script src="/js/main.js"></script> 
