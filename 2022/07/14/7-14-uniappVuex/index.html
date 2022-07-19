@@ -28,7 +28,7 @@
     
       <meta 
         property="og:url" 
-        content="https://111zhanglan.github.io/2022/07/14/7-14-Vuex/index.html">
+        content="https://111zhanglan.github.io/2022/07/14/7-14-uniappVuex/index.html">
     
     
       <meta 
@@ -310,20 +310,20 @@
     id="section" 
     class="post-content">
     <h3 id="7-14小计"><a href="#7-14小计" class="headerlink" title="7.14小计"></a>7.14小计</h3><h3 id="遇到的一些小问题"><a href="#遇到的一些小问题" class="headerlink" title="遇到的一些小问题"></a>遇到的一些小问题</h3><h3 id="1-在循环遍历不同的背景颜色的-样式动态绑定问题"><a href="#1-在循环遍历不同的背景颜色的-样式动态绑定问题" class="headerlink" title="1. 在循环遍历不同的背景颜色的 样式动态绑定问题"></a>1. 在循环遍历不同的背景颜色的 样式动态绑定问题</h3><p><strong>如图</strong></p>
-<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/07/14/7-14-Vuex/1.png" class="lozad post-image"src="/2022/07/14/7-14-Vuex/1.png"></p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/07/14/7-14-uniappVuex/1.png" class="lozad post-image"src="/2022/07/14/7-14-uniappVuex/1.png"></p>
 <pre class="highlight"><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item of radius&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">:style</span>=<span class="hljs-string">&quot;&#123;backgroundColor:`$&#123;item.color&#125;`&#125;&quot;</span>&gt;</span>&#123;&#123;item.name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span><br></code></pre>
 
 <p><strong>整理一下我的问卷调查的数据格式的思路</strong> </p>
 <p>我分别列为  题目类型 题目标题 题目选项 题目必填状态 以数组对象的形式</p>
 <p><strong>如图</strong></p>
-<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/07/14/7-14-Vuex/2.png" class="lozad post-image"src="/2022/07/14/7-14-Vuex/2.png"></p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/07/14/7-14-uniappVuex/2.png" class="lozad post-image"src="/2022/07/14/7-14-uniappVuex/2.png"></p>
 <p>多选题的格式与单选题一样   </p>
 <p><strong>我通过v-for 嵌套循环 外层循环题目数量（一条对象即为一条题目） 内层循环则为控制选项数量（这边里面的arrs为选项数组 key customItem）</strong> </p>
 <p>1、</p>
-<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/07/14/7-14-Vuex/3.png" class="lozad post-image"src="/2022/07/14/7-14-Vuex/3.png"></p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/07/14/7-14-uniappVuex/3.png" class="lozad post-image"src="/2022/07/14/7-14-uniappVuex/3.png"></p>
 <p><strong>这样通过我用v-for通过数量来动态表单项数量</strong></p>
 <p>如图</p>
-<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/07/14/7-14-Vuex/4.png" class="lozad post-image"src="/2022/07/14/7-14-Vuex/4.png"></p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/07/14/7-14-uniappVuex/4.png" class="lozad post-image"src="/2022/07/14/7-14-uniappVuex/4.png"></p>
 <p><strong>以上通过点击事件操作表单数组 push增加 题目 或选项  splice来删除题目 和 选项</strong></p>
 <h3 id="3、数组扁平化的方式"><a href="#3、数组扁平化的方式" class="headerlink" title="3、数组扁平化的方式"></a>3、数组扁平化的方式</h3><p>这么有个问题造成数据多维  Vuex 一层数组  有一层 里面状态又一层 </p>
 <h3 id="1-使用flat"><a href="#1-使用flat" class="headerlink" title="1.使用flat()"></a>1.使用flat()</h3><pre class="highlight"><code class="hljs js"><span class="hljs-keyword">const</span> result1 = arr.<span class="hljs-title function_">flat</span>(<span class="hljs-title class_">Infinity</span>) <span class="hljs-string">``</span><span class="hljs-comment">// 指定深度为无限</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(result1) <span class="hljs-string">``</span><span class="hljs-comment">// [ 1, 2, 3, 4, 5 ]</span><br><span class="hljs-keyword">const</span> result2 = arr.<span class="hljs-title function_">flat</span>(<span class="hljs-number">1</span>) <span class="hljs-string">``</span><span class="hljs-comment">// 指定深度为1</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(result2) <span class="hljs-string">``</span><span class="hljs-comment">// [ 1, 2, 3, [ 4, 5 ] ]</span><br><span class="hljs-keyword">const</span> result3 = arr.<span class="hljs-title function_">flat</span>(<span class="hljs-number">2</span>) <span class="hljs-string">``</span><span class="hljs-comment">// 指定深度为2</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(result3) <span class="hljs-string">``</span><span class="hljs-comment">// [ 1, 2, 3, 4, 5 ]</span><br></code></pre>
@@ -335,6 +335,20 @@
   </div>
 </article>
 <div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2022/07/19/7-19Uniapp-wx%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%A1%88%E4%BE%8Bbug%E6%80%BB%E7%BB%93/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">7.19Uniapp-wx小程序案例bug总结 </div>
+          
+        </div>
+      </a>
+    </div>
   
   
     <div class="nav-item-next">
@@ -381,7 +395,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>16</span>
+    <span>17</span>
     <span>文章</span>
   </a>
   <a 
@@ -393,7 +407,7 @@
   <a 
     class="author-tags-count" 
     href="/tags">
-    <span>7</span>
+    <span>8</span>
     <span>标签</span>
   </a>
 </div>
@@ -497,6 +511,12 @@
         <div class="tags-list-item">面试</div>
       </a>
     
+      <a 
+        href="/tags/uniapp/" 
+        title="uniapp">
+        <div class="tags-list-item">uniapp</div>
+      </a>
+    
   </div>
 </div>
   </article>
@@ -530,8 +550,13 @@
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-07-19</div>
+        <a href="/2022/07/19/7-19Uniapp-wx%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%A1%88%E4%BE%8Bbug%E6%80%BB%E7%BB%93/"><div class="recent-posts-item-content">7.19Uniapp-wx小程序案例bug总结</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
         <div class="recent-posts-item-title">2022-07-14</div>
-        <a href="/2022/07/14/7-14-Vuex/"><div class="recent-posts-item-content">7.14-Vuex</div></a>
+        <a href="/2022/07/14/7-14-uniappVuex/"><div class="recent-posts-item-content">7.14-Vuex</div></a>
       </div>
     
       <div class="recent-posts-item">
@@ -542,11 +567,6 @@
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2022-07-11</div>
         <a href="/2022/07/11/7-11uniapp%E5%B0%8F%E8%AE%B0/"><div class="recent-posts-item-content">7.11uniapp小记</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2022-07-10</div>
-        <a href="/2022/07/10/Uniapp/"><div class="recent-posts-item-content">Uniapp</div></a>
       </div>
     
   </div>
