@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="张同学的个人小站">
+  <link 
+    rel="icon" 
+    href="/imgs/logo.jpg">
+  <title>JS数组遍历方法</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="JS数组遍历方法">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://111zhanglan.github.io/2022/07/28/JS%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="/imgs/logo.jpg">
+    
+    
+      <meta 
+        property="og:img" 
+        content="张同学的个人小站">
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2022-07-28">
+      <meta 
+        property="og:article:modified_time" 
+        content="2022-07-28">
+      <meta 
+        property="og:article:author" 
+        content="ZhangKai">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="JavaScript">
+        
+      
+    
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <span class="navbar-logo-main">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="/imgs/logo.jpg" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">张同学的Blog</span>
+    </span>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          首页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          归档
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <a 
+      class="navbar-menu-item darknavbar" 
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </a>
+    <a 
+      class="navbar-menu-item searchnavbar" 
+      id="search">
+      <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i>
+    </a>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <main class="main-column">
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      JS数组遍历方法
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2022-07-28T06:56:17.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2022-07-28</span>
+    </time>
+    
+    
+      <span class="dot"></span>
+      <span>535 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/JavaScript/" 
+            class="post-meta-link">
+            JavaScript
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h3 id="整理一下javascript那些数组的遍历方式（-循环数组-）"><a href="#整理一下javascript那些数组的遍历方式（-循环数组-）" class="headerlink" title="整理一下javascript那些数组的遍历方式（ 循环数组 ）"></a>整理一下javascript那些数组的遍历方式（ 循环数组 ）</h3><h3 id="1-原生js中的for循环"><a href="#1-原生js中的for循环" class="headerlink" title="1.  原生js中的for循环"></a>1.  原生js中的for循环</h3><pre class="highlight"><code class="hljs js"><span class="hljs-comment">//最简单的一种循环遍历方式,也是使用频率最高的</span><br><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;i&lt;arr.<span class="hljs-property">length</span>;i++)&#123;<br>    <span class="hljs-comment">//打印每一个数组的元素</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr[i])<br>&#125;<br></code></pre>
+
+<h3 id="2-原生js中-for-in-（数组对象）效率低"><a href="#2-原生js中-for-in-（数组对象）效率低" class="headerlink" title="2.原生js中 for in （数组对象）效率低"></a>2.原生js中 for in （数组对象）效率低</h3><pre class="highlight"><code class="hljs js"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> k <span class="hljs-keyword">in</span> arr)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr[k]) <span class="hljs-comment">//输出的key是数组的索引值</span><br>&#125;<br></code></pre>
+
+<h3 id="3-for-of-（虽然性能好for-in-不能循环对象）"><a href="#3-for-of-（虽然性能好for-in-不能循环对象）" class="headerlink" title="3. for of  （虽然性能好for in   不能循环对象）"></a>3. for of  （虽然性能好for in   不能循环对象）</h3><pre class="highlight"><code class="hljs js"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> key <span class="hljs-keyword">of</span> arr)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(key)<br>&#125;<br></code></pre>
+
+<h3 id="4-ES6-中的-forEach-数组元素有几个，该方法的回调就会执行几次"><a href="#4-ES6-中的-forEach-数组元素有几个，该方法的回调就会执行几次" class="headerlink" title="4.  ES6  中的 forEach( )  数组元素有几个，该方法的回调就会执行几次"></a>4.  ES6  中的 forEach( )  数组元素有几个，该方法的回调就会执行几次</h3><pre class="highlight"><code class="hljs js">arr.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">item,index,arr</span>)=&gt;</span>&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(item + <span class="hljs-string">&#x27;---&#x27;</span> + index + <span class="hljs-string">&#x27;---&#x27;</span> + arr)<br>&#125;)<br></code></pre>
+
+<h3 id="5-map-遍历每一个元素且返回对应的元素-map映射-返回的新数组和旧数组的长度是一样的"><a href="#5-map-遍历每一个元素且返回对应的元素-map映射-返回的新数组和旧数组的长度是一样的" class="headerlink" title="5.  map  ( 遍历每一个元素且返回对应的元素  map映射 返回的新数组和旧数组的长度是一样的 )"></a>5.  map  ( 遍历每一个元素且返回对应的元素  map<strong>映射</strong> 返回的新数组和旧数组的长度是一样的 )</h3><pre class="highlight"><code class="hljs js"><span class="hljs-keyword">let</span> maparr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>]<br><span class="hljs-keyword">let</span> newarr = maparr.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">item,index</span>)=&gt;</span>&#123;<br>     <span class="hljs-keyword">return</span> item * item <br>&#125;)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newarr) <span class="hljs-comment">// [1,4,9,16,25,36,49,64,81]</span><br></code></pre>
+
+<h3 id="filter-过滤-遍历数组，过滤出符合条件的元素并返回一个新数组"><a href="#filter-过滤-遍历数组，过滤出符合条件的元素并返回一个新数组" class="headerlink" title="filter  过滤   遍历数组，过滤出符合条件的元素并返回一个新数组"></a>filter  过滤   遍历数组，过滤出符合条件的元素并返回一个新数组</h3><pre class="highlight"><code class="hljs js"> <span class="hljs-keyword">let</span> datalist = [<br>            &#123;<span class="hljs-attr">id</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;买笔&#x27;</span>,<span class="hljs-attr">done</span>:<span class="hljs-literal">true</span>&#125;,<br>            &#123;<span class="hljs-attr">id</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;买笔记本&#x27;</span>,<span class="hljs-attr">done</span>:<span class="hljs-literal">false</span>&#125;,<br>            &#123;<span class="hljs-attr">id</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;练字&#x27;</span>,<span class="hljs-attr">done</span>:<span class="hljs-literal">true</span>&#125;<br>        ]<br><span class="hljs-keyword">let</span> after = datalist.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">item,index</span>)=&gt;</span>&#123;<br>      <span class="hljs-keyword">return</span> item.<span class="hljs-property">done</span> <span class="hljs-comment">//过滤true出来</span><br> &#125;);<br></code></pre>
+
+<h3 id="some-遍历数组，只要有一个以上的元素满足条件-就返回true-，否则返回-false"><a href="#some-遍历数组，只要有一个以上的元素满足条件-就返回true-，否则返回-false" class="headerlink" title="some  遍历数组，只要有一个以上的元素满足条件 就返回true ，否则返回 false"></a>some  遍历数组，只要有一个以上的元素满足条件 就返回true ，否则返回 false</h3><pre class="highlight"><code class="hljs js"><span class="hljs-keyword">let</span> somebool = datalsit.<span class="hljs-title function_">some</span>(<span class="hljs-function">(<span class="hljs-params">item,index</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">return</span> item.<span class="hljs-property">done</span><br>&#125;)<br><span class="hljs-comment">// 返回的是布尔值  </span><br></code></pre>
+
+<h3 id="every-遍历数组，每一个元素都满足条件-则返回-true-否则返回-false"><a href="#every-遍历数组，每一个元素都满足条件-则返回-true-否则返回-false" class="headerlink" title="every  遍历数组，每一个元素都满足条件 则返回  true  否则返回  false"></a>every  遍历数组，每一个元素都满足条件 则返回  true  否则返回  false</h3><pre class="highlight"><code class="hljs js"><span class="hljs-keyword">let</span> everybool = arr.<span class="hljs-title function_">every</span>(<span class="hljs-function">(<span class="hljs-params">item,index</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">return</span> item.<span class="hljs-property">done</span><br>&#125;)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(everybool)<br></code></pre>
+
+<h3 id="find-ES6-遍历数组，返回符合条件的第一个元素，如果没有符合条件的元素则返回-undefined"><a href="#find-ES6-遍历数组，返回符合条件的第一个元素，如果没有符合条件的元素则返回-undefined" class="headerlink" title="find ES6   遍历数组，返回符合条件的第一个元素，如果没有符合条件的元素则返回  undefined"></a>find ES6   遍历数组，返回符合条件的第一个元素，如果没有符合条件的元素则返回  undefined</h3><pre class="highlight"><code class="hljs js"><span class="hljs-keyword">let</span> arr1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>]<br><span class="hljs-keyword">let</span> num = arr1.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">item,index</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">return</span> item === <span class="hljs-number">3</span> <br>&#125;)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(num) <span class="hljs-comment">// 3 </span><br></code></pre>
+
+<h3 id="findIndex-ES6-遍历数组，返回符合条件的一个元素的索引，如果没有符合条件的元素则返回-1"><a href="#findIndex-ES6-遍历数组，返回符合条件的一个元素的索引，如果没有符合条件的元素则返回-1" class="headerlink" title="findIndex(ES6)遍历数组，返回符合条件的一个元素的索引，如果没有符合条件的元素则返回-1"></a>findIndex(ES6)遍历数组，返回符合条件的一个元素的索引，如果没有符合条件的元素则返回-1</h3><pre class="highlight"><code class="hljs js"><span class="hljs-keyword">let</span> arr2 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>];<br><span class="hljs-keyword">let</span> num = arr2.<span class="hljs-title function_">findIndex</span>(<span class="hljs-function">(<span class="hljs-params">item,index</span>)=&gt;</span>&#123;<br>      <span class="hljs-keyword">return</span> item === <span class="hljs-number">3</span> <br>&#125;)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(num) <span class="hljs-comment">//2</span><br></code></pre>
+
+
+  </div>
+  <div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2022/07/27/40%E4%B8%AA%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/7.27%20uniapp%20%E5%8A%9F%E8%83%BD/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8Bjavascript%E9%82%A3%E4%BA%9B%E6%95%B0%E7%BB%84%E7%9A%84%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F%EF%BC%88-%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84-%EF%BC%89"><span class="toc-text">整理一下javascript那些数组的遍历方式（ 循环数组 ）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8E%9F%E7%94%9Fjs%E4%B8%AD%E7%9A%84for%E5%BE%AA%E7%8E%AF"><span class="toc-text">1.  原生js中的for循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8E%9F%E7%94%9Fjs%E4%B8%AD-for-in-%EF%BC%88%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%EF%BC%89%E6%95%88%E7%8E%87%E4%BD%8E"><span class="toc-text">2.原生js中 for in （数组对象）效率低</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-for-of-%EF%BC%88%E8%99%BD%E7%84%B6%E6%80%A7%E8%83%BD%E5%A5%BDfor-in-%E4%B8%8D%E8%83%BD%E5%BE%AA%E7%8E%AF%E5%AF%B9%E8%B1%A1%EF%BC%89"><span class="toc-text">3. for of  （虽然性能好for in   不能循环对象）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-ES6-%E4%B8%AD%E7%9A%84-forEach-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E6%9C%89%E5%87%A0%E4%B8%AA%EF%BC%8C%E8%AF%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%9B%9E%E8%B0%83%E5%B0%B1%E4%BC%9A%E6%89%A7%E8%A1%8C%E5%87%A0%E6%AC%A1"><span class="toc-text">4.  ES6  中的 forEach( )  数组元素有几个，该方法的回调就会执行几次</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-map-%E9%81%8D%E5%8E%86%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E4%B8%94%E8%BF%94%E5%9B%9E%E5%AF%B9%E5%BA%94%E7%9A%84%E5%85%83%E7%B4%A0-map%E6%98%A0%E5%B0%84-%E8%BF%94%E5%9B%9E%E7%9A%84%E6%96%B0%E6%95%B0%E7%BB%84%E5%92%8C%E6%97%A7%E6%95%B0%E7%BB%84%E7%9A%84%E9%95%BF%E5%BA%A6%E6%98%AF%E4%B8%80%E6%A0%B7%E7%9A%84"><span class="toc-text">5.  map  ( 遍历每一个元素且返回对应的元素  map映射 返回的新数组和旧数组的长度是一样的 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filter-%E8%BF%87%E6%BB%A4-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%EF%BC%8C%E8%BF%87%E6%BB%A4%E5%87%BA%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0%E5%B9%B6%E8%BF%94%E5%9B%9E%E4%B8%80%E4%B8%AA%E6%96%B0%E6%95%B0%E7%BB%84"><span class="toc-text">filter  过滤   遍历数组，过滤出符合条件的元素并返回一个新数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#some-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%EF%BC%8C%E5%8F%AA%E8%A6%81%E6%9C%89%E4%B8%80%E4%B8%AA%E4%BB%A5%E4%B8%8A%E7%9A%84%E5%85%83%E7%B4%A0%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B6-%E5%B0%B1%E8%BF%94%E5%9B%9Etrue-%EF%BC%8C%E5%90%A6%E5%88%99%E8%BF%94%E5%9B%9E-false"><span class="toc-text">some  遍历数组，只要有一个以上的元素满足条件 就返回true ，否则返回 false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#every-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%EF%BC%8C%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E9%83%BD%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B6-%E5%88%99%E8%BF%94%E5%9B%9E-true-%E5%90%A6%E5%88%99%E8%BF%94%E5%9B%9E-false"><span class="toc-text">every  遍历数组，每一个元素都满足条件 则返回  true  否则返回  false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find-ES6-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%EF%BC%8C%E8%BF%94%E5%9B%9E%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0%E5%88%99%E8%BF%94%E5%9B%9E-undefined"><span class="toc-text">find ES6   遍历数组，返回符合条件的第一个元素，如果没有符合条件的元素则返回  undefined</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#findIndex-ES6-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%EF%BC%8C%E8%BF%94%E5%9B%9E%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E7%9A%84%E7%B4%A2%E5%BC%95%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0%E5%88%99%E8%BF%94%E5%9B%9E-1"><span class="toc-text">findIndex(ES6)遍历数组，返回符合条件的一个元素的索引，如果没有符合条件的元素则返回-1</span></a></li></ol>
+</div></main>
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="/imgs/logo.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">ZhangKai</p>
+<p class="author-description">designed by zhangkai</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>22</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>0</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>10</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/389569434?spm_id_from=333.1007.0.0">
+          <i class="iconfont icon-bilibili society-icon"></i>
+        </a>
+      </div>
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://gitee.com/zhang-lanxxx">
+          <i class="iconfont icon-github society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8Bjavascript%E9%82%A3%E4%BA%9B%E6%95%B0%E7%BB%84%E7%9A%84%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F%EF%BC%88-%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84-%EF%BC%89"><span class="toc-text">整理一下javascript那些数组的遍历方式（ 循环数组 ）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8E%9F%E7%94%9Fjs%E4%B8%AD%E7%9A%84for%E5%BE%AA%E7%8E%AF"><span class="toc-text">1.  原生js中的for循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8E%9F%E7%94%9Fjs%E4%B8%AD-for-in-%EF%BC%88%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%EF%BC%89%E6%95%88%E7%8E%87%E4%BD%8E"><span class="toc-text">2.原生js中 for in （数组对象）效率低</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-for-of-%EF%BC%88%E8%99%BD%E7%84%B6%E6%80%A7%E8%83%BD%E5%A5%BDfor-in-%E4%B8%8D%E8%83%BD%E5%BE%AA%E7%8E%AF%E5%AF%B9%E8%B1%A1%EF%BC%89"><span class="toc-text">3. for of  （虽然性能好for in   不能循环对象）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-ES6-%E4%B8%AD%E7%9A%84-forEach-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E6%9C%89%E5%87%A0%E4%B8%AA%EF%BC%8C%E8%AF%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%9B%9E%E8%B0%83%E5%B0%B1%E4%BC%9A%E6%89%A7%E8%A1%8C%E5%87%A0%E6%AC%A1"><span class="toc-text">4.  ES6  中的 forEach( )  数组元素有几个，该方法的回调就会执行几次</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-map-%E9%81%8D%E5%8E%86%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E4%B8%94%E8%BF%94%E5%9B%9E%E5%AF%B9%E5%BA%94%E7%9A%84%E5%85%83%E7%B4%A0-map%E6%98%A0%E5%B0%84-%E8%BF%94%E5%9B%9E%E7%9A%84%E6%96%B0%E6%95%B0%E7%BB%84%E5%92%8C%E6%97%A7%E6%95%B0%E7%BB%84%E7%9A%84%E9%95%BF%E5%BA%A6%E6%98%AF%E4%B8%80%E6%A0%B7%E7%9A%84"><span class="toc-text">5.  map  ( 遍历每一个元素且返回对应的元素  map映射 返回的新数组和旧数组的长度是一样的 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filter-%E8%BF%87%E6%BB%A4-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%EF%BC%8C%E8%BF%87%E6%BB%A4%E5%87%BA%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0%E5%B9%B6%E8%BF%94%E5%9B%9E%E4%B8%80%E4%B8%AA%E6%96%B0%E6%95%B0%E7%BB%84"><span class="toc-text">filter  过滤   遍历数组，过滤出符合条件的元素并返回一个新数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#some-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%EF%BC%8C%E5%8F%AA%E8%A6%81%E6%9C%89%E4%B8%80%E4%B8%AA%E4%BB%A5%E4%B8%8A%E7%9A%84%E5%85%83%E7%B4%A0%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B6-%E5%B0%B1%E8%BF%94%E5%9B%9Etrue-%EF%BC%8C%E5%90%A6%E5%88%99%E8%BF%94%E5%9B%9E-false"><span class="toc-text">some  遍历数组，只要有一个以上的元素满足条件 就返回true ，否则返回 false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#every-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%EF%BC%8C%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E9%83%BD%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B6-%E5%88%99%E8%BF%94%E5%9B%9E-true-%E5%90%A6%E5%88%99%E8%BF%94%E5%9B%9E-false"><span class="toc-text">every  遍历数组，每一个元素都满足条件 则返回  true  否则返回  false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find-ES6-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%EF%BC%8C%E8%BF%94%E5%9B%9E%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0%E5%88%99%E8%BF%94%E5%9B%9E-undefined"><span class="toc-text">find ES6   遍历数组，返回符合条件的第一个元素，如果没有符合条件的元素则返回  undefined</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#findIndex-ES6-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%EF%BC%8C%E8%BF%94%E5%9B%9E%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E7%9A%84%E7%B4%A2%E5%BC%95%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0%E5%88%99%E8%BF%94%E5%9B%9E-1"><span class="toc-text">findIndex(ES6)遍历数组，返回符合条件的一个元素的索引，如果没有符合条件的元素则返回-1</span></a></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/JavaScript/" 
+        title="JavaScript">
+        <div class="tags-list-item">JavaScript</div>
+      </a>
+    
+      <a 
+        href="/tags/Vue/" 
+        title="Vue">
+        <div class="tags-list-item">Vue</div>
+      </a>
+    
+      <a 
+        href="/tags/js%E6%8F%92%E4%BB%B6/" 
+        title="js插件">
+        <div class="tags-list-item">js插件</div>
+      </a>
+    
+      <a 
+        href="/tags/Webpack/" 
+        title="Webpack">
+        <div class="tags-list-item">Webpack</div>
+      </a>
+    
+      <a 
+        href="/tags/uniapp-vue/" 
+        title="uniapp/vue">
+        <div class="tags-list-item">uniapp/vue</div>
+      </a>
+    
+      <a 
+        href="/tags/uniapp/" 
+        title="uniapp">
+        <div class="tags-list-item">uniapp</div>
+      </a>
+    
+      <a 
+        href="/tags/%E9%9D%A2%E8%AF%95/" 
+        title="面试">
+        <div class="tags-list-item">面试</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" 
+        title="浏览器">
+        <div class="tags-list-item">浏览器</div>
+      </a>
+    
+      <a 
+        href="/tags/HTML5/" 
+        title="HTML5">
+        <div class="tags-list-item">HTML5</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%88%86%E4%BA%AB/" 
+        title="分享">
+        <div class="tags-list-item">分享</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8Bjavascript%E9%82%A3%E4%BA%9B%E6%95%B0%E7%BB%84%E7%9A%84%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F%EF%BC%88-%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84-%EF%BC%89"><span class="toc-text">整理一下javascript那些数组的遍历方式（ 循环数组 ）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8E%9F%E7%94%9Fjs%E4%B8%AD%E7%9A%84for%E5%BE%AA%E7%8E%AF"><span class="toc-text">1.  原生js中的for循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8E%9F%E7%94%9Fjs%E4%B8%AD-for-in-%EF%BC%88%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%EF%BC%89%E6%95%88%E7%8E%87%E4%BD%8E"><span class="toc-text">2.原生js中 for in （数组对象）效率低</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-for-of-%EF%BC%88%E8%99%BD%E7%84%B6%E6%80%A7%E8%83%BD%E5%A5%BDfor-in-%E4%B8%8D%E8%83%BD%E5%BE%AA%E7%8E%AF%E5%AF%B9%E8%B1%A1%EF%BC%89"><span class="toc-text">3. for of  （虽然性能好for in   不能循环对象）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-ES6-%E4%B8%AD%E7%9A%84-forEach-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E6%9C%89%E5%87%A0%E4%B8%AA%EF%BC%8C%E8%AF%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%9B%9E%E8%B0%83%E5%B0%B1%E4%BC%9A%E6%89%A7%E8%A1%8C%E5%87%A0%E6%AC%A1"><span class="toc-text">4.  ES6  中的 forEach( )  数组元素有几个，该方法的回调就会执行几次</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-map-%E9%81%8D%E5%8E%86%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E4%B8%94%E8%BF%94%E5%9B%9E%E5%AF%B9%E5%BA%94%E7%9A%84%E5%85%83%E7%B4%A0-map%E6%98%A0%E5%B0%84-%E8%BF%94%E5%9B%9E%E7%9A%84%E6%96%B0%E6%95%B0%E7%BB%84%E5%92%8C%E6%97%A7%E6%95%B0%E7%BB%84%E7%9A%84%E9%95%BF%E5%BA%A6%E6%98%AF%E4%B8%80%E6%A0%B7%E7%9A%84"><span class="toc-text">5.  map  ( 遍历每一个元素且返回对应的元素  map映射 返回的新数组和旧数组的长度是一样的 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filter-%E8%BF%87%E6%BB%A4-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%EF%BC%8C%E8%BF%87%E6%BB%A4%E5%87%BA%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0%E5%B9%B6%E8%BF%94%E5%9B%9E%E4%B8%80%E4%B8%AA%E6%96%B0%E6%95%B0%E7%BB%84"><span class="toc-text">filter  过滤   遍历数组，过滤出符合条件的元素并返回一个新数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#some-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%EF%BC%8C%E5%8F%AA%E8%A6%81%E6%9C%89%E4%B8%80%E4%B8%AA%E4%BB%A5%E4%B8%8A%E7%9A%84%E5%85%83%E7%B4%A0%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B6-%E5%B0%B1%E8%BF%94%E5%9B%9Etrue-%EF%BC%8C%E5%90%A6%E5%88%99%E8%BF%94%E5%9B%9E-false"><span class="toc-text">some  遍历数组，只要有一个以上的元素满足条件 就返回true ，否则返回 false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#every-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%EF%BC%8C%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E9%83%BD%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B6-%E5%88%99%E8%BF%94%E5%9B%9E-true-%E5%90%A6%E5%88%99%E8%BF%94%E5%9B%9E-false"><span class="toc-text">every  遍历数组，每一个元素都满足条件 则返回  true  否则返回  false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find-ES6-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%EF%BC%8C%E8%BF%94%E5%9B%9E%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0%E5%88%99%E8%BF%94%E5%9B%9E-undefined"><span class="toc-text">find ES6   遍历数组，返回符合条件的第一个元素，如果没有符合条件的元素则返回  undefined</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#findIndex-ES6-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%EF%BC%8C%E8%BF%94%E5%9B%9E%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E7%9A%84%E7%B4%A2%E5%BC%95%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0%E5%88%99%E8%BF%94%E5%9B%9E-1"><span class="toc-text">findIndex(ES6)遍历数组，返回符合条件的一个元素的索引，如果没有符合条件的元素则返回-1</span></a></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-07-28</div>
+        <a href="/2022/07/28/JS%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95/"><div class="recent-posts-item-content">JS数组遍历方法</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-07-27</div>
+        <a href="/2022/07/27/40%E4%B8%AA%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/7.27%20uniapp%20%E5%8A%9F%E8%83%BD/"><div class="recent-posts-item-content"></div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-07-26</div>
+        <a href="/2022/07/26/%E5%88%9D%E5%AD%A6Webpack/"><div class="recent-posts-item-content">初学Webpack</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-07-26</div>
+        <a href="/2022/07/26/Vue%E8%B7%AF%E7%94%B1%E4%BC%A0%E5%8F%82/"><div class="recent-posts-item-content">Vue路由传参</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2020
+          
+          
+                - 
+                2022
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          张同学的Blog
+        </a>
+      </div>
+    </div>
+
+    
+      <div class="footer-dsc">
+        
+          Powered by
+          <a 
+            href="https://hexo.io/" 
+            class="footer-link" 
+            target="_blank" 
+            rel="nofollow noopener noreferrer">
+            &nbsp;Hexo
+          </a>
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          Theme -
+          <a 
+            href="https://github.com/theme-kaze" 
+            class="footer-link" 
+            target="_blank"
+            rel="nofollow noopener noreferrer">
+            &nbsp;Kaze
+          </a>
+        
+      </div>
+    
+    
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+     
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>
