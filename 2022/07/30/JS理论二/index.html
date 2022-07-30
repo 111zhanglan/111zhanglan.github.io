@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/imgs/logo.jpg">
-  <title>7.14-Vuex</title>
+  <title>JS理论二</title>
   
     
       <meta 
         property="og:title" 
-        content="7.14-Vuex">
+        content="JS理论二">
     
     
       <meta 
         property="og:url" 
-        content="https://111zhanglan.github.io/2022/07/14/7-14-uniappVuex/index.html">
+        content="https://111zhanglan.github.io/2022/07/30/JS%E7%90%86%E8%AE%BA%E4%BA%8C/index.html">
     
     
       <meta 
@@ -46,10 +46,10 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2022-07-14">
+        content="2022-07-30">
       <meta 
         property="og:article:modified_time" 
-        content="2022-07-15">
+        content="2022-07-30">
       <meta 
         property="og:article:author" 
         content="ZhangKai">
@@ -57,7 +57,7 @@
         
           <meta 
             property="og:article:tag" 
-            content="Vue">
+            content="面试">
         
       
     
@@ -268,21 +268,21 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      7.14-Vuex
+      JS理论二
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2022-07-14T13:07:48.000Z">
+    <time datetime="2022-07-30T03:40:18.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2022-07-14</span>
+      <span>2022-07-30</span>
     </time>
     
     
       <span class="dot"></span>
-      <span>343 字</span>
+      <span>833 字</span>
     
   </div>
   
@@ -297,9 +297,9 @@
         
           
           <a 
-            href="/tags/Vue/" 
+            href="/tags/%E9%9D%A2%E8%AF%95/" 
             class="post-meta-link">
-            Vue
+            面试
           </a>
         
       </div>
@@ -309,26 +309,61 @@
   <div 
     id="section" 
     class="post-content">
-    <h3 id="7-14小计"><a href="#7-14小计" class="headerlink" title="7.14小计"></a>7.14小计</h3><h3 id="遇到的一些小问题"><a href="#遇到的一些小问题" class="headerlink" title="遇到的一些小问题"></a>遇到的一些小问题</h3><h3 id="1-在循环遍历不同的背景颜色的-样式动态绑定问题"><a href="#1-在循环遍历不同的背景颜色的-样式动态绑定问题" class="headerlink" title="1. 在循环遍历不同的背景颜色的 样式动态绑定问题"></a>1. 在循环遍历不同的背景颜色的 样式动态绑定问题</h3><p><strong>如图</strong></p>
-<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/07/14/7-14-uniappVuex/1.png" class="lozad post-image"src="/2022/07/14/7-14-uniappVuex/1.png"></p>
-<pre class="highlight"><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item of radius&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">:style</span>=<span class="hljs-string">&quot;&#123;backgroundColor:`$&#123;item.color&#125;`&#125;&quot;</span>&gt;</span>&#123;&#123;item.name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span><br></code></pre>
+    <h3 id="1-深拷贝与浅拷贝的区别？"><a href="#1-深拷贝与浅拷贝的区别？" class="headerlink" title="1.深拷贝与浅拷贝的区别？"></a>1.深拷贝与浅拷贝的区别？</h3><p>浅拷贝只复制属性指向某个对象的指针，而不是复制对象本身，新旧对象还是共享一块内存，修改对象属性会影响原对象</p>
+<p>深拷贝会另外创造一个一模一样的对象，新对象跟原对象不共享内存，修改新对象不会改到原对象</p>
+<h3 id="2-事件与事件流"><a href="#2-事件与事件流" class="headerlink" title="2.事件与事件流"></a>2.事件与事件流</h3><p>事件流都会经历三个阶段</p>
+<ul>
+<li><p>事件捕获阶段(capture phase)</p>
+<p>事件捕获阶段：事件从 <strong>document</strong>一直向下传播到目标元素，依次检查经过的节点是否绑定了事件监听函数，如果有则执行</p>
+</li>
+<li><p>处于目标阶段(target phase)</p>
+<p>事件处理阶段：事件到达目标元素，触发目标元素的监听函数</p>
+</li>
+<li><p>事件冒泡阶段(bubbling phase)</p>
+<p>事件冒泡阶段：事件从目标元素冒泡的document，依次检查经过的节点是否绑定了事件监听函数数，如果有则执行</p>
+</li>
+</ul>
+<p>事件绑定监听函数如下：</p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-title function_">addEventListener</span>(eventType,handler)<br></code></pre>
 
-<p><strong>整理一下我的问卷调查的数据格式的思路</strong> </p>
-<p>我分别列为  题目类型 题目标题 题目选项 题目必填状态 以数组对象的形式</p>
-<p><strong>如图</strong></p>
-<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/07/14/7-14-uniappVuex/2.png" class="lozad post-image"src="/2022/07/14/7-14-uniappVuex/2.png"></p>
-<p>多选题的格式与单选题一样   </p>
-<p><strong>我通过v-for 嵌套循环 外层循环题目数量（一条对象即为一条题目） 内层循环则为控制选项数量（这边里面的arrs为选项数组 key customItem）</strong> </p>
-<p>1、</p>
-<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/07/14/7-14-uniappVuex/3.png" class="lozad post-image"src="/2022/07/14/7-14-uniappVuex/3.png"></p>
-<p><strong>这样通过我用v-for通过数量来动态表单项数量</strong></p>
-<p>如图</p>
-<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/07/14/7-14-uniappVuex/4.png" class="lozad post-image"src="/2022/07/14/7-14-uniappVuex/4.png"></p>
-<p><strong>以上通过点击事件操作表单数组 push增加 题目 或选项  splice来删除题目 和 选项</strong></p>
-<h3 id="3、数组扁平化的方式"><a href="#3、数组扁平化的方式" class="headerlink" title="3、数组扁平化的方式"></a>3、数组扁平化的方式</h3><p>这么有个问题造成数据多维  Vuex 一层数组  有一层 里面状态又一层 </p>
-<h3 id="1-使用flat"><a href="#1-使用flat" class="headerlink" title="1.使用flat()"></a>1.使用flat()</h3><pre class="highlight"><code class="hljs js"><span class="hljs-keyword">const</span> result1 = arr.<span class="hljs-title function_">flat</span>(<span class="hljs-title class_">Infinity</span>) <span class="hljs-string">``</span><span class="hljs-comment">// 指定深度为无限</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(result1) <span class="hljs-string">``</span><span class="hljs-comment">// [ 1, 2, 3, 4, 5 ]</span><br><span class="hljs-keyword">const</span> result2 = arr.<span class="hljs-title function_">flat</span>(<span class="hljs-number">1</span>) <span class="hljs-string">``</span><span class="hljs-comment">// 指定深度为1</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(result2) <span class="hljs-string">``</span><span class="hljs-comment">// [ 1, 2, 3, [ 4, 5 ] ]</span><br><span class="hljs-keyword">const</span> result3 = arr.<span class="hljs-title function_">flat</span>(<span class="hljs-number">2</span>) <span class="hljs-string">``</span><span class="hljs-comment">// 指定深度为2</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(result3) <span class="hljs-string">``</span><span class="hljs-comment">// [ 1, 2, 3, 4, 5 ]</span><br></code></pre>
+<h3 id="3-typeof-与-instanceof-的区别"><a href="#3-typeof-与-instanceof-的区别" class="headerlink" title="3.typeof  与 instanceof 的区别"></a>3.typeof  与 instanceof 的区别</h3><p>typeof 会返回一个变量的基本类型，instanceof 返回的是一个布尔值</p>
+<p>instanceof 可以准确地判断复杂引用数据类型，但是不能正确判断基础数据类型</p>
+<h3 id="4-new-操作符具体干了什么了？"><a href="#4-new-操作符具体干了什么了？" class="headerlink" title="4. new 操作符具体干了什么了？"></a>4. new 操作符具体干了什么了？</h3><ol>
+<li>创建了一个新的对象 obj </li>
+<li>将对象与构造函数通过原型链连接起立 让 this 指向这个新的对象给这个新的对象添加属性和方法</li>
+<li>返回这个新的对象</li>
+</ol>
+<h3 id="5-为什么JavaScript里面0-1-0-2-x3D-x3D-x3D-0-3是false"><a href="#5-为什么JavaScript里面0-1-0-2-x3D-x3D-x3D-0-3是false" class="headerlink" title="5.为什么JavaScript里面0.1+0.2 &#x3D;&#x3D;&#x3D; 0.3是false"></a><strong>5.为什么JavaScript里面0.1+0.2 &#x3D;&#x3D;&#x3D; 0.3是false</strong></h3><p>问题的根源是十进制小数转为二进制小数的过程中，<strong>会损失精度</strong></p>
+<p>浮点数计算有问题，整数计算是没问题的，那么将浮点转化成整数运算，之后再切回浮点就可以保证没有偏差了</p>
+<h3 id="6-bind、call、apply-的区别？"><a href="#6-bind、call、apply-的区别？" class="headerlink" title="6.bind、call、apply  的区别？"></a>6.bind、call、apply  的区别？</h3><p><code>call</code>、<code>apply</code>、<code>bind</code>作用是改变函数执行时的上下文，简而言之就是改变函数运行时的<code>this</code>指向</p>
+<h3 id="7-正则表达式的理解？"><a href="#7-正则表达式的理解？" class="headerlink" title="7.正则表达式的理解？"></a>7.正则表达式的理解？</h3><p>正则表达是一种用来匹配字符串的强有力的武器它的设计思想是用一种描述性的语言定义一个规则，凡是符合则匹配 </p>
+<h3 id="8-事件循环"><a href="#8-事件循环" class="headerlink" title="8.事件循环"></a>8.事件循环</h3><p>在<code>JavaScript</code>中，所有的任务都可以分为</p>
+<ul>
+<li>同步任务：立即执行的任务，同步任务一般会直接进入到主线程中执行</li>
+<li>异步任务：异步执行的任务，比如<code>ajax</code>网络请求，<code>setTimeout</code>定时函数等</li>
+</ul>
+<p>异步任务还可以细分为<strong>微任务</strong>与<strong>宏任务</strong></p>
+<p>微任务：</p>
+<ul>
+<li>Promise.then</li>
+<li>MutaionObserver</li>
+<li>Object.observe（已废弃；Proxy 对象替代）</li>
+<li>process.nextTick（Node.js）</li>
+</ul>
+<p>宏任务：</p>
+<ul>
+<li>script (可以理解为外层同步代码)</li>
+<li>setTimeout&#x2F;setInterval</li>
+<li>UI rendering&#x2F;UI事件</li>
+<li>postMessage、MessageChannel</li>
+<li>setImmediate、I&#x2F;O（Node.js）</li>
+</ul>
+<h3 id="async与await"><a href="#async与await" class="headerlink" title="async与await"></a>async与await</h3><p><code>async</code> 是异步的意思，<code>await</code>则可以理解为 <code>async wait</code>。所以可以理解<code>async</code>就是用来声明一个异步方法，而 <code>await</code>是用来等待异步方法执行</p>
+<p><strong>async</strong></p>
+<p><code>async</code>函数返回一个<code>promise</code>对象</p>
+<p><strong>await</strong></p>
+<p>正常情况下，<code>await</code>命令后面是一个 <code>Promise</code>对象，返回该对象的结果。如果不是 <code>Promise</code>对象，就直接返回对应的值</p>
 
-<h3 id="4-uniapp的路由传参-边"><a href="#4-uniapp的路由传参-边" class="headerlink" title="4.uniapp的路由传参 边"></a>4.uniapp的路由传参 边</h3>
   </div>
   <div>
     
@@ -336,29 +371,15 @@
 </article>
 <div class="nav">
   
-    <div class="nav-item-prev">
-      <a 
-        href="/2022/07/19/7-19Uniapp-wx%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%A1%88%E4%BE%8Bbug%E6%80%BB%E7%BB%93/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">7.19Uniapp-wx小程序案例bug总结 </div>
-          
-        </div>
-      </a>
-    </div>
-  
   
     <div class="nav-item-next">
       <a 
-        href="/2022/07/13/40%E4%B8%AA%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/" 
+        href="/2022/07/29/JS%E7%90%86%E8%AE%BA%E4%B8%80/" 
         class="nav-link">
         <div>
           <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">40个前端基础巩固 </div>
+            <div class="nav-title">JS理论一 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -376,7 +397,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-14%E5%B0%8F%E8%AE%A1"><span class="toc-text">7.14小计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E9%97%AE%E9%A2%98"><span class="toc-text">遇到的一些小问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9C%A8%E5%BE%AA%E7%8E%AF%E9%81%8D%E5%8E%86%E4%B8%8D%E5%90%8C%E7%9A%84%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2%E7%9A%84-%E6%A0%B7%E5%BC%8F%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E9%97%AE%E9%A2%98"><span class="toc-text">1. 在循环遍历不同的背景颜色的 样式动态绑定问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">3、数组扁平化的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8flat"><span class="toc-text">1.使用flat()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-uniapp%E7%9A%84%E8%B7%AF%E7%94%B1%E4%BC%A0%E5%8F%82-%E8%BE%B9"><span class="toc-text">4.uniapp的路由传参 边</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">1.深拷贝与浅拷贝的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BA%8B%E4%BB%B6%E4%B8%8E%E4%BA%8B%E4%BB%B6%E6%B5%81"><span class="toc-text">2.事件与事件流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-typeof-%E4%B8%8E-instanceof-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">3.typeof  与 instanceof 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-new-%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%85%B7%E4%BD%93%E5%B9%B2%E4%BA%86%E4%BB%80%E4%B9%88%E4%BA%86%EF%BC%9F"><span class="toc-text">4. new 操作符具体干了什么了？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%B8%BA%E4%BB%80%E4%B9%88JavaScript%E9%87%8C%E9%9D%A20-1-0-2-x3D-x3D-x3D-0-3%E6%98%AFfalse"><span class="toc-text">5.为什么JavaScript里面0.1+0.2 &#x3D;&#x3D;&#x3D; 0.3是false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-bind%E3%80%81call%E3%80%81apply-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">6.bind、call、apply  的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="toc-text">7.正则表达式的理解？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF"><span class="toc-text">8.事件循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#async%E4%B8%8Eawait"><span class="toc-text">async与await</span></a></li></ol>
 </div></main>
             <aside class="left-column">
               
@@ -440,7 +461,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-14%E5%B0%8F%E8%AE%A1"><span class="toc-text">7.14小计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E9%97%AE%E9%A2%98"><span class="toc-text">遇到的一些小问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9C%A8%E5%BE%AA%E7%8E%AF%E9%81%8D%E5%8E%86%E4%B8%8D%E5%90%8C%E7%9A%84%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2%E7%9A%84-%E6%A0%B7%E5%BC%8F%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E9%97%AE%E9%A2%98"><span class="toc-text">1. 在循环遍历不同的背景颜色的 样式动态绑定问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">3、数组扁平化的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8flat"><span class="toc-text">1.使用flat()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-uniapp%E7%9A%84%E8%B7%AF%E7%94%B1%E4%BC%A0%E5%8F%82-%E8%BE%B9"><span class="toc-text">4.uniapp的路由传参 边</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">1.深拷贝与浅拷贝的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BA%8B%E4%BB%B6%E4%B8%8E%E4%BA%8B%E4%BB%B6%E6%B5%81"><span class="toc-text">2.事件与事件流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-typeof-%E4%B8%8E-instanceof-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">3.typeof  与 instanceof 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-new-%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%85%B7%E4%BD%93%E5%B9%B2%E4%BA%86%E4%BB%80%E4%B9%88%E4%BA%86%EF%BC%9F"><span class="toc-text">4. new 操作符具体干了什么了？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%B8%BA%E4%BB%80%E4%B9%88JavaScript%E9%87%8C%E9%9D%A20-1-0-2-x3D-x3D-x3D-0-3%E6%98%AFfalse"><span class="toc-text">5.为什么JavaScript里面0.1+0.2 &#x3D;&#x3D;&#x3D; 0.3是false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-bind%E3%80%81call%E3%80%81apply-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">6.bind、call、apply  的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="toc-text">7.正则表达式的理解？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF"><span class="toc-text">8.事件循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#async%E4%B8%8Eawait"><span class="toc-text">async与await</span></a></li></ol>
       </div>
     </article>
   
@@ -547,7 +568,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-14%E5%B0%8F%E8%AE%A1"><span class="toc-text">7.14小计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E9%97%AE%E9%A2%98"><span class="toc-text">遇到的一些小问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9C%A8%E5%BE%AA%E7%8E%AF%E9%81%8D%E5%8E%86%E4%B8%8D%E5%90%8C%E7%9A%84%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2%E7%9A%84-%E6%A0%B7%E5%BC%8F%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E9%97%AE%E9%A2%98"><span class="toc-text">1. 在循环遍历不同的背景颜色的 样式动态绑定问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">3、数组扁平化的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8flat"><span class="toc-text">1.使用flat()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-uniapp%E7%9A%84%E8%B7%AF%E7%94%B1%E4%BC%A0%E5%8F%82-%E8%BE%B9"><span class="toc-text">4.uniapp的路由传参 边</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">1.深拷贝与浅拷贝的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BA%8B%E4%BB%B6%E4%B8%8E%E4%BA%8B%E4%BB%B6%E6%B5%81"><span class="toc-text">2.事件与事件流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-typeof-%E4%B8%8E-instanceof-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">3.typeof  与 instanceof 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-new-%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%85%B7%E4%BD%93%E5%B9%B2%E4%BA%86%E4%BB%80%E4%B9%88%E4%BA%86%EF%BC%9F"><span class="toc-text">4. new 操作符具体干了什么了？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%B8%BA%E4%BB%80%E4%B9%88JavaScript%E9%87%8C%E9%9D%A20-1-0-2-x3D-x3D-x3D-0-3%E6%98%AFfalse"><span class="toc-text">5.为什么JavaScript里面0.1+0.2 &#x3D;&#x3D;&#x3D; 0.3是false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-bind%E3%80%81call%E3%80%81apply-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">6.bind、call、apply  的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="toc-text">7.正则表达式的理解？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF"><span class="toc-text">8.事件循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#async%E4%B8%8Eawait"><span class="toc-text">async与await</span></a></li></ol>
     </article>
   
   
