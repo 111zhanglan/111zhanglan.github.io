@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/imgs/logo.jpg">
-  <title>标签</title>
+  <title>JS理论三</title>
   
     
       <meta 
         property="og:title" 
-        content="标签">
+        content="JS理论三">
     
     
       <meta 
         property="og:url" 
-        content="https://111zhanglan.github.io/tags/%E5%88%86%E4%BA%AB/index.html">
+        content="https://111zhanglan.github.io/2022/07/31/JS%E7%90%86%E8%AE%BA%E4%B8%89/index.html">
     
     
       <meta 
@@ -40,6 +40,26 @@
         property="og:img" 
         content="张同学的个人小站">
     
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2022-07-31">
+      <meta 
+        property="og:article:modified_time" 
+        content="2022-07-31">
+      <meta 
+        property="og:article:author" 
+        content="ZhangKai">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="面试">
+        
+      
     
   
   <script>
@@ -144,6 +164,8 @@
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
   
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
 <meta name="generator" content="Hexo 6.2.0"></head>
 
   <body>
@@ -243,31 +265,129 @@
         <div class="container">
           <div class="columns">
             <main class="main-column">
-<div class="card card-content tag-page-card">
-  <div class="tags-page-title">标签&nbsp-&nbsp分享</div>
-</div>
-<div class="archive-timeline">
-  
-  
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      JS理论三
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2022-07-31T06:06:12.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2022-07-31</span>
+    </time>
     
-      <div class="archive-timeline-tag"><span>2022</span></div>
-      
     
-    <div class="archive-timeline-item">
-      <div class="archive-timeline-post">
-        <div class="card card-content">
-          <div class="archive-timeline-post-date">2022-06-15</div>
-          <div class="archive-timeline-post-content">
-            <a 
-              href="/2022/06/15/myblogs/" 
-              class="archive-timeline-post-item">
-              利用HEXO+Github搭建属于自己的博客网站
-            </a>
-          </div>
-        </div>
+      <span class="dot"></span>
+      <span>506 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/%E9%9D%A2%E8%AF%95/" 
+            class="post-meta-link">
+            面试
+          </a>
+        
       </div>
     </div>
   
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h3 id="1-DOM常见的操作有哪些？"><a href="#1-DOM常见的操作有哪些？" class="headerlink" title="1.DOM常见的操作有哪些？"></a>1.DOM常见的操作有哪些？</h3><ul>
+<li><p>创建节点  creatElement</p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-comment">// 创建新的元素，接受一个参数，即要创建元素的标签名</span><br><span class="hljs-keyword">const</span>  divE1 = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">creatElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>)<br></code></pre>
+</li>
+<li><p>查询节点  </p>
+<p>querySelector() ；传入任务有效的css选择器，既可选中单个DOM元素</p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;.element&#x27;</span>)<br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#element&#x27;</span>)<br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;div&#x27;</span>)<br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;[name=&quot;username&quot;]&#x27;</span>)<br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;div + p &gt; span&#x27;</span>)<br></code></pre>
+
+<p>querySelectorAll() ; </p>
+</li>
+<li><p>更新节点 </p>
+<p>innerHTML : 可以解析成HTML文本标签</p>
+<p>innerText : 修改文本的值</p>
+<p>textContent</p>
+<p>style</p>
+</li>
+<li><p>添加节点</p>
+<p>innerHTML</p>
+<p>appendChild</p>
+<p>insertBefore</p>
+</li>
+</ul>
+<h4 id="setAttribute"><a href="#setAttribute" class="headerlink" title="setAttribute"></a>setAttribute</h4>  <pre class="highlight"><code class="hljs js"><span class="hljs-keyword">const</span> div = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;id&#x27;</span>)<br>div.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;class&#x27;</span>, <span class="hljs-string">&#x27;white&#x27;</span>);<span class="hljs-comment">//第一个参数属性名，第二个参数属性值。</span><br></code></pre>
+
+<ul>
+<li><p>删除节点</p>
+<p>删除一个节点，首先要获得该节点本身以及它的父节点，然后，调用父节点的<code>removeChild</code>把自己删掉</p>
+</li>
+</ul>
+<pre class="highlight"><code class="hljs js"><span class="hljs-comment">// 拿到待删除节点:</span><br><span class="hljs-keyword">const</span> self = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;to-be-removed&#x27;</span>);<br><span class="hljs-comment">// 拿到父节点:</span><br><span class="hljs-keyword">const</span> parent = self.<span class="hljs-property">parentElement</span>;<br><span class="hljs-comment">// 删除:</span><br><span class="hljs-keyword">const</span> removed = parent.<span class="hljs-title function_">removeChild</span>(self);<br>removed === self; <span class="hljs-comment">// true</span><br></code></pre>
+
+<p>BOM对象有哪  <code>Bom</code>的核心对象是<code>window</code>，它表示浏览器的一个实例</p>
+<ul>
+<li>location</li>
+<li>navigator</li>
+<li>screen</li>
+<li>history</li>
+</ul>
+<h3 id="2-说说javascript-中内存泄漏的集中情况"><a href="#2-说说javascript-中内存泄漏的集中情况" class="headerlink" title="2.说说javascript 中内存泄漏的集中情况"></a>2.说说javascript 中内存泄漏的集中情况</h3><p>意外的全局变量</p>
+<p>定时器也常会造成内存泄露</p>
+<h3 id="3-Javascript本地存储的方式有哪些？区别及应用场景？"><a href="#3-Javascript本地存储的方式有哪些？区别及应用场景？" class="headerlink" title="3.Javascript本地存储的方式有哪些？区别及应用场景？"></a>3.Javascript本地存储的方式有哪些？区别及应用场景？</h3><p>关于<code>cookie</code>、<code>sessionStorage</code>、<code>localStorage</code>三者的区别主要如下：</p>
+<p>存储大小：<code>cookie</code>数据大小不能超过<code>4k</code>，<code>sessionStorage</code>和<code>localStorage</code>虽然也有存储大小的限制，但比<code>cookie</code>大得多，可以达到5M或更大</p>
+<p>有效时间：<code>localStorage</code>存储持久数据，浏览器关闭后数据不丢失除非主动删除数据； <code>sessionStorage</code>数据在当前浏览器窗口关闭后自动删除；<code>cookie</code>设置的<code>cookie</code>过期时间之前一直有效，即使窗口或浏览器关闭</p>
+<p>数据与服务器之间的交互方式，<code>cookie</code>的数据会自动的传递到服务器，服务器端也可以写<code>cookie</code>到客户端； <code>sessionStorage</code>和<code>localStorage</code>不会自动把数据发给服务器，仅在本地保存</p>
+<h3 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h3>
+  </div>
+  <div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2022/07/30/JS%E7%90%86%E8%AE%BA%E4%BA%8C/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">JS理论二 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-DOM%E5%B8%B8%E8%A7%81%E7%9A%84%E6%93%8D%E4%BD%9C%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">1.DOM常见的操作有哪些？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#setAttribute"><span class="toc-text">setAttribute</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AF%B4%E8%AF%B4javascript-%E4%B8%AD%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E7%9A%84%E9%9B%86%E4%B8%AD%E6%83%85%E5%86%B5"><span class="toc-text">2.说说javascript 中内存泄漏的集中情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Javascript%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%8C%BA%E5%88%AB%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="toc-text">3.Javascript本地存储的方式有哪些？区别及应用场景？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4"><span class="toc-text">4.</span></a></li></ol>
 </div></main>
             <aside class="left-column">
               
@@ -322,6 +442,18 @@
               </div>
                <div class="sticky-tablet">
   
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-DOM%E5%B8%B8%E8%A7%81%E7%9A%84%E6%93%8D%E4%BD%9C%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">1.DOM常见的操作有哪些？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#setAttribute"><span class="toc-text">setAttribute</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AF%B4%E8%AF%B4javascript-%E4%B8%AD%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E7%9A%84%E9%9B%86%E4%B8%AD%E6%83%85%E5%86%B5"><span class="toc-text">2.说说javascript 中内存泄漏的集中情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Javascript%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%8C%BA%E5%88%AB%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="toc-text">3.Javascript本地存储的方式有哪些？区别及应用场景？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4"><span class="toc-text">4.</span></a></li></ol>
+      </div>
+    </article>
   
   
   <article class="card card-content categories-widget">
@@ -413,137 +545,21 @@
   </article>
   
   
-    <article class="card card-content widescreen-archive archive-widget">
-      <div class="archive-card">
-  <div class="archive-card-header">
-    <i 
-      class="iconfont icon-wodebaobiao" 
-      style="padding-right: 2px;">
-    </i>归档
-  </div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-    
-      <a 
-        href="/archives/2022" 
-        class="archive-card-list-item">
-        2022
-        <span class="archive-card-list-item-badge">25</span>
-      </a>
-    
-  </div>
-</div>
-    </article>
-  
 </div>
             </aside>
             <aside class="right-column">
               <div class="sticky-widescreen">
   
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-DOM%E5%B8%B8%E8%A7%81%E7%9A%84%E6%93%8D%E4%BD%9C%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">1.DOM常见的操作有哪些？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#setAttribute"><span class="toc-text">setAttribute</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AF%B4%E8%AF%B4javascript-%E4%B8%AD%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E7%9A%84%E9%9B%86%E4%B8%AD%E6%83%85%E5%86%B5"><span class="toc-text">2.说说javascript 中内存泄漏的集中情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Javascript%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%8C%BA%E5%88%AB%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="toc-text">3.Javascript本地存储的方式有哪些？区别及应用场景？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4"><span class="toc-text">4.</span></a></li></ol>
+    </article>
   
   
   <article class="card card-content">
@@ -580,132 +596,6 @@
 </div>
   </article>
   
-  
-    <article class="card card-content">
-      <div class="archive-card">
-  <div class="archive-card-header">
-    <i 
-      class="iconfont icon-wodebaobiao" 
-      style="padding-right: 2px;">
-    </i>归档
-  </div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-    
-      <a 
-        href="/archives/2022" 
-        class="archive-card-list-item">
-        2022
-        <span class="archive-card-list-item-badge">25</span>
-      </a>
-    
-  </div>
-</div>
-    </article>
   
 </div>
             </aside>
@@ -821,6 +711,36 @@
 </a> 
      
      
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
      
      
     <script src="/js/main.js"></script> 
