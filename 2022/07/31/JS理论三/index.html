@@ -49,7 +49,7 @@
         content="2022-07-31">
       <meta 
         property="og:article:modified_time" 
-        content="2022-07-31">
+        content="2022-08-02">
       <meta 
         property="og:article:author" 
         content="ZhangKai">
@@ -282,7 +282,7 @@
     
     
       <span class="dot"></span>
-      <span>506 字</span>
+      <span>924 字</span>
     
   </div>
   
@@ -353,7 +353,26 @@
 <p>存储大小：<code>cookie</code>数据大小不能超过<code>4k</code>，<code>sessionStorage</code>和<code>localStorage</code>虽然也有存储大小的限制，但比<code>cookie</code>大得多，可以达到5M或更大</p>
 <p>有效时间：<code>localStorage</code>存储持久数据，浏览器关闭后数据不丢失除非主动删除数据； <code>sessionStorage</code>数据在当前浏览器窗口关闭后自动删除；<code>cookie</code>设置的<code>cookie</code>过期时间之前一直有效，即使窗口或浏览器关闭</p>
 <p>数据与服务器之间的交互方式，<code>cookie</code>的数据会自动的传递到服务器，服务器端也可以写<code>cookie</code>到客户端； <code>sessionStorage</code>和<code>localStorage</code>不会自动把数据发给服务器，仅在本地保存</p>
-<h3 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h3>
+<h3 id="4-浏览器输入url以后所经历的过程"><a href="#4-浏览器输入url以后所经历的过程" class="headerlink" title="4.浏览器输入url以后所经历的过程"></a>4.浏览器输入url以后所经历的过程</h3><ol>
+<li>首先在地址栏中输入url；</li>
+<li>浏览器先查看浏览器缓存 - 系统缓存 -  路由缓存，如果缓存中有响应数据就直接渲染到页面上，如果没有则跳过</li>
+<li>在发起http请求之前，需要域名解析（DNS解析，解析获取相应的ip地址</li>
+<li>浏览器向服务器发起tcp链接，与浏览器简历tcp三次握手；</li>
+<li>握手成功后，浏览器想服务器发起http请求，拉取数据包；</li>
+<li>服务器处理收到的请求；将处理的数据包返回到浏览器；</li>
+<li>浏览器http请求响应</li>
+<li>读取页面内容，浏览器渲染，解析html源码；</li>
+<li>生产DOM树，解析css样式，js交互</li>
+<li>客户端与服务端交互</li>
+<li>ajax查询</li>
+</ol>
+<h3 id="5-防抖-n-秒后在执行该事件，若在-n-秒内被重复触发，则重新计时"><a href="#5-防抖-n-秒后在执行该事件，若在-n-秒内被重复触发，则重新计时" class="headerlink" title="5.防抖  n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时"></a>5.防抖  n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时</h3><p>防抖与节流的本质上是优化高频率执行代码的一种手段，</p>
+<pre class="highlight"><code class="hljs js"> <span class="hljs-keyword">const</span> inputDOM = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;hInput&#x27;</span>)<br> <br> <span class="hljs-comment">//用户输入完毕的时候，才发送一次http请求</span><br> <span class="hljs-keyword">function</span> <span class="hljs-title function_">debounce</span>(<span class="hljs-params">fn,delay</span>)&#123;<br>     <span class="hljs-keyword">let</span> timer = <span class="hljs-literal">null</span> <br>     <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>       <span class="hljs-keyword">if</span>(tiemr)&#123;<br>           <span class="hljs-built_in">clearTimeout</span>(timer)<br>       &#125;<br>       timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>             <span class="hljs-title function_">fn</span>()<br>         &#125;,delay)<br>     &#125;<br> &#125;<br>inputDOM.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;input&#x27;</span>,<span class="hljs-title function_">debounce</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;发送搜索请求&#x27;</span>)<br>&#125;,<span class="hljs-number">400</span>))<br></code></pre>
+
+<h3 id="6-节流"><a href="#6-节流" class="headerlink" title="6.节流"></a>6.节流</h3><p><strong>一段时间内，只执行一次某个操作；过了一个段时间，还有操作的话，继续执行</strong></p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">const</span> boxDOM = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;.box&#x27;</span>);<br><br><span class="hljs-comment">//节流 </span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">throttle</span>(<span class="hljs-params">fn</span>)&#123;<br>    <span class="hljs-keyword">let</span> timer = <span class="hljs-literal">null</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-keyword">if</span>(timer)&#123;<br>            <span class="hljs-keyword">return</span><br>        &#125;<br>        timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>            <span class="hljs-title function_">fn</span>();<br>   			tiemr = <span class="hljs-literal">null</span>;<br>        &#125;,delay)<br>    &#125;<br>&#125;<br>boxDOM.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;drag&#x27;</span>,<span class="hljs-title function_">throttle</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;test&#x27;</span>)<br>&#125;,<span class="hljs-number">1000</span>)<br></code></pre>
+
+
   </div>
   <div>
     
@@ -387,7 +406,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-DOM%E5%B8%B8%E8%A7%81%E7%9A%84%E6%93%8D%E4%BD%9C%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">1.DOM常见的操作有哪些？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#setAttribute"><span class="toc-text">setAttribute</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AF%B4%E8%AF%B4javascript-%E4%B8%AD%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E7%9A%84%E9%9B%86%E4%B8%AD%E6%83%85%E5%86%B5"><span class="toc-text">2.说说javascript 中内存泄漏的集中情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Javascript%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%8C%BA%E5%88%AB%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="toc-text">3.Javascript本地存储的方式有哪些？区别及应用场景？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4"><span class="toc-text">4.</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-DOM%E5%B8%B8%E8%A7%81%E7%9A%84%E6%93%8D%E4%BD%9C%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">1.DOM常见的操作有哪些？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#setAttribute"><span class="toc-text">setAttribute</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AF%B4%E8%AF%B4javascript-%E4%B8%AD%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E7%9A%84%E9%9B%86%E4%B8%AD%E6%83%85%E5%86%B5"><span class="toc-text">2.说说javascript 中内存泄漏的集中情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Javascript%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%8C%BA%E5%88%AB%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="toc-text">3.Javascript本地存储的方式有哪些？区别及应用场景？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url%E4%BB%A5%E5%90%8E%E6%89%80%E7%BB%8F%E5%8E%86%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-text">4.浏览器输入url以后所经历的过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%98%B2%E6%8A%96-n-%E7%A7%92%E5%90%8E%E5%9C%A8%E6%89%A7%E8%A1%8C%E8%AF%A5%E4%BA%8B%E4%BB%B6%EF%BC%8C%E8%8B%A5%E5%9C%A8-n-%E7%A7%92%E5%86%85%E8%A2%AB%E9%87%8D%E5%A4%8D%E8%A7%A6%E5%8F%91%EF%BC%8C%E5%88%99%E9%87%8D%E6%96%B0%E8%AE%A1%E6%97%B6"><span class="toc-text">5.防抖  n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%8A%82%E6%B5%81"><span class="toc-text">6.节流</span></a></li></ol>
 </div></main>
             <aside class="left-column">
               
@@ -451,7 +470,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-DOM%E5%B8%B8%E8%A7%81%E7%9A%84%E6%93%8D%E4%BD%9C%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">1.DOM常见的操作有哪些？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#setAttribute"><span class="toc-text">setAttribute</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AF%B4%E8%AF%B4javascript-%E4%B8%AD%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E7%9A%84%E9%9B%86%E4%B8%AD%E6%83%85%E5%86%B5"><span class="toc-text">2.说说javascript 中内存泄漏的集中情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Javascript%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%8C%BA%E5%88%AB%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="toc-text">3.Javascript本地存储的方式有哪些？区别及应用场景？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4"><span class="toc-text">4.</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-DOM%E5%B8%B8%E8%A7%81%E7%9A%84%E6%93%8D%E4%BD%9C%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">1.DOM常见的操作有哪些？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#setAttribute"><span class="toc-text">setAttribute</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AF%B4%E8%AF%B4javascript-%E4%B8%AD%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E7%9A%84%E9%9B%86%E4%B8%AD%E6%83%85%E5%86%B5"><span class="toc-text">2.说说javascript 中内存泄漏的集中情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Javascript%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%8C%BA%E5%88%AB%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="toc-text">3.Javascript本地存储的方式有哪些？区别及应用场景？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url%E4%BB%A5%E5%90%8E%E6%89%80%E7%BB%8F%E5%8E%86%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-text">4.浏览器输入url以后所经历的过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%98%B2%E6%8A%96-n-%E7%A7%92%E5%90%8E%E5%9C%A8%E6%89%A7%E8%A1%8C%E8%AF%A5%E4%BA%8B%E4%BB%B6%EF%BC%8C%E8%8B%A5%E5%9C%A8-n-%E7%A7%92%E5%86%85%E8%A2%AB%E9%87%8D%E5%A4%8D%E8%A7%A6%E5%8F%91%EF%BC%8C%E5%88%99%E9%87%8D%E6%96%B0%E8%AE%A1%E6%97%B6"><span class="toc-text">5.防抖  n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%8A%82%E6%B5%81"><span class="toc-text">6.节流</span></a></li></ol>
       </div>
     </article>
   
@@ -558,7 +577,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-DOM%E5%B8%B8%E8%A7%81%E7%9A%84%E6%93%8D%E4%BD%9C%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">1.DOM常见的操作有哪些？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#setAttribute"><span class="toc-text">setAttribute</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AF%B4%E8%AF%B4javascript-%E4%B8%AD%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E7%9A%84%E9%9B%86%E4%B8%AD%E6%83%85%E5%86%B5"><span class="toc-text">2.说说javascript 中内存泄漏的集中情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Javascript%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%8C%BA%E5%88%AB%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="toc-text">3.Javascript本地存储的方式有哪些？区别及应用场景？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4"><span class="toc-text">4.</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-DOM%E5%B8%B8%E8%A7%81%E7%9A%84%E6%93%8D%E4%BD%9C%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">1.DOM常见的操作有哪些？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#setAttribute"><span class="toc-text">setAttribute</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AF%B4%E8%AF%B4javascript-%E4%B8%AD%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E7%9A%84%E9%9B%86%E4%B8%AD%E6%83%85%E5%86%B5"><span class="toc-text">2.说说javascript 中内存泄漏的集中情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Javascript%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%8C%BA%E5%88%AB%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="toc-text">3.Javascript本地存储的方式有哪些？区别及应用场景？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url%E4%BB%A5%E5%90%8E%E6%89%80%E7%BB%8F%E5%8E%86%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-text">4.浏览器输入url以后所经历的过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%98%B2%E6%8A%96-n-%E7%A7%92%E5%90%8E%E5%9C%A8%E6%89%A7%E8%A1%8C%E8%AF%A5%E4%BA%8B%E4%BB%B6%EF%BC%8C%E8%8B%A5%E5%9C%A8-n-%E7%A7%92%E5%86%85%E8%A2%AB%E9%87%8D%E5%A4%8D%E8%A7%A6%E5%8F%91%EF%BC%8C%E5%88%99%E9%87%8D%E6%96%B0%E8%AE%A1%E6%97%B6"><span class="toc-text">5.防抖  n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%8A%82%E6%B5%81"><span class="toc-text">6.节流</span></a></li></ol>
     </article>
   
   
