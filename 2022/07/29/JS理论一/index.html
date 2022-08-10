@@ -49,7 +49,7 @@
         content="2022-07-29">
       <meta 
         property="og:article:modified_time" 
-        content="2022-08-06">
+        content="2022-08-10">
       <meta 
         property="og:article:author" 
         content="ZhangKai">
@@ -282,7 +282,7 @@
     
     
       <span class="dot"></span>
-      <span>1.5k 字</span>
+      <span>1.6k 字</span>
     
   </div>
   
@@ -337,9 +337,13 @@
 <p>坏处：比较耗费内存，使用不当会造成内存泄漏</p>
 <h3 id="4-x3D-x3D-和-x3D-x3D-x3D-的区别"><a href="#4-x3D-x3D-和-x3D-x3D-x3D-的区别" class="headerlink" title="4. &#x3D;&#x3D;  和 &#x3D;&#x3D;&#x3D; 的区别"></a>4. &#x3D;&#x3D;  和 &#x3D;&#x3D;&#x3D; 的区别</h3><p>&#x3D;&#x3D; 是非严格意义上的相等 值相等就相等 </p>
 <p>&#x3D;&#x3D;&#x3D; 是严格意义上的相等， 会比较两边的数据类型和值大小还有引用地址</p>
-<h3 id="5-this"><a href="#5-this" class="headerlink" title="5. this"></a>5. this</h3><p>this 总是指向函数的直接调用者 </p>
-<p>如果有 new 关键字，this指向new 出来的对象</p>
-<p>在事件中，this指向触发这个事件的对象</p>
+<h3 id="5-this"><a href="#5-this" class="headerlink" title="5. this"></a>5. this</h3><ul>
+<li>普通函数中的this指向window </li>
+<li>定时器中的this指向window</li>
+<li>箭头函数没有this，它的this指向取决于外部环境</li>
+<li>事件中的this指向事件的调用者</li>
+<li>如果有new关键词这this则指向new出实例对象</li>
+</ul>
 <h3 id="6-js中-数组-和-对象的遍历"><a href="#6-js中-数组-和-对象的遍历" class="headerlink" title="6.  js中  数组 和 对象的遍历"></a>6.  js中  数组 和 对象的遍历</h3><p>for in   for  foreach for of</p>
 <h3 id="7-map-和-forEach-的区别"><a href="#7-map-和-forEach-的区别" class="headerlink" title="7, map 和 forEach 的区别"></a>7, map 和 forEach 的区别</h3><p>forEach 方法就是遍历与循环，默认有三个传参分别是数组的内容 item项 索引index 和当前数组arr  不会改变原数组</p>
 <p>map方法用法和foreach 一致，但是不同的是它会返回一个新数组，所以需要有return 返回值 如果没有则返回undefined</p>
@@ -356,14 +360,17 @@
 <p>3.脱离DOM的引用</p>
 <p>4.闭包</p>
 <h3 id="9-同源策略"><a href="#9-同源策略" class="headerlink" title="9.同源策略"></a>9.同源策略</h3><p>同源指的是： 域名 协议 端口号  相等</p>
-<h3 id="请说出三种减少页面加载时间的方式"><a href="#请说出三种减少页面加载时间的方式" class="headerlink" title="请说出三种减少页面加载时间的方式"></a>请说出三种减少页面加载时间的方式</h3><p>图片懒加载， 使用精灵图或者雪碧图 使用CDN  减少http请求 </p>
+<h3 id="谈谈你平时都用哪些方法进行性能优化"><a href="#谈谈你平时都用哪些方法进行性能优化" class="headerlink" title="谈谈你平时都用哪些方法进行性能优化"></a>谈谈你平时都用哪些方法进行性能优化</h3><ul>
+<li>减少http请求次数</li>
+<li>打包压缩线上代码</li>
+<li>使用懒加载 雪碧图 cdn加载包</li>
+</ul>
 <h3 id="10-如何解决跨域"><a href="#10-如何解决跨域" class="headerlink" title="10. 如何解决跨域"></a>10. 如何解决跨域</h3><p>jsonp 跨域</p>
 <p>node.js 中间间代理跨域 </p>
 <h3 id="11-严格模式的限制"><a href="#11-严格模式的限制" class="headerlink" title="11 严格模式的限制"></a>11 严格模式的限制</h3><p>变量必须先声明再使用  函数的参数不能有同名属性 不能使用with语句  禁止this指向全局对象</p>
 <h3 id="12-ES6-新增"><a href="#12-ES6-新增" class="headerlink" title="12. ES6 新增"></a>12. ES6 新增</h3><p>新增模板字符串 箭头函数 for of promise对象    新增let 和 const 命名来声明变量  还有引入module 模块概念 </p>
-<h3 id="13-什么是原型-原型链继承"><a href="#13-什么是原型-原型链继承" class="headerlink" title="13.什么是原型 原型链继承"></a>13.什么是原型 原型链继承</h3><p>所有的<strong>函数都有 prototype 属性</strong></p>
-<p>所有的<strong>对象都有 proto 属性</strong> </p>
-<p>在js中每个函数都有一个原形属性prototype 指向自身的原形</p>
+<h3 id="13-什么是原型-原型链"><a href="#13-什么是原型-原型链" class="headerlink" title="13.什么是原型  原型链?"></a>13.什么是原型  原型链?</h3><p><strong>原型</strong>：函数有原型，函数有个属性叫<strong>prototype</strong>，函数的这个原型指向一个对象 ，也就是<strong>原型对象</strong> ，这个原型对象有一个<strong>constructor</strong>属性 指向函数本身</p>
+<p><strong>原型链</strong>：每一个实例对象上都有一个<strong>proto</strong>属性，指向构造函数的原型对象，构造函数的原型对象也是一个对象；也有一个<strong>proto属性</strong>，这样一层一层往上找到过程就形成<strong>原型链</strong></p>
 <p><strong>14.对 JS 中 作用域的理解</strong></p>
 <p>作用域包括 <strong>全局作用域	函数作用域	块级作用域</strong></p>
 <ol>
@@ -443,7 +450,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BJS%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">1. 介绍一下JS的基本数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-js%E5%8F%98%E9%87%8F%E5%92%8C%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E7%9A%84%E6%8F%90%E7%A4%BA"><span class="toc-text">2. js变量和函数声明的提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%97%AD%E5%8C%85"><span class="toc-text">3. 闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-x3D-x3D-%E5%92%8C-x3D-x3D-x3D-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">4. &#x3D;&#x3D;  和 &#x3D;&#x3D;&#x3D; 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-this"><span class="toc-text">5. this</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-js%E4%B8%AD-%E6%95%B0%E7%BB%84-%E5%92%8C-%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-text">6.  js中  数组 和 对象的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-map-%E5%92%8C-forEach-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">7, map 和 forEach 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0-%E5%92%8C-%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-text">8.箭头函数 和 普通函数 有什么区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">8.1 普通函数和构造函数的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-JS-%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-text">9. JS 中常见的内存泄漏有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="toc-text">9.同源策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E8%AF%B4%E5%87%BA%E4%B8%89%E7%A7%8D%E5%87%8F%E5%B0%91%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E6%97%B6%E9%97%B4%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">请说出三种减少页面加载时间的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F"><span class="toc-text">10. 如何解决跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-text">11 严格模式的限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-ES6-%E6%96%B0%E5%A2%9E"><span class="toc-text">12. ES6 新增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8E%9F%E5%9E%8B-%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%BB%A7%E6%89%BF"><span class="toc-text">13.什么是原型 原型链继承</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BJS%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">1. 介绍一下JS的基本数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-js%E5%8F%98%E9%87%8F%E5%92%8C%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E7%9A%84%E6%8F%90%E7%A4%BA"><span class="toc-text">2. js变量和函数声明的提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%97%AD%E5%8C%85"><span class="toc-text">3. 闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-x3D-x3D-%E5%92%8C-x3D-x3D-x3D-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">4. &#x3D;&#x3D;  和 &#x3D;&#x3D;&#x3D; 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-this"><span class="toc-text">5. this</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-js%E4%B8%AD-%E6%95%B0%E7%BB%84-%E5%92%8C-%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-text">6.  js中  数组 和 对象的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-map-%E5%92%8C-forEach-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">7, map 和 forEach 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0-%E5%92%8C-%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-text">8.箭头函数 和 普通函数 有什么区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">8.1 普通函数和构造函数的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-JS-%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-text">9. JS 中常见的内存泄漏有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="toc-text">9.同源策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E4%BD%A0%E5%B9%B3%E6%97%B6%E9%83%BD%E7%94%A8%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-text">谈谈你平时都用哪些方法进行性能优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F"><span class="toc-text">10. 如何解决跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-text">11 严格模式的限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-ES6-%E6%96%B0%E5%A2%9E"><span class="toc-text">12. ES6 新增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8E%9F%E5%9E%8B-%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="toc-text">13.什么是原型  原型链?</span></a></li></ol>
 </div></main>
             <aside class="left-column">
               
@@ -462,7 +469,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>29</span>
+    <span>31</span>
     <span>文章</span>
   </a>
   <a 
@@ -507,7 +514,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BJS%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">1. 介绍一下JS的基本数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-js%E5%8F%98%E9%87%8F%E5%92%8C%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E7%9A%84%E6%8F%90%E7%A4%BA"><span class="toc-text">2. js变量和函数声明的提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%97%AD%E5%8C%85"><span class="toc-text">3. 闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-x3D-x3D-%E5%92%8C-x3D-x3D-x3D-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">4. &#x3D;&#x3D;  和 &#x3D;&#x3D;&#x3D; 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-this"><span class="toc-text">5. this</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-js%E4%B8%AD-%E6%95%B0%E7%BB%84-%E5%92%8C-%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-text">6.  js中  数组 和 对象的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-map-%E5%92%8C-forEach-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">7, map 和 forEach 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0-%E5%92%8C-%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-text">8.箭头函数 和 普通函数 有什么区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">8.1 普通函数和构造函数的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-JS-%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-text">9. JS 中常见的内存泄漏有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="toc-text">9.同源策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E8%AF%B4%E5%87%BA%E4%B8%89%E7%A7%8D%E5%87%8F%E5%B0%91%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E6%97%B6%E9%97%B4%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">请说出三种减少页面加载时间的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F"><span class="toc-text">10. 如何解决跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-text">11 严格模式的限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-ES6-%E6%96%B0%E5%A2%9E"><span class="toc-text">12. ES6 新增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8E%9F%E5%9E%8B-%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%BB%A7%E6%89%BF"><span class="toc-text">13.什么是原型 原型链继承</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BJS%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">1. 介绍一下JS的基本数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-js%E5%8F%98%E9%87%8F%E5%92%8C%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E7%9A%84%E6%8F%90%E7%A4%BA"><span class="toc-text">2. js变量和函数声明的提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%97%AD%E5%8C%85"><span class="toc-text">3. 闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-x3D-x3D-%E5%92%8C-x3D-x3D-x3D-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">4. &#x3D;&#x3D;  和 &#x3D;&#x3D;&#x3D; 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-this"><span class="toc-text">5. this</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-js%E4%B8%AD-%E6%95%B0%E7%BB%84-%E5%92%8C-%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-text">6.  js中  数组 和 对象的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-map-%E5%92%8C-forEach-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">7, map 和 forEach 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0-%E5%92%8C-%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-text">8.箭头函数 和 普通函数 有什么区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">8.1 普通函数和构造函数的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-JS-%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-text">9. JS 中常见的内存泄漏有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="toc-text">9.同源策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E4%BD%A0%E5%B9%B3%E6%97%B6%E9%83%BD%E7%94%A8%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-text">谈谈你平时都用哪些方法进行性能优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F"><span class="toc-text">10. 如何解决跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-text">11 严格模式的限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-ES6-%E6%96%B0%E5%A2%9E"><span class="toc-text">12. ES6 新增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8E%9F%E5%9E%8B-%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="toc-text">13.什么是原型  原型链?</span></a></li></ol>
       </div>
     </article>
   
@@ -620,7 +627,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BJS%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">1. 介绍一下JS的基本数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-js%E5%8F%98%E9%87%8F%E5%92%8C%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E7%9A%84%E6%8F%90%E7%A4%BA"><span class="toc-text">2. js变量和函数声明的提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%97%AD%E5%8C%85"><span class="toc-text">3. 闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-x3D-x3D-%E5%92%8C-x3D-x3D-x3D-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">4. &#x3D;&#x3D;  和 &#x3D;&#x3D;&#x3D; 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-this"><span class="toc-text">5. this</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-js%E4%B8%AD-%E6%95%B0%E7%BB%84-%E5%92%8C-%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-text">6.  js中  数组 和 对象的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-map-%E5%92%8C-forEach-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">7, map 和 forEach 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0-%E5%92%8C-%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-text">8.箭头函数 和 普通函数 有什么区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">8.1 普通函数和构造函数的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-JS-%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-text">9. JS 中常见的内存泄漏有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="toc-text">9.同源策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E8%AF%B4%E5%87%BA%E4%B8%89%E7%A7%8D%E5%87%8F%E5%B0%91%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E6%97%B6%E9%97%B4%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">请说出三种减少页面加载时间的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F"><span class="toc-text">10. 如何解决跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-text">11 严格模式的限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-ES6-%E6%96%B0%E5%A2%9E"><span class="toc-text">12. ES6 新增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8E%9F%E5%9E%8B-%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%BB%A7%E6%89%BF"><span class="toc-text">13.什么是原型 原型链继承</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BJS%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">1. 介绍一下JS的基本数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-js%E5%8F%98%E9%87%8F%E5%92%8C%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E7%9A%84%E6%8F%90%E7%A4%BA"><span class="toc-text">2. js变量和函数声明的提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%97%AD%E5%8C%85"><span class="toc-text">3. 闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-x3D-x3D-%E5%92%8C-x3D-x3D-x3D-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">4. &#x3D;&#x3D;  和 &#x3D;&#x3D;&#x3D; 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-this"><span class="toc-text">5. this</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-js%E4%B8%AD-%E6%95%B0%E7%BB%84-%E5%92%8C-%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-text">6.  js中  数组 和 对象的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-map-%E5%92%8C-forEach-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">7, map 和 forEach 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0-%E5%92%8C-%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-text">8.箭头函数 和 普通函数 有什么区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">8.1 普通函数和构造函数的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-JS-%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-text">9. JS 中常见的内存泄漏有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="toc-text">9.同源策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E4%BD%A0%E5%B9%B3%E6%97%B6%E9%83%BD%E7%94%A8%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-text">谈谈你平时都用哪些方法进行性能优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F"><span class="toc-text">10. 如何解决跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-text">11 严格模式的限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-ES6-%E6%96%B0%E5%A2%9E"><span class="toc-text">12. ES6 新增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8E%9F%E5%9E%8B-%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="toc-text">13.什么是原型  原型链?</span></a></li></ol>
     </article>
   
   
@@ -635,6 +642,16 @@
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-08-10</div>
+        <a href="/2022/08/10/Vue%E7%90%86%E8%AE%BA%E4%BA%8C/"><div class="recent-posts-item-content">Vue理论二</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-08-10</div>
+        <a href="/2022/08/10/JS%E7%90%86%E8%AE%BA%E4%BA%94/"><div class="recent-posts-item-content">JS理论五</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
         <div class="recent-posts-item-title">2022-08-06</div>
         <a href="/2022/08/06/CSS-Less/"><div class="recent-posts-item-content">CSS-Less</div></a>
       </div>
@@ -642,16 +659,6 @@
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2022-08-05</div>
         <a href="/2022/08/05/Vue%E7%90%86%E8%AE%BA1/"><div class="recent-posts-item-content">Vue理论1</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2022-08-03</div>
-        <a href="/2022/08/03/40%E4%B8%AA%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/vite%20+%20vue/"><div class="recent-posts-item-content"></div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2022-08-02</div>
-        <a href="/2022/08/02/JS%E7%90%86%E8%AE%BA%E5%9B%9B-ES6/"><div class="recent-posts-item-content">JS理论四-ES6</div></a>
       </div>
     
   </div>
