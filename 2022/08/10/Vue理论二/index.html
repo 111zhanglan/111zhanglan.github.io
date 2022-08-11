@@ -49,7 +49,7 @@
         content="2022-08-10">
       <meta 
         property="og:article:modified_time" 
-        content="2022-08-10">
+        content="2022-08-11">
       <meta 
         property="og:article:author" 
         content="ZhangKai">
@@ -282,7 +282,7 @@
     
     
       <span class="dot"></span>
-      <span>55 字</span>
+      <span>543 字</span>
     
   </div>
   
@@ -310,8 +310,23 @@
     id="section" 
     class="post-content">
     <h3 id="简述一下VUE生命周期"><a href="#简述一下VUE生命周期" class="headerlink" title="简述一下VUE生命周期"></a>简述一下VUE生命周期</h3><p>也就是从开始的创建，初始化数据，编译模板，挂载dom-渲染、更新、渲染 准备销毁</p>
-<p>创建前&#x2F;后</p>
-<p>在 beforeCreated，data和method 还没有初始化 </p>
+<p><strong>一 、创建前&#x2F;后</strong></p>
+<p>在 <code>beforeCreated</code>，data和method 还没有初始化 </p>
+<p>在<code>created</code>生命周期函数执行的时候 data和method以及初始化完成 </p>
+<p><strong>二、渲染前、后</strong></p>
+<p>在<code>beforeMount</code>生命周期函数执行的时候，已经变量好了模板字符串，但还没有真正的渲染到页面中去</p>
+<p>在<code>mounted</code>生命周期函数执行时，已经渲染完成，可以看到页面</p>
+<p><strong>三、数据更新前、后</strong></p>
+<p>在 <code>beforeUpdate </code>执行的时候，以及拿到最新的数据，但是还没渲染视图</p>
+<p>在 <code>updated </code>执行的时候，已经吧更新后的数据渲染到视图上去</p>
+<p><strong>四、数据销毁前、后</strong></p>
+<p>在<code>beforeDestory </code>生命周期函数执行的时候，实例准备进入销毁阶段。，此时data，methods 还是可用</p>
+<p>在<code>destroyed</code> 执行的时候 已销毁</p>
+<h3 id="v-for-循环为什么一定要绑定key？"><a href="#v-for-循环为什么一定要绑定key？" class="headerlink" title="v-for 循环为什么一定要绑定key？"></a>v-for 循环为什么一定要绑定key？</h3><p>页面上的标签都对应着虚拟dom对象（虚拟dom就是js对象）循环中，如果没有唯一的key，页面上删除一条标签，由于并不知道删除的是拿一条，所以要把全部的虚拟dom重新渲染，如果知道key为x的标签被删除掉，只需要把渲染dom为x的标签删除即可</p>
+<h3 id="组件中的data为什么要定义一个函数而不是一个对象"><a href="#组件中的data为什么要定义一个函数而不是一个对象" class="headerlink" title="组件中的data为什么要定义一个函数而不是一个对象"></a>组件中的data为什么要定义一个函数而不是一个对象</h3><p>每个组件都是Vue的实例，组件共享data属性，当data是值是同一个引用类型的值时，改变其中一个会影响到其他</p>
+<h3 id="Vue实例是挂载到那个标签上的？"><a href="#Vue实例是挂载到那个标签上的？" class="headerlink" title="Vue实例是挂载到那个标签上的？"></a>Vue实例是挂载到那个标签上的？</h3><p>vue实例最后会挂载在body标签里面，所以在vue中是获取不了body标签的</p>
+<h3 id="Vue中computed-和-watch-的区别是什么？"><a href="#Vue中computed-和-watch-的区别是什么？" class="headerlink" title="Vue中computed 和 watch 的区别是什么？"></a>Vue中computed 和 watch 的区别是什么？</h3><p>watch：监测的是属性值，只要属性值发生变化，会触发回调函数来执行一系列的操作</p>
+<p>computed：监测的是依赖值，依赖值不变的情况下会直接读取缓存进行复用，变化的情况下才会重新计算</p>
 
   </div>
   <div>
@@ -346,7 +361,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%8BVUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">简述一下VUE生命周期</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%8BVUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">简述一下VUE生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-for-%E5%BE%AA%E7%8E%AF%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%80%E5%AE%9A%E8%A6%81%E7%BB%91%E5%AE%9Akey%EF%BC%9F"><span class="toc-text">v-for 循环为什么一定要绑定key？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84data%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E8%80%8C%E4%B8%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-text">组件中的data为什么要定义一个函数而不是一个对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%AE%9E%E4%BE%8B%E6%98%AF%E6%8C%82%E8%BD%BD%E5%88%B0%E9%82%A3%E4%B8%AA%E6%A0%87%E7%AD%BE%E4%B8%8A%E7%9A%84%EF%BC%9F"><span class="toc-text">Vue实例是挂载到那个标签上的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E4%B8%ADcomputed-%E5%92%8C-watch-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Vue中computed 和 watch 的区别是什么？</span></a></li></ol>
 </div></main>
             <aside class="left-column">
               
@@ -410,7 +425,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%8BVUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">简述一下VUE生命周期</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%8BVUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">简述一下VUE生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-for-%E5%BE%AA%E7%8E%AF%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%80%E5%AE%9A%E8%A6%81%E7%BB%91%E5%AE%9Akey%EF%BC%9F"><span class="toc-text">v-for 循环为什么一定要绑定key？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84data%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E8%80%8C%E4%B8%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-text">组件中的data为什么要定义一个函数而不是一个对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%AE%9E%E4%BE%8B%E6%98%AF%E6%8C%82%E8%BD%BD%E5%88%B0%E9%82%A3%E4%B8%AA%E6%A0%87%E7%AD%BE%E4%B8%8A%E7%9A%84%EF%BC%9F"><span class="toc-text">Vue实例是挂载到那个标签上的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E4%B8%ADcomputed-%E5%92%8C-watch-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Vue中computed 和 watch 的区别是什么？</span></a></li></ol>
       </div>
     </article>
   
@@ -523,7 +538,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%8BVUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">简述一下VUE生命周期</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%8BVUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">简述一下VUE生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-for-%E5%BE%AA%E7%8E%AF%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%80%E5%AE%9A%E8%A6%81%E7%BB%91%E5%AE%9Akey%EF%BC%9F"><span class="toc-text">v-for 循环为什么一定要绑定key？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84data%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E8%80%8C%E4%B8%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-text">组件中的data为什么要定义一个函数而不是一个对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%AE%9E%E4%BE%8B%E6%98%AF%E6%8C%82%E8%BD%BD%E5%88%B0%E9%82%A3%E4%B8%AA%E6%A0%87%E7%AD%BE%E4%B8%8A%E7%9A%84%EF%BC%9F"><span class="toc-text">Vue实例是挂载到那个标签上的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E4%B8%ADcomputed-%E5%92%8C-watch-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Vue中computed 和 watch 的区别是什么？</span></a></li></ol>
     </article>
   
   

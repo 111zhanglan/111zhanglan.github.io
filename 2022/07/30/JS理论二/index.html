@@ -49,7 +49,7 @@
         content="2022-07-30">
       <meta 
         property="og:article:modified_time" 
-        content="2022-08-10">
+        content="2022-08-11">
       <meta 
         property="og:article:author" 
         content="ZhangKai">
@@ -282,7 +282,7 @@
     
     
       <span class="dot"></span>
-      <span>1.4k 字</span>
+      <span>1.5k 字</span>
     
   </div>
   
@@ -376,10 +376,16 @@
 <p>async 函数返回的是一个promise对象，可以使用then的方法添加回调函数，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体后面的语句</p>
 <h3 id="什么是递归，有哪些优缺点？"><a href="#什么是递归，有哪些优缺点？" class="headerlink" title="什么是递归，有哪些优缺点？"></a>什么是递归，有哪些优缺点？</h3><p>递归：如果一个函数在内部可以调用其本身，那就是递归</p>
 <p>简单理解：函数内部自己调用自己</p>
-<p>优点：结构清晰，可读性强</p>
-<p>缺点: 效率低，调用栈可能会溢出</p>
-<h3 id="POST-和-GET-请求有哪些区别"><a href="#POST-和-GET-请求有哪些区别" class="headerlink" title="POST 和 GET 请求有哪些区别"></a>POST 和 GET 请求有哪些区别</h3><p>post：一般用于获取服务器上的资源，对所发的信息没有限制</p>
-<p>get：一般用于用于信息获取，使用url传递参数，对所发的信息也有限制，一般在2000个字符</p>
+<ul>
+<li><p>优点：结构清晰，可读性强</p>
+</li>
+<li><p>缺点: 效率低，调用栈可能会溢出</p>
+</li>
+</ul>
+<h3 id="POST-和-GET-请求有哪些区别"><a href="#POST-和-GET-请求有哪些区别" class="headerlink" title="POST 和 GET 请求有哪些区别"></a>POST 和 GET 请求有哪些区别</h3><p><strong>1.应用场景：</strong>post用来修改数据，get用来请求数据的 </p>
+<p><strong>2.缓存方面：</strong>在不同的场景，get用来请求数据，所有浏览器一般会对get请求缓存，post会很<strong>少</strong></p>
+<p><strong>3.传递参数的方式：</strong>get采用明文传输，将请求的参数放入url向服务器发送，而post的请求参数放在请求体当中</p>
+<p><strong>4.安全性方面：</strong>正由于传输方式不同，导致get请求的明文存在安全隐患，而post将参数存在body中是相对安全的</p>
 <h3 id="箭头函数与哪些特征？请简单描述一下"><a href="#箭头函数与哪些特征？请简单描述一下" class="headerlink" title="箭头函数与哪些特征？请简单描述一下"></a>箭头函数与哪些特征？请简单描述一下</h3><ol>
 <li>箭头函数没有自己的 this ，this指向箭头函数所处的上下文环境</li>
 <li>箭头函数无法使用 call apply bind 改变this指向</li>
@@ -529,9 +535,15 @@
   <div class="tags-list">
     
       <a 
-        href="/tags/%E9%9D%A2%E8%AF%95/" 
-        title="面试">
-        <div class="tags-list-item">面试</div>
+        href="/tags/%E5%88%86%E4%BA%AB/" 
+        title="分享">
+        <div class="tags-list-item">分享</div>
+      </a>
+    
+      <a 
+        href="/tags/js%E6%8F%92%E4%BB%B6/" 
+        title="js插件">
+        <div class="tags-list-item">js插件</div>
       </a>
     
       <a 
@@ -547,33 +559,9 @@
       </a>
     
       <a 
-        href="/tags/js%E6%8F%92%E4%BB%B6/" 
-        title="js插件">
-        <div class="tags-list-item">js插件</div>
-      </a>
-    
-      <a 
-        href="/tags/CSS/" 
-        title="CSS">
-        <div class="tags-list-item">CSS</div>
-      </a>
-    
-      <a 
-        href="/tags/Webpack/" 
-        title="Webpack">
-        <div class="tags-list-item">Webpack</div>
-      </a>
-    
-      <a 
-        href="/tags/uniapp-vue/" 
-        title="uniapp/vue">
-        <div class="tags-list-item">uniapp/vue</div>
-      </a>
-    
-      <a 
-        href="/tags/uniapp/" 
-        title="uniapp">
-        <div class="tags-list-item">uniapp</div>
+        href="/tags/HTML5/" 
+        title="HTML5">
+        <div class="tags-list-item">HTML5</div>
       </a>
     
       <a 
@@ -583,15 +571,33 @@
       </a>
     
       <a 
-        href="/tags/HTML5/" 
-        title="HTML5">
-        <div class="tags-list-item">HTML5</div>
+        href="/tags/%E9%9D%A2%E8%AF%95/" 
+        title="面试">
+        <div class="tags-list-item">面试</div>
       </a>
     
       <a 
-        href="/tags/%E5%88%86%E4%BA%AB/" 
-        title="分享">
-        <div class="tags-list-item">分享</div>
+        href="/tags/uniapp/" 
+        title="uniapp">
+        <div class="tags-list-item">uniapp</div>
+      </a>
+    
+      <a 
+        href="/tags/uniapp-vue/" 
+        title="uniapp/vue">
+        <div class="tags-list-item">uniapp/vue</div>
+      </a>
+    
+      <a 
+        href="/tags/Webpack/" 
+        title="Webpack">
+        <div class="tags-list-item">Webpack</div>
+      </a>
+    
+      <a 
+        href="/tags/CSS/" 
+        title="CSS">
+        <div class="tags-list-item">CSS</div>
       </a>
     
   </div>
