@@ -49,7 +49,7 @@
         content="2022-07-31">
       <meta 
         property="og:article:modified_time" 
-        content="2022-08-11">
+        content="2022-08-15">
       <meta 
         property="og:article:author" 
         content="ZhangKai">
@@ -353,7 +353,7 @@
 <p><strong>数据与服务器之间的交互方式，</strong><code>cookie</code>的数据会自动的传递到服务器，服务器端也可以写<code>cookie</code>到客户端； <code>sessionStorage</code>和<code>localStorage</code>不会自动把数据发给服务器，仅在本地保存</p>
 <h3 id="cookie-和-session-的区别"><a href="#cookie-和-session-的区别" class="headerlink" title="cookie  和 session 的区别"></a>cookie  和 session 的区别</h3><ol>
 <li>cookie数据存放在客户端浏览器上，session数据放在服务器上；</li>
-<li>cookie不是很安全，别人可以分析本地的cookie进行cookie欺诈</li>
+<li><strong>cookie不是很安全</strong>，别人可以分析本地的cookie进行cookie欺诈</li>
 <li>性能上 session会一定时间内保存在服务器，当访问量增多，会比较占用服务器性能</li>
 <li>cookie保存的数据不能超4kb</li>
 </ol>
@@ -370,7 +370,7 @@
 <li>客户端与服务端交互</li>
 <li>ajax查询</li>
 </ol>
-<h3 id="5-防抖-n-秒后在执行该事件，若在-n-秒内被重复触发，则重新计时-（回泉水）"><a href="#5-防抖-n-秒后在执行该事件，若在-n-秒内被重复触发，则重新计时-（回泉水）" class="headerlink" title="5.防抖  n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时   （回泉水）"></a>5.防抖  n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时   （回泉水）</h3><p>防抖与节流的本质上是优化高频率执行代码的一种手段，</p>
+<h3 id="5-防抖-n-秒后在执行该事件，若在-n-秒内被重复触发，则重新计时-（回泉水）"><a href="#5-防抖-n-秒后在执行该事件，若在-n-秒内被重复触发，则重新计时-（回泉水）" class="headerlink" title="5.防抖  n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时   （回泉水）"></a>5.防抖  n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时   （回泉水）</h3><p>​	防抖与节流的本质上是优化高频率执行代码的一种手段，</p>
 <pre class="highlight"><code class="hljs js"> <span class="hljs-keyword">const</span> inputDOM = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;hInput&#x27;</span>)<br> <br> <span class="hljs-comment">//用户输入完毕的时候，才发送一次http请求</span><br> <span class="hljs-keyword">function</span> <span class="hljs-title function_">debounce</span>(<span class="hljs-params">fn,delay</span>)&#123;<br>     <span class="hljs-keyword">let</span> timer = <span class="hljs-literal">null</span> <br>     <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>       <span class="hljs-keyword">if</span>(tiemr)&#123;<br>           <span class="hljs-built_in">clearTimeout</span>(timer)<br>       &#125;<br>       timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>             <span class="hljs-title function_">fn</span>()<br>         &#125;,delay)<br>     &#125;<br> &#125;<br>inputDOM.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;input&#x27;</span>,<span class="hljs-title function_">debounce</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;发送搜索请求&#x27;</span>)<br>&#125;,<span class="hljs-number">400</span>))<br></code></pre>
 
 <h3 id="6-节流"><a href="#6-节流" class="headerlink" title="6.节流"></a>6.节流</h3><p><strong>一段时间内，只执行一次某个操作；过了一个段时间，还有操作的话，继续执行</strong></p>

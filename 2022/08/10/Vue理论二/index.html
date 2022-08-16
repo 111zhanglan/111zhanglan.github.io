@@ -49,7 +49,7 @@
         content="2022-08-10">
       <meta 
         property="og:article:modified_time" 
-        content="2022-08-12">
+        content="2022-08-16">
       <meta 
         property="og:article:author" 
         content="ZhangKai">
@@ -282,7 +282,7 @@
     
     
       <span class="dot"></span>
-      <span>756 字</span>
+      <span>1.4k 字</span>
     
   </div>
   
@@ -309,7 +309,18 @@
   <div 
     id="section" 
     class="post-content">
-    <h3 id="简述一下VUE生命周期"><a href="#简述一下VUE生命周期" class="headerlink" title="简述一下VUE生命周期"></a>简述一下VUE生命周期</h3><p>也就是从开始的创建，初始化数据，编译模板，挂载dom-渲染、更新、渲染 准备销毁</p>
+    <h3 id="Mvvm"><a href="#Mvvm" class="headerlink" title="Mvvm"></a>Mvvm</h3><p>模型 model、  视图   View  、 viewmodel 是作为模型和视图的桥梁，当模型层数据改变，vm会检测到并通知视图层进行响应的修改</p>
+<h3 id="Vue双向绑定的原理"><a href="#Vue双向绑定的原理" class="headerlink" title="Vue双向绑定的原理"></a>Vue双向绑定的原理</h3><p>Vue双向绑定就是：数据变化更新视图 ，视图变化更新数据 </p>
+<p>Vue双向绑定是通过 <strong>数据劫持</strong>  和 <strong>观察者模式</strong> 来实现的</p>
+<h3 id="说说你对SPA-的理解"><a href="#说说你对SPA-的理解" class="headerlink" title="说说你对SPA 的理解"></a>说说你对SPA 的理解</h3><p>SPA（single-page-applicatiion） ，单页应用</p>
+<p>它是一种网络应用程序或网站的模型，它通过动态重写当前页面，与用户交互  ； 这种方案避免了页面之间切换打断用户的体验</p>
+<p>优势： </p>
+<ul>
+<li>具有桌面应用的及时性，网站的可移植性和可访问性</li>
+<li>用户体验好，快，内容的改变不需要重新加载整个页面 </li>
+<li>良好的前后端分离，分工更明确</li>
+</ul>
+<h3 id="简述一下VUE生命周期"><a href="#简述一下VUE生命周期" class="headerlink" title="简述一下VUE生命周期"></a>简述一下VUE生命周期</h3><p>也就是从开始的创建，初始化数据，编译模板，挂载dom-渲染、更新、渲染 准备销毁</p>
 <p><strong>一 、创建前&#x2F;后</strong></p>
 <p>在 <code>beforeCreated</code>，data和method 还没有初始化 </p>
 <p>在<code>created</code>生命周期函数执行的时候 data和method以及初始化完成 </p>
@@ -324,7 +335,7 @@
 <p>在<code>destroyed</code> 执行的时候 已销毁</p>
 <h3 id="v-for-循环为什么一定要绑定key？"><a href="#v-for-循环为什么一定要绑定key？" class="headerlink" title="v-for 循环为什么一定要绑定key？"></a>v-for 循环为什么一定要绑定key？</h3><p>页面上的标签都对应着虚拟dom对象（虚拟dom就是js对象）循环中，如果没有唯一的key，页面上删除一条标签，由于并不知道删除的是拿一条，所以要把全部的虚拟dom重新渲染，如果知道key为x的标签被删除掉，只需要把渲染dom为x的标签删除即可</p>
 <h3 id="组件中的data为什么要定义一个函数而不是一个对象"><a href="#组件中的data为什么要定义一个函数而不是一个对象" class="headerlink" title="组件中的data为什么要定义一个函数而不是一个对象"></a>组件中的data为什么要定义一个函数而不是一个对象</h3><p>组件实例对象data必须为函数，目的是为了防止多个组件实例对象之间共用一个data，不会产生数据污染； </p>
-<h3 id="Vue实例是挂载到那个标签上的？"><a href="#Vue实例是挂载到那个标签上的？" class="headerlink" title="Vue实例是挂载到那个标签上的？"></a>Vue实例是挂载到那个标签上的？</h3><p>vue实例最后会挂载在body标签里面，所以在vue中是获取不了body标签的</p>
+<h3 id="Vue实例是挂载到那个标签上的？"><a href="#Vue实例是挂载到那个标签上的？" class="headerlink" title="Vue实例是挂载到那个标签上的？"></a>Vue实例是挂载到那个标签上的？</h3><p>vue实例最后会挂载在<strong>body</strong>标签里面，所以在vue中是获取不了body标签的</p>
 <h3 id="Vue中computed-和-watch-的区别是什么？"><a href="#Vue中computed-和-watch-的区别是什么？" class="headerlink" title="Vue中computed 和 watch 的区别是什么？"></a>Vue中computed 和 watch 的区别是什么？</h3><p>watch：监测的是属性值，只要属性值发生变化，会触发回调函数来执行一系列的操作</p>
 <p>computed：监测的是依赖值，依赖值不变的情况下会直接读取缓存进行复用，变化的情况下才会重新计算</p>
 <h3 id="组件间通讯的方案"><a href="#组件间通讯的方案" class="headerlink" title="组件间通讯的方案"></a>组件间通讯的方案</h3><ul>
@@ -336,7 +347,7 @@
 <li>Vuex</li>
 </ul>
 <h3 id="NextTick-是什么？"><a href="#NextTick-是什么？" class="headerlink" title="NextTick 是什么？"></a>NextTick 是什么？</h3><p>在DOM更新循环结束之后 执行延迟回调，<strong>在修改数据之后</strong>立即使用这方法，<strong>获取更新后的DOM</strong></p>
-<p>理解：Vue在更新dom的 时是异步执行的，当数据发生变将开启一个异步更新队列，视图层需要等待队列中所有数据变化完成之后，再统一进行更新</p>
+<p>理解：<strong>Vue在更新dom的 时是异步执行的</strong>，当数据发生变将开启一个异步更新队列，视图层需要等待队列中所有数据变化完成之后，再统一进行更新</p>
 <pre class="highlight"><code class="hljs js"><span class="hljs-variable language_">this</span>.$nextTick(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-comment">//DOM更新之后</span><br>&#125;<br>)<br></code></pre>
 
 <h3 id="slot-是什么-？"><a href="#slot-是什么-？" class="headerlink" title="slot 是什么 ？"></a>slot 是什么 ？</h3><p>是Web组件内的一个占位符 </p>
@@ -347,6 +358,32 @@
 <li>具名插槽</li>
 <li>作用域插槽</li>
 </ul>
+<h3 id="Vuex-是什么，每个属性是干嘛的，如何使用？"><a href="#Vuex-是什么，每个属性是干嘛的，如何使用？" class="headerlink" title="Vuex 是什么，每个属性是干嘛的，如何使用？"></a>Vuex 是什么，每个属性是干嘛的，如何使用？</h3><p>Vuex是专门为vuejs设计的状态管理工具，它采用集中式存储管理引用所有组件的状态</p>
+<p>Vuex的属性包括一下6个 </p>
+<ol>
+<li>state  ：存储着基本数据</li>
+<li>Getters  ： getter 是store的计算属性，对state的加工就想computed的计算属性</li>
+<li>Mutations： 提交更改数据，使用store.commit 方法更改state存储状态</li>
+<li>Actions：actions相当于提交mutation, 来封装异步方法的</li>
+<li>Module</li>
+</ol>
+<h3 id="导航守卫"><a href="#导航守卫" class="headerlink" title="导航守卫"></a>导航守卫</h3><ol>
+<li><p>全局前置守卫 </p>
+<p>可以使用 router.beforeEach 注册一个全局前置守卫 </p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueRouter</span>(&#123;<br>    <span class="hljs-attr">routes</span>:[]<br>&#125;)<br>router.<span class="hljs-title function_">beforeEach</span>(<span class="hljs-function">(<span class="hljs-params">to,<span class="hljs-keyword">from</span>,next</span>)=&gt;</span>&#123;<br>    <span class="hljs-comment">// ....</span><br>&#125;)<br></code></pre></li>
+</ol>
+<h3 id="Vue声明周期中-异步加载是再-mounted-还是-created-里实现"><a href="#Vue声明周期中-异步加载是再-mounted-还是-created-里实现" class="headerlink" title="Vue声明周期中 异步加载是再 mounted 还是 created 里实现"></a>Vue声明周期中 异步加载是再 mounted 还是 created 里实现</h3><p>最常用的是再 created 构造函数中调用异步请求 ，这时候的<code>created</code>周期data 已经创建，</p>
+<p>可以将服务端返回达到数据进行赋值，</p>
+<p>优势； 能更快获取到服务端数据，减少页面loading 时间 </p>
+<h3 id="keep-alive"><a href="#keep-alive" class="headerlink" title="keep-alive"></a>keep-alive</h3><p><code>&lt;keep-alive&gt;&lt;/keep-alive&gt;</code> 包裹动态组件时，会缓存不活动的组件实例，主要用于</p>
+<p><strong>组件保留状态</strong>  和 <strong>避免重新渲染</strong></p>
+<ol>
+<li>常用的两个属性include&#x2F;exclude，允许组件有条件的进行缓存。</li>
+</ol>
+<h3 id="ref-是什么？"><a href="#ref-是什么？" class="headerlink" title="ref 是什么？"></a>ref 是什么？</h3><p>this.$refs.xxx   用来获取dom元素的</p>
+<h3 id="Vue-Router系列之-route-和-router-的区别"><a href="#Vue-Router系列之-route-和-router-的区别" class="headerlink" title="Vue Router系列之 route 和 router 的区别"></a>Vue Router系列之 route 和 router 的区别</h3><p>用一句话来概括 route 是用来获取路由信息的， router是用来操作路由的</p>
+<p><code>route</code> 表示一个路由对象，当前激活的路由的状态信息，path  fullpath query parmas </p>
+<p><code>router</code> 是全局路由的实例，是router构造方法的实例</p>
 
   </div>
   <div>
@@ -381,7 +418,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%8BVUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">简述一下VUE生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-for-%E5%BE%AA%E7%8E%AF%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%80%E5%AE%9A%E8%A6%81%E7%BB%91%E5%AE%9Akey%EF%BC%9F"><span class="toc-text">v-for 循环为什么一定要绑定key？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84data%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E8%80%8C%E4%B8%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-text">组件中的data为什么要定义一个函数而不是一个对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%AE%9E%E4%BE%8B%E6%98%AF%E6%8C%82%E8%BD%BD%E5%88%B0%E9%82%A3%E4%B8%AA%E6%A0%87%E7%AD%BE%E4%B8%8A%E7%9A%84%EF%BC%9F"><span class="toc-text">Vue实例是挂载到那个标签上的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E4%B8%ADcomputed-%E5%92%8C-watch-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Vue中computed 和 watch 的区别是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E8%AE%AF%E7%9A%84%E6%96%B9%E6%A1%88"><span class="toc-text">组件间通讯的方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NextTick-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">NextTick 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slot-%E6%98%AF%E4%BB%80%E4%B9%88-%EF%BC%9F"><span class="toc-text">slot 是什么 ？</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mvvm"><span class="toc-text">Mvvm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">Vue双向绑定的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E4%BD%A0%E5%AF%B9SPA-%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">说说你对SPA 的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%8BVUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">简述一下VUE生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-for-%E5%BE%AA%E7%8E%AF%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%80%E5%AE%9A%E8%A6%81%E7%BB%91%E5%AE%9Akey%EF%BC%9F"><span class="toc-text">v-for 循环为什么一定要绑定key？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84data%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E8%80%8C%E4%B8%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-text">组件中的data为什么要定义一个函数而不是一个对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%AE%9E%E4%BE%8B%E6%98%AF%E6%8C%82%E8%BD%BD%E5%88%B0%E9%82%A3%E4%B8%AA%E6%A0%87%E7%AD%BE%E4%B8%8A%E7%9A%84%EF%BC%9F"><span class="toc-text">Vue实例是挂载到那个标签上的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E4%B8%ADcomputed-%E5%92%8C-watch-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Vue中computed 和 watch 的区别是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E8%AE%AF%E7%9A%84%E6%96%B9%E6%A1%88"><span class="toc-text">组件间通讯的方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NextTick-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">NextTick 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slot-%E6%98%AF%E4%BB%80%E4%B9%88-%EF%BC%9F"><span class="toc-text">slot 是什么 ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vuex-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E6%AF%8F%E4%B8%AA%E5%B1%9E%E6%80%A7%E6%98%AF%E5%B9%B2%E5%98%9B%E7%9A%84%EF%BC%8C%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%EF%BC%9F"><span class="toc-text">Vuex 是什么，每个属性是干嘛的，如何使用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB"><span class="toc-text">导航守卫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F%E4%B8%AD-%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E6%98%AF%E5%86%8D-mounted-%E8%BF%98%E6%98%AF-created-%E9%87%8C%E5%AE%9E%E7%8E%B0"><span class="toc-text">Vue声明周期中 异步加载是再 mounted 还是 created 里实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#keep-alive"><span class="toc-text">keep-alive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ref-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">ref 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-Router%E7%B3%BB%E5%88%97%E4%B9%8B-route-%E5%92%8C-router-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">Vue Router系列之 route 和 router 的区别</span></a></li></ol>
 </div></main>
             <aside class="left-column">
               
@@ -445,7 +482,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%8BVUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">简述一下VUE生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-for-%E5%BE%AA%E7%8E%AF%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%80%E5%AE%9A%E8%A6%81%E7%BB%91%E5%AE%9Akey%EF%BC%9F"><span class="toc-text">v-for 循环为什么一定要绑定key？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84data%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E8%80%8C%E4%B8%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-text">组件中的data为什么要定义一个函数而不是一个对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%AE%9E%E4%BE%8B%E6%98%AF%E6%8C%82%E8%BD%BD%E5%88%B0%E9%82%A3%E4%B8%AA%E6%A0%87%E7%AD%BE%E4%B8%8A%E7%9A%84%EF%BC%9F"><span class="toc-text">Vue实例是挂载到那个标签上的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E4%B8%ADcomputed-%E5%92%8C-watch-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Vue中computed 和 watch 的区别是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E8%AE%AF%E7%9A%84%E6%96%B9%E6%A1%88"><span class="toc-text">组件间通讯的方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NextTick-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">NextTick 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slot-%E6%98%AF%E4%BB%80%E4%B9%88-%EF%BC%9F"><span class="toc-text">slot 是什么 ？</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mvvm"><span class="toc-text">Mvvm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">Vue双向绑定的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E4%BD%A0%E5%AF%B9SPA-%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">说说你对SPA 的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%8BVUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">简述一下VUE生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-for-%E5%BE%AA%E7%8E%AF%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%80%E5%AE%9A%E8%A6%81%E7%BB%91%E5%AE%9Akey%EF%BC%9F"><span class="toc-text">v-for 循环为什么一定要绑定key？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84data%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E8%80%8C%E4%B8%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-text">组件中的data为什么要定义一个函数而不是一个对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%AE%9E%E4%BE%8B%E6%98%AF%E6%8C%82%E8%BD%BD%E5%88%B0%E9%82%A3%E4%B8%AA%E6%A0%87%E7%AD%BE%E4%B8%8A%E7%9A%84%EF%BC%9F"><span class="toc-text">Vue实例是挂载到那个标签上的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E4%B8%ADcomputed-%E5%92%8C-watch-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Vue中computed 和 watch 的区别是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E8%AE%AF%E7%9A%84%E6%96%B9%E6%A1%88"><span class="toc-text">组件间通讯的方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NextTick-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">NextTick 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slot-%E6%98%AF%E4%BB%80%E4%B9%88-%EF%BC%9F"><span class="toc-text">slot 是什么 ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vuex-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E6%AF%8F%E4%B8%AA%E5%B1%9E%E6%80%A7%E6%98%AF%E5%B9%B2%E5%98%9B%E7%9A%84%EF%BC%8C%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%EF%BC%9F"><span class="toc-text">Vuex 是什么，每个属性是干嘛的，如何使用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB"><span class="toc-text">导航守卫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F%E4%B8%AD-%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E6%98%AF%E5%86%8D-mounted-%E8%BF%98%E6%98%AF-created-%E9%87%8C%E5%AE%9E%E7%8E%B0"><span class="toc-text">Vue声明周期中 异步加载是再 mounted 还是 created 里实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#keep-alive"><span class="toc-text">keep-alive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ref-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">ref 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-Router%E7%B3%BB%E5%88%97%E4%B9%8B-route-%E5%92%8C-router-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">Vue Router系列之 route 和 router 的区别</span></a></li></ol>
       </div>
     </article>
   
@@ -558,7 +595,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%8BVUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">简述一下VUE生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-for-%E5%BE%AA%E7%8E%AF%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%80%E5%AE%9A%E8%A6%81%E7%BB%91%E5%AE%9Akey%EF%BC%9F"><span class="toc-text">v-for 循环为什么一定要绑定key？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84data%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E8%80%8C%E4%B8%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-text">组件中的data为什么要定义一个函数而不是一个对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%AE%9E%E4%BE%8B%E6%98%AF%E6%8C%82%E8%BD%BD%E5%88%B0%E9%82%A3%E4%B8%AA%E6%A0%87%E7%AD%BE%E4%B8%8A%E7%9A%84%EF%BC%9F"><span class="toc-text">Vue实例是挂载到那个标签上的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E4%B8%ADcomputed-%E5%92%8C-watch-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Vue中computed 和 watch 的区别是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E8%AE%AF%E7%9A%84%E6%96%B9%E6%A1%88"><span class="toc-text">组件间通讯的方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NextTick-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">NextTick 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slot-%E6%98%AF%E4%BB%80%E4%B9%88-%EF%BC%9F"><span class="toc-text">slot 是什么 ？</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mvvm"><span class="toc-text">Mvvm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">Vue双向绑定的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E4%BD%A0%E5%AF%B9SPA-%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">说说你对SPA 的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%8BVUE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">简述一下VUE生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-for-%E5%BE%AA%E7%8E%AF%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%80%E5%AE%9A%E8%A6%81%E7%BB%91%E5%AE%9Akey%EF%BC%9F"><span class="toc-text">v-for 循环为什么一定要绑定key？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84data%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E8%80%8C%E4%B8%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-text">组件中的data为什么要定义一个函数而不是一个对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%AE%9E%E4%BE%8B%E6%98%AF%E6%8C%82%E8%BD%BD%E5%88%B0%E9%82%A3%E4%B8%AA%E6%A0%87%E7%AD%BE%E4%B8%8A%E7%9A%84%EF%BC%9F"><span class="toc-text">Vue实例是挂载到那个标签上的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E4%B8%ADcomputed-%E5%92%8C-watch-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Vue中computed 和 watch 的区别是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E8%AE%AF%E7%9A%84%E6%96%B9%E6%A1%88"><span class="toc-text">组件间通讯的方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NextTick-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">NextTick 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slot-%E6%98%AF%E4%BB%80%E4%B9%88-%EF%BC%9F"><span class="toc-text">slot 是什么 ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vuex-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E6%AF%8F%E4%B8%AA%E5%B1%9E%E6%80%A7%E6%98%AF%E5%B9%B2%E5%98%9B%E7%9A%84%EF%BC%8C%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%EF%BC%9F"><span class="toc-text">Vuex 是什么，每个属性是干嘛的，如何使用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB"><span class="toc-text">导航守卫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F%E4%B8%AD-%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E6%98%AF%E5%86%8D-mounted-%E8%BF%98%E6%98%AF-created-%E9%87%8C%E5%AE%9E%E7%8E%B0"><span class="toc-text">Vue声明周期中 异步加载是再 mounted 还是 created 里实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#keep-alive"><span class="toc-text">keep-alive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ref-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">ref 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-Router%E7%B3%BB%E5%88%97%E4%B9%8B-route-%E5%92%8C-router-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">Vue Router系列之 route 和 router 的区别</span></a></li></ol>
     </article>
   
   
