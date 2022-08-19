@@ -49,7 +49,7 @@
         content="2022-07-31">
       <meta 
         property="og:article:modified_time" 
-        content="2022-08-15">
+        content="2022-08-19">
       <meta 
         property="og:article:author" 
         content="ZhangKai">
@@ -282,7 +282,7 @@
     
     
       <span class="dot"></span>
-      <span>1.1k 字</span>
+      <span>994 字</span>
     
   </div>
   
@@ -358,17 +358,12 @@
 <li>cookie保存的数据不能超4kb</li>
 </ol>
 <h3 id="4-浏览器输入url以后所经历的过程"><a href="#4-浏览器输入url以后所经历的过程" class="headerlink" title="4.浏览器输入url以后所经历的过程"></a>4.浏览器输入url以后所经历的过程</h3><ol>
-<li>首先在地址栏中输入url；</li>
-<li>浏览器先查看浏览器缓存 - 系统缓存 -  路由缓存，如果缓存中有响应数据就直接渲染到页面上，如果没有则跳过</li>
-<li>在发起http请求之前，需要域名解析（DNS解析，解析获取相应的ip地址</li>
-<li>浏览器向服务器发起tcp链接，与浏览器简历tcp三次握手；</li>
-<li>握手成功后，浏览器想服务器发起http请求，拉取数据包；</li>
-<li>服务器处理收到的请求；将处理的数据包返回到浏览器；</li>
-<li>浏览器http请求响应</li>
-<li>读取页面内容，浏览器渲染，解析html源码；</li>
-<li>生产DOM树，解析css样式，js交互</li>
-<li>客户端与服务端交互</li>
-<li>ajax查询</li>
+<li>先查找缓存，浏览器缓存，系统缓存，路由器缓存，如果有缓存就会直接显示页面内容</li>
+<li>如果没有缓存则对域名解析，解析为IP地址</li>
+<li>浏览器向服务器发起TCP链接，建立三次握手</li>
+<li>握手成功后，向服务器发起http请求，请求数据包</li>
+<li>服务器接受请求，将数据返回给浏览器</li>
+<li>浏览器接受http响应，解析内容，显示页面</li>
 </ol>
 <h3 id="5-防抖-n-秒后在执行该事件，若在-n-秒内被重复触发，则重新计时-（回泉水）"><a href="#5-防抖-n-秒后在执行该事件，若在-n-秒内被重复触发，则重新计时-（回泉水）" class="headerlink" title="5.防抖  n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时   （回泉水）"></a>5.防抖  n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时   （回泉水）</h3><p>​	防抖与节流的本质上是优化高频率执行代码的一种手段，</p>
 <pre class="highlight"><code class="hljs js"> <span class="hljs-keyword">const</span> inputDOM = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;hInput&#x27;</span>)<br> <br> <span class="hljs-comment">//用户输入完毕的时候，才发送一次http请求</span><br> <span class="hljs-keyword">function</span> <span class="hljs-title function_">debounce</span>(<span class="hljs-params">fn,delay</span>)&#123;<br>     <span class="hljs-keyword">let</span> timer = <span class="hljs-literal">null</span> <br>     <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>       <span class="hljs-keyword">if</span>(tiemr)&#123;<br>           <span class="hljs-built_in">clearTimeout</span>(timer)<br>       &#125;<br>       timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>             <span class="hljs-title function_">fn</span>()<br>         &#125;,delay)<br>     &#125;<br> &#125;<br>inputDOM.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;input&#x27;</span>,<span class="hljs-title function_">debounce</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;发送搜索请求&#x27;</span>)<br>&#125;,<span class="hljs-number">400</span>))<br></code></pre>
