@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/imgs/logo.jpg">
-  <title>Uniapp</title>
+  <title>PC微信扫码登录--小记</title>
   
     
       <meta 
         property="og:title" 
-        content="Uniapp">
+        content="PC微信扫码登录--小记">
     
     
       <meta 
         property="og:url" 
-        content="https://111zhanglan.github.io/2022/07/10/Uniapp/index.html">
+        content="https://111zhanglan.github.io/2022/09/03/PC%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95-%E5%B0%8F%E8%AE%B0/index.html">
     
     
       <meta 
@@ -46,10 +46,10 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2022-07-10">
+        content="2022-09-03">
       <meta 
         property="og:article:modified_time" 
-        content="2022-07-10">
+        content="2022-09-04">
       <meta 
         property="og:article:author" 
         content="ZhangKai">
@@ -264,21 +264,21 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      Uniapp
+      PC微信扫码登录--小记
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2022-07-10T14:05:39.000Z">
+    <time datetime="2022-09-03T15:51:40.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2022-07-10</span>
+      <span>2022-09-03</span>
     </time>
     
     
       <span class="dot"></span>
-      <span>673 字</span>
+      <span>611 字</span>
     
   </div>
   
@@ -286,32 +286,25 @@
   <div 
     id="section" 
     class="post-content">
-    <h3 id="入移动端-前言"><a href="#入移动端-前言" class="headerlink" title="入移动端 前言"></a>入移动端 前言</h3><p>7,10 今天周末 刚结束上一个项目  这个auto云控项目 主要逻辑还是 后端逻辑  用 node 在百度来来回回</p>
-<p>但是后面还是有效果</p>
-<p>项目地址 ： auto.anrookie.cn   附带了 客户端  </p>
-<h3 id="准备开始下一个新-项目-问卷调查系统"><a href="#准备开始下一个新-项目-问卷调查系统" class="headerlink" title="准备开始下一个新 项目 问卷调查系统"></a>准备开始下一个新 项目 问卷调查系统</h3><p>附带原型图 ：</p>
-<p><a target="_blank" rel="noopener" href="https://demo.axureshop.com/?url=https://cloud.axureshop.com/O7WBUY&amp;buyurl=https://www.axureshop.com/a/971.html">https://demo.axureshop.com/?url=https://cloud.axureshop.com/O7WBUY&amp;buyurl=https://www.axureshop.com/a/971.html</a></p>
-<p>样子看来上要多端发布接口终不是自己来写 老师辅助后台   </p>
-<p>移动端的技术选型 uniapp为主 网上也留着一个梗 也就是一套代码多端bug  也是适配的问题感觉 </p>
-<p>可能之前用 element UI 和 Vant UI 觉的挺香的 入Uniapp 就准备去找他的组件库</p>
-<p>网上找了 Cool Uview vantweep 等等感觉也挺多的 就准备开始用 这个Uview </p>
-<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/07/10/Uniapp/1.png" class="lozad post-image"src="/2022/07/10/Uniapp/1.png"></p>
-<p><strong>问题就出来了 样式问题在vx小程序显示不出了早该百度了</strong></p>
-<p>1.组件自定义样式不生效</p>
-<p>需要在前面添加</p>
-<pre class="highlight"><code class="hljs ruby"><span class="hljs-symbol">:</span><span class="hljs-symbol">:v-deep</span><br></code></pre>
+    <h3 id="PC微信扫码登录-–-总结"><a href="#PC微信扫码登录-–-总结" class="headerlink" title="PC微信扫码登录 – 总结"></a>PC微信扫码登录 – 总结</h3><p>需求：</p>
+<p>准备流程 </p>
+<p>一、微信开放平台账户申请</p>
+<p>网址：<a target="_blank" rel="noopener" href="https://open.weixin.qq.com/">微信开放平台</a></p>
+<p>首先我们要做的就是进入到微信开放平台申请一个开放平台账户</p>
+<p>申请账号以及最后拿到<code>appId</code>和<code>appSecret</code></p>
+<h4 id="使用接入-SDK-的方式来将二维码嵌入到页面中"><a href="#使用接入-SDK-的方式来将二维码嵌入到页面中" class="headerlink" title="使用接入 SDK 的方式来将二维码嵌入到页面中"></a>使用接入 SDK 的方式来将二维码嵌入到页面中</h4><pre class="highlight"><code class="hljs html"><span class="hljs-comment">&lt;!-- 1、首先页面接入wxloginjs --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre>
 
-<p>等等问题 <a target="_blank" rel="noopener" href="https://blog.csdn.net/liusuihong919520/article/details/124565023">https://blog.csdn.net/liusuihong919520/article/details/124565023</a></p>
-<p><strong>涉及到了样式穿透</strong></p>
-<p>1、什么是样式穿透？<br>        我们说所的穿透，官方叫做深度选择器。就是在我们想穿透的选择器前边添加 &gt;&gt;&gt; 或者 &#x2F;deep&#x2F; 或者 ::v-deep。比如说父组件中修改子组件的样式</p>
-<p>2、什么情况下会使用样式穿透<br>       在vue开发过程中，当我们引入第三方组件库时(如使用element-ui)，需要在局部组件中修改第三方组件库样式，而又不想去除scoped属性造成组件之间的样式覆盖。这时我们可以通过一些方法穿透scoped。</p>
-<p>3、怎样进行样式穿透<br>         1）使用 css 时可以用 &gt;&gt;&gt; 进行样式穿透</p>
-<pre class="highlight"><code class="hljs css">   外层类  &gt;&gt;&gt; 想要修改类名 &#123;<br>           修改样式<br>   &#125;<br><br>  例：  <span class="hljs-selector-class">.wrapper</span>  &gt;&gt;&gt;<span class="hljs-selector-class">.el-tag--warning</span> &#123;<br>   <span class="hljs-attribute">color</span>: <span class="hljs-number">#e6a23c</span>;<br>   &#125;<br><br>  <span class="hljs-number">2</span>）使用 scss, less 时，可以用 /deep/ 进行样式穿透<br><br>  外层类  /deep/ 想要修改类名 &#123;<br>           修改样式<br>   &#125;<br><br>  例：<span class="hljs-selector-class">.wrapper</span>  /deep/ <span class="hljs-selector-class">.el-tag--warning</span> &#123;<br> <span class="hljs-attribute">color</span>: <span class="hljs-number">#e6a23c</span>;<br>  &#125;<br><br> <span class="hljs-number">3</span>）使用stylus时也可以使用 &gt;&gt;&gt;进行样式穿透<br><br>  外层类  &gt;&gt;&gt; 想要修改类名 &#123;<br>           修改样式<br>   &#125;<br><br>  例： <span class="hljs-selector-class">.wrapper</span>  &gt;&gt;&gt; <span class="hljs-selector-class">.el-tag--warning</span>&#123;<br>  <span class="hljs-attribute">color</span>: <span class="hljs-number">#e6a23c</span>;<br>  &#125;<br><br><span class="hljs-number">4</span>）通用样式穿透可以使用::v-deep<br><br>  ::deep 想要修改类名 &#123;<br>           修改样式<br>   &#125;<br><br> 例： ::v-deep .el-tag--warning&#123;<br>  <span class="hljs-attribute">color</span>: <span class="hljs-number">#e6a23c</span>;<br>&#125;<br></code></pre>
-<h3 id="还有一个方法这个啥意思听不懂"><a href="#还有一个方法这个啥意思听不懂" class="headerlink" title="还有一个方法这个啥意思听不懂"></a>还有一个方法这个啥意思听不懂</h3><p>在methods同级下设置：</p>
-<pre class="highlight"><code class="hljs js"><span class="hljs-attr">options</span>: &#123; <span class="hljs-attr">styleIsolation</span>: <span class="hljs-string">&#x27;shared&#x27;</span> &#125;,<br></code></pre>
+<pre class="highlight"><code class="hljs html"><span class="hljs-comment">&lt;!-- 2、通过实例对象的方法，将二维码页面嵌入到本地页面中希望的位置 --&gt;</span><br><br><span class="hljs-comment">&lt;!-- 放二维码的容器 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;wechat-login&quot;</span>/&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-comment">// 创建微信登录的对象</span></span><br><span class="language-javascript">    <span class="hljs-keyword">new</span> <span class="hljs-title class_">WxLogin</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">self_redirect</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否在iframe内跳转 redirect_uri</span></span><br><span class="language-javascript">        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;wechat-login&#x27;</span>, <span class="hljs-comment">// 希望二维码嵌入容器的 id</span></span><br><span class="language-javascript">        <span class="hljs-attr">appid</span>: <span class="hljs-string">&#x27;appid&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">scope</span>: <span class="hljs-string">&#x27;snsapi_login&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">redirect_uri</span>: <span class="hljs-string">&#x27;扫码成功后跳转的地址&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">href</span>:    <span class="hljs-string">&#x27;data:text/css;base64,LmxvZ2luUGFuZWwubm9ybWFsUGFuZWwgLnRpdGxlIHsNCiAgZGlzcGxheTogbm9uZTsNCn0NCi5xcmNvZGUubGlnaHRCb3JkZXIgew0KICB3aWR0aDogMjAwcHg7DQogIGhlaWdodDogMjAwcHg7DQp9DQo=&#x27;</span>,</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre>
 
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lovewhatIlove/p/16179721.html">https://www.cnblogs.com/lovewhatIlove/p/16179721.html</a></p>
-<h3 id="后续的坑继续慢慢探索-。。。。。。。"><a href="#后续的坑继续慢慢探索-。。。。。。。" class="headerlink" title="后续的坑继续慢慢探索 。。。。。。。"></a>后续的坑继续慢慢探索 。。。。。。。</h3>
+<p><code>redirect_uri</code>就是微信扫码成功后跳转的地址，那为什么约定的方案还要给后端我们定义好的 js 脚本呢？因为希望微信扫码之后的动作是前端来控制的（包括成功后关闭弹窗，打开新页签这些动作）</p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p><strong>1、href:</strong> 自定义样式链接，第三方可根据实际需求覆盖默认样式。但是实际引入项目中写好的样式文件没有生效，文档里没有仔细说，直到我翻到了一行小字：***<code>觉得默认二维码过大，可以提供相关css样式文件，并把链接地址填入href字段</code>*<strong>（</strong>注意** ： 是链接地址，必须是公网地址），研究了一通发现 <strong>href</strong> 除了放链接还可以将写好的样式文件进行 base64 转码，像 代码中一样也可以实现修改二维码的样式。上面是主要参数，还有更多参数可以参考<strong>微信官方文档</strong></p>
+<p><strong>2、postMessage:</strong> 嵌在页面上的二维码其实是一个iframe，那当扫描成功之后，后端是在这个 redirect_uri 页面返回的 js 脚本，也就是在 iframe 里面来执行我们提供的脚本，实现和父窗口的通信就需要使用到 postMessage。</p>
+<p><strong>1、做什么效果？</strong></p>
+<ul>
+<li><strong>页面弹框中放二维码</strong></li>
+<li><strong>微信扫描授权成功后打开一个新标签页</strong></li>
+</ul>
+
   </div>
   <div>
     
@@ -319,29 +312,15 @@
 </article>
 <div class="nav">
   
-    <div class="nav-item-prev">
-      <a 
-        href="/2022/07/11/7-11uniapp%E5%B0%8F%E8%AE%B0/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">7.11uniapp小记 </div>
-          
-        </div>
-      </a>
-    </div>
-  
   
     <div class="nav-item-next">
       <a 
-        href="/2022/06/30/6-30%E5%AD%A6%E4%B9%A0%E6%97%A5%E6%8A%A5/" 
+        href="/2022/08/30/8-30%E5%85%B3%E4%BA%8E%E5%8E%9F%E7%94%9FJS/" 
         class="nav-link">
         <div>
           <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">6.30学习日报 </div>
+            <div class="nav-title">8.30关于原生JS </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -359,7 +338,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A5%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E5%89%8D%E8%A8%80"><span class="toc-text">入移动端 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%BC%80%E5%A7%8B%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%96%B0-%E9%A1%B9%E7%9B%AE-%E9%97%AE%E5%8D%B7%E8%B0%83%E6%9F%A5%E7%B3%BB%E7%BB%9F"><span class="toc-text">准备开始下一个新 项目 问卷调查系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95%E8%BF%99%E4%B8%AA%E5%95%A5%E6%84%8F%E6%80%9D%E5%90%AC%E4%B8%8D%E6%87%82"><span class="toc-text">还有一个方法这个啥意思听不懂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E7%9A%84%E5%9D%91%E7%BB%A7%E7%BB%AD%E6%85%A2%E6%85%A2%E6%8E%A2%E7%B4%A2-%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82"><span class="toc-text">后续的坑继续慢慢探索 。。。。。。。</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#PC%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95-%E2%80%93-%E6%80%BB%E7%BB%93"><span class="toc-text">PC微信扫码登录 – 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%8E%A5%E5%85%A5-SDK-%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9D%A5%E5%B0%86%E4%BA%8C%E7%BB%B4%E7%A0%81%E5%B5%8C%E5%85%A5%E5%88%B0%E9%A1%B5%E9%9D%A2%E4%B8%AD"><span class="toc-text">使用接入 SDK 的方式来将二维码嵌入到页面中</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">遇到的问题</span></a>
 </div></main>
             <aside class="left-column">
               
@@ -423,7 +402,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A5%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E5%89%8D%E8%A8%80"><span class="toc-text">入移动端 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%BC%80%E5%A7%8B%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%96%B0-%E9%A1%B9%E7%9B%AE-%E9%97%AE%E5%8D%B7%E8%B0%83%E6%9F%A5%E7%B3%BB%E7%BB%9F"><span class="toc-text">准备开始下一个新 项目 问卷调查系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95%E8%BF%99%E4%B8%AA%E5%95%A5%E6%84%8F%E6%80%9D%E5%90%AC%E4%B8%8D%E6%87%82"><span class="toc-text">还有一个方法这个啥意思听不懂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E7%9A%84%E5%9D%91%E7%BB%A7%E7%BB%AD%E6%85%A2%E6%85%A2%E6%8E%A2%E7%B4%A2-%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82"><span class="toc-text">后续的坑继续慢慢探索 。。。。。。。</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#PC%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95-%E2%80%93-%E6%80%BB%E7%BB%93"><span class="toc-text">PC微信扫码登录 – 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%8E%A5%E5%85%A5-SDK-%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9D%A5%E5%B0%86%E4%BA%8C%E7%BB%B4%E7%A0%81%E5%B5%8C%E5%85%A5%E5%88%B0%E9%A1%B5%E9%9D%A2%E4%B8%AD"><span class="toc-text">使用接入 SDK 的方式来将二维码嵌入到页面中</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">遇到的问题</span></a>
       </div>
     </article>
   
@@ -536,7 +515,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A5%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E5%89%8D%E8%A8%80"><span class="toc-text">入移动端 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%BC%80%E5%A7%8B%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%96%B0-%E9%A1%B9%E7%9B%AE-%E9%97%AE%E5%8D%B7%E8%B0%83%E6%9F%A5%E7%B3%BB%E7%BB%9F"><span class="toc-text">准备开始下一个新 项目 问卷调查系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95%E8%BF%99%E4%B8%AA%E5%95%A5%E6%84%8F%E6%80%9D%E5%90%AC%E4%B8%8D%E6%87%82"><span class="toc-text">还有一个方法这个啥意思听不懂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E7%9A%84%E5%9D%91%E7%BB%A7%E7%BB%AD%E6%85%A2%E6%85%A2%E6%8E%A2%E7%B4%A2-%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82"><span class="toc-text">后续的坑继续慢慢探索 。。。。。。。</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#PC%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95-%E2%80%93-%E6%80%BB%E7%BB%93"><span class="toc-text">PC微信扫码登录 – 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%8E%A5%E5%85%A5-SDK-%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9D%A5%E5%B0%86%E4%BA%8C%E7%BB%B4%E7%A0%81%E5%B5%8C%E5%85%A5%E5%88%B0%E9%A1%B5%E9%9D%A2%E4%B8%AD"><span class="toc-text">使用接入 SDK 的方式来将二维码嵌入到页面中</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">遇到的问题</span></a>
     </article>
   
   

@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/imgs/logo.jpg">
-  <title>Uniapp</title>
+  <title>归档</title>
   
     
       <meta 
         property="og:title" 
-        content="Uniapp">
+        content="归档">
     
     
       <meta 
         property="og:url" 
-        content="https://111zhanglan.github.io/2022/07/10/Uniapp/index.html">
+        content="https://111zhanglan.github.io/archives/2022/09/index.html">
     
     
       <meta 
@@ -40,22 +40,6 @@
         property="og:img" 
         content="张同学的个人小站">
     
-    
-      <meta 
-        property="og:type" 
-        content="article">
-      <meta 
-        property="og:article:published_time" 
-        content="2022-07-10">
-      <meta 
-        property="og:article:modified_time" 
-        content="2022-07-10">
-      <meta 
-        property="og:article:author" 
-        content="ZhangKai">
-      
-        
-      
     
   
   <script>
@@ -160,8 +144,6 @@
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
   
-    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
-  
 <meta name="generator" content="Hexo 6.2.0"></head>
 
   <body>
@@ -261,106 +243,33 @@
         <div class="container">
           <div class="columns">
             <main class="main-column">
-<article class="card card-content">
-  <header>
-    <h1 class="post-title">
-      Uniapp
-    </h1>
-  </header>
-  <div class="post-meta post-show-meta">
-    <time datetime="2022-07-10T14:05:39.000Z">
-      <i 
-        class="iconfont icon-calendar" 
-        style="margin-right: 2px;">
-      </i>
-      <span>2022-07-10</span>
-    </time>
-    
-    
-      <span class="dot"></span>
-      <span>673 字</span>
-    
-  </div>
+<div class="card card-content">
+  <h1 class="widget-title">归档</h1>
+</div>
+<div class="archive-timeline">
   
-  </header>
-  <div 
-    id="section" 
-    class="post-content">
-    <h3 id="入移动端-前言"><a href="#入移动端-前言" class="headerlink" title="入移动端 前言"></a>入移动端 前言</h3><p>7,10 今天周末 刚结束上一个项目  这个auto云控项目 主要逻辑还是 后端逻辑  用 node 在百度来来回回</p>
-<p>但是后面还是有效果</p>
-<p>项目地址 ： auto.anrookie.cn   附带了 客户端  </p>
-<h3 id="准备开始下一个新-项目-问卷调查系统"><a href="#准备开始下一个新-项目-问卷调查系统" class="headerlink" title="准备开始下一个新 项目 问卷调查系统"></a>准备开始下一个新 项目 问卷调查系统</h3><p>附带原型图 ：</p>
-<p><a target="_blank" rel="noopener" href="https://demo.axureshop.com/?url=https://cloud.axureshop.com/O7WBUY&amp;buyurl=https://www.axureshop.com/a/971.html">https://demo.axureshop.com/?url=https://cloud.axureshop.com/O7WBUY&amp;buyurl=https://www.axureshop.com/a/971.html</a></p>
-<p>样子看来上要多端发布接口终不是自己来写 老师辅助后台   </p>
-<p>移动端的技术选型 uniapp为主 网上也留着一个梗 也就是一套代码多端bug  也是适配的问题感觉 </p>
-<p>可能之前用 element UI 和 Vant UI 觉的挺香的 入Uniapp 就准备去找他的组件库</p>
-<p>网上找了 Cool Uview vantweep 等等感觉也挺多的 就准备开始用 这个Uview </p>
-<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/07/10/Uniapp/1.png" class="lozad post-image"src="/2022/07/10/Uniapp/1.png"></p>
-<p><strong>问题就出来了 样式问题在vx小程序显示不出了早该百度了</strong></p>
-<p>1.组件自定义样式不生效</p>
-<p>需要在前面添加</p>
-<pre class="highlight"><code class="hljs ruby"><span class="hljs-symbol">:</span><span class="hljs-symbol">:v-deep</span><br></code></pre>
-
-<p>等等问题 <a target="_blank" rel="noopener" href="https://blog.csdn.net/liusuihong919520/article/details/124565023">https://blog.csdn.net/liusuihong919520/article/details/124565023</a></p>
-<p><strong>涉及到了样式穿透</strong></p>
-<p>1、什么是样式穿透？<br>        我们说所的穿透，官方叫做深度选择器。就是在我们想穿透的选择器前边添加 &gt;&gt;&gt; 或者 &#x2F;deep&#x2F; 或者 ::v-deep。比如说父组件中修改子组件的样式</p>
-<p>2、什么情况下会使用样式穿透<br>       在vue开发过程中，当我们引入第三方组件库时(如使用element-ui)，需要在局部组件中修改第三方组件库样式，而又不想去除scoped属性造成组件之间的样式覆盖。这时我们可以通过一些方法穿透scoped。</p>
-<p>3、怎样进行样式穿透<br>         1）使用 css 时可以用 &gt;&gt;&gt; 进行样式穿透</p>
-<pre class="highlight"><code class="hljs css">   外层类  &gt;&gt;&gt; 想要修改类名 &#123;<br>           修改样式<br>   &#125;<br><br>  例：  <span class="hljs-selector-class">.wrapper</span>  &gt;&gt;&gt;<span class="hljs-selector-class">.el-tag--warning</span> &#123;<br>   <span class="hljs-attribute">color</span>: <span class="hljs-number">#e6a23c</span>;<br>   &#125;<br><br>  <span class="hljs-number">2</span>）使用 scss, less 时，可以用 /deep/ 进行样式穿透<br><br>  外层类  /deep/ 想要修改类名 &#123;<br>           修改样式<br>   &#125;<br><br>  例：<span class="hljs-selector-class">.wrapper</span>  /deep/ <span class="hljs-selector-class">.el-tag--warning</span> &#123;<br> <span class="hljs-attribute">color</span>: <span class="hljs-number">#e6a23c</span>;<br>  &#125;<br><br> <span class="hljs-number">3</span>）使用stylus时也可以使用 &gt;&gt;&gt;进行样式穿透<br><br>  外层类  &gt;&gt;&gt; 想要修改类名 &#123;<br>           修改样式<br>   &#125;<br><br>  例： <span class="hljs-selector-class">.wrapper</span>  &gt;&gt;&gt; <span class="hljs-selector-class">.el-tag--warning</span>&#123;<br>  <span class="hljs-attribute">color</span>: <span class="hljs-number">#e6a23c</span>;<br>  &#125;<br><br><span class="hljs-number">4</span>）通用样式穿透可以使用::v-deep<br><br>  ::deep 想要修改类名 &#123;<br>           修改样式<br>   &#125;<br><br> 例： ::v-deep .el-tag--warning&#123;<br>  <span class="hljs-attribute">color</span>: <span class="hljs-number">#e6a23c</span>;<br>&#125;<br></code></pre>
-<h3 id="还有一个方法这个啥意思听不懂"><a href="#还有一个方法这个啥意思听不懂" class="headerlink" title="还有一个方法这个啥意思听不懂"></a>还有一个方法这个啥意思听不懂</h3><p>在methods同级下设置：</p>
-<pre class="highlight"><code class="hljs js"><span class="hljs-attr">options</span>: &#123; <span class="hljs-attr">styleIsolation</span>: <span class="hljs-string">&#x27;shared&#x27;</span> &#125;,<br></code></pre>
-
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lovewhatIlove/p/16179721.html">https://www.cnblogs.com/lovewhatIlove/p/16179721.html</a></p>
-<h3 id="后续的坑继续慢慢探索-。。。。。。。"><a href="#后续的坑继续慢慢探索-。。。。。。。" class="headerlink" title="后续的坑继续慢慢探索 。。。。。。。"></a>后续的坑继续慢慢探索 。。。。。。。</h3>
-  </div>
-  <div>
-    
-  </div>
-</article>
-<div class="nav">
   
-    <div class="nav-item-prev">
-      <a 
-        href="/2022/07/11/7-11uniapp%E5%B0%8F%E8%AE%B0/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">7.11uniapp小记 </div>
-          
+    
+      <div class="archive-timeline-tag"><span>2022</span></div>
+      
+    
+    <div class="archive-timeline-item">
+      <div class="archive-timeline-post">
+        <div class="card card-content">
+          <div class="archive-timeline-post-date">2022-09-03</div>
+          <div class="archive-timeline-post-content">
+            <a 
+              href="/2022/09/03/PC%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95-%E5%B0%8F%E8%AE%B0/"
+              class="archive-timeline-post-item">
+              PC微信扫码登录--小记
+            </a>
+          </div>
         </div>
-      </a>
-    </div>
-  
-  
-    <div class="nav-item-next">
-      <a 
-        href="/2022/06/30/6-30%E5%AD%A6%E4%B9%A0%E6%97%A5%E6%8A%A5/" 
-        class="nav-link">
-        <div>
-          <div class="nav-label">下一篇</div>
-          
-            <div class="nav-title">6.30学习日报 </div>
-          
-        </div>
-        <i class="iconfont icon-right nav-next-icon"></i>
-      </a>
+      </div>
     </div>
   
 </div>
-
-<div 
-  class="card card-content toc-card" 
-  id="mobiletoc">
-  <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A5%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E5%89%8D%E8%A8%80"><span class="toc-text">入移动端 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%BC%80%E5%A7%8B%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%96%B0-%E9%A1%B9%E7%9B%AE-%E9%97%AE%E5%8D%B7%E8%B0%83%E6%9F%A5%E7%B3%BB%E7%BB%9F"><span class="toc-text">准备开始下一个新 项目 问卷调查系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95%E8%BF%99%E4%B8%AA%E5%95%A5%E6%84%8F%E6%80%9D%E5%90%AC%E4%B8%8D%E6%87%82"><span class="toc-text">还有一个方法这个啥意思听不懂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E7%9A%84%E5%9D%91%E7%BB%A7%E7%BB%AD%E6%85%A2%E6%85%A2%E6%8E%A2%E7%B4%A2-%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82"><span class="toc-text">后续的坑继续慢慢探索 。。。。。。。</span></a></li></ol>
-</div></main>
+</main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -415,18 +324,6 @@
                <div class="sticky-tablet">
   
   
-    <article class="display-when-two-columns spacer">
-      <div class="card card-content toc-card">
-        <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A5%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E5%89%8D%E8%A8%80"><span class="toc-text">入移动端 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%BC%80%E5%A7%8B%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%96%B0-%E9%A1%B9%E7%9B%AE-%E9%97%AE%E5%8D%B7%E8%B0%83%E6%9F%A5%E7%B3%BB%E7%BB%9F"><span class="toc-text">准备开始下一个新 项目 问卷调查系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95%E8%BF%99%E4%B8%AA%E5%95%A5%E6%84%8F%E6%80%9D%E5%90%AC%E4%B8%8D%E6%87%82"><span class="toc-text">还有一个方法这个啥意思听不懂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E7%9A%84%E5%9D%91%E7%BB%A7%E7%BB%AD%E6%85%A2%E6%85%A2%E6%8E%A2%E7%B4%A2-%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82"><span class="toc-text">后续的坑继续慢慢探索 。。。。。。。</span></a></li></ol>
-      </div>
-    </article>
-  
   
   <article class="card card-content categories-widget">
     <div class="categories-card">
@@ -453,15 +350,9 @@
   <div class="tags-list">
     
       <a 
-        href="/tags/%E5%88%86%E4%BA%AB/" 
-        title="分享">
-        <div class="tags-list-item">分享</div>
-      </a>
-    
-      <a 
-        href="/tags/js%E6%8F%92%E4%BB%B6/" 
-        title="js插件">
-        <div class="tags-list-item">js插件</div>
+        href="/tags/%E9%9D%A2%E8%AF%95/" 
+        title="面试">
+        <div class="tags-list-item">面试</div>
       </a>
     
       <a 
@@ -477,33 +368,15 @@
       </a>
     
       <a 
-        href="/tags/HTML5/" 
-        title="HTML5">
-        <div class="tags-list-item">HTML5</div>
+        href="/tags/js%E6%8F%92%E4%BB%B6/" 
+        title="js插件">
+        <div class="tags-list-item">js插件</div>
       </a>
     
       <a 
-        href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" 
-        title="浏览器">
-        <div class="tags-list-item">浏览器</div>
-      </a>
-    
-      <a 
-        href="/tags/%E9%9D%A2%E8%AF%95/" 
-        title="面试">
-        <div class="tags-list-item">面试</div>
-      </a>
-    
-      <a 
-        href="/tags/uniapp/" 
-        title="uniapp">
-        <div class="tags-list-item">uniapp</div>
-      </a>
-    
-      <a 
-        href="/tags/uniapp-vue/" 
-        title="uniapp/vue">
-        <div class="tags-list-item">uniapp/vue</div>
+        href="/tags/CSS/" 
+        title="CSS">
+        <div class="tags-list-item">CSS</div>
       </a>
     
       <a 
@@ -513,9 +386,33 @@
       </a>
     
       <a 
-        href="/tags/CSS/" 
-        title="CSS">
-        <div class="tags-list-item">CSS</div>
+        href="/tags/uniapp-vue/" 
+        title="uniapp/vue">
+        <div class="tags-list-item">uniapp/vue</div>
+      </a>
+    
+      <a 
+        href="/tags/uniapp/" 
+        title="uniapp">
+        <div class="tags-list-item">uniapp</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" 
+        title="浏览器">
+        <div class="tags-list-item">浏览器</div>
+      </a>
+    
+      <a 
+        href="/tags/HTML5/" 
+        title="HTML5">
+        <div class="tags-list-item">HTML5</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%88%86%E4%BA%AB/" 
+        title="分享">
+        <div class="tags-list-item">分享</div>
       </a>
     
   </div>
@@ -523,21 +420,173 @@
   </article>
   
   
+    <article class="card card-content widescreen-archive archive-widget">
+      <div class="archive-card">
+  <div class="archive-card-header">
+    <i 
+      class="iconfont icon-wodebaobiao" 
+      style="padding-right: 2px;">
+    </i>归档
+  </div>
+  <div class="archive-card-list">
+    
+    
+    
+      
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+    
+      <a 
+        href="/archives/2022" 
+        class="archive-card-list-item">
+        2022
+        <span class="archive-card-list-item-badge">34</span>
+      </a>
+    
+  </div>
+</div>
+    </article>
+  
 </div>
             </aside>
             <aside class="right-column">
               <div class="sticky-widescreen">
   
-  
-    <article class="card card-content toc-card">
-      <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A5%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E5%89%8D%E8%A8%80"><span class="toc-text">入移动端 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%BC%80%E5%A7%8B%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%96%B0-%E9%A1%B9%E7%9B%AE-%E9%97%AE%E5%8D%B7%E8%B0%83%E6%9F%A5%E7%B3%BB%E7%BB%9F"><span class="toc-text">准备开始下一个新 项目 问卷调查系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95%E8%BF%99%E4%B8%AA%E5%95%A5%E6%84%8F%E6%80%9D%E5%90%AC%E4%B8%8D%E6%87%82"><span class="toc-text">还有一个方法这个啥意思听不懂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E7%9A%84%E5%9D%91%E7%BB%A7%E7%BB%AD%E6%85%A2%E6%85%A2%E6%8E%A2%E7%B4%A2-%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82"><span class="toc-text">后续的坑继续慢慢探索 。。。。。。。</span></a></li></ol>
-    </article>
   
   
   <article class="card card-content">
@@ -574,6 +623,168 @@
 </div>
   </article>
   
+  
+    <article class="card card-content">
+      <div class="archive-card">
+  <div class="archive-card-header">
+    <i 
+      class="iconfont icon-wodebaobiao" 
+      style="padding-right: 2px;">
+    </i>归档
+  </div>
+  <div class="archive-card-list">
+    
+    
+    
+      
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+    
+      <a 
+        href="/archives/2022" 
+        class="archive-card-list-item">
+        2022
+        <span class="archive-card-list-item-badge">34</span>
+      </a>
+    
+  </div>
+</div>
+    </article>
   
 </div>
             </aside>
@@ -689,36 +900,6 @@
 </a> 
      
      
-     
-      <script>
-  var addImgLayout = function () {
-    var img = document.querySelectorAll('.post-content img')
-    var i
-    for (i = 0; i < img.length; i++) {
-      var wrapper = document.createElement('a')
-      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
-      wrapper.setAttribute('aria-label', 'illustration')
-      wrapper.style.cssText =
-        'width: 100%; display: flex; justify-content: center;'
-      if (img[i].alt) wrapper.dataset.caption = img[i].alt
-      wrapper.dataset.nolink = true
-      img[i].before(wrapper)
-      wrapper.append(img[i])
-      var divWrap = document.createElement('div')
-      divWrap.classList.add('gallery')
-      wrapper.before(divWrap)
-      divWrap.append(wrapper)
-    }
-    baguetteBox.run('.gallery')
-  }
-</script>
-<script>
-  loadScript(
-    "/js/lib/lightbox/baguetteBox.min.js",
-    addImgLayout
-  )
-</script>
- 
      
      
     <script src="/js/main.js"></script> 
