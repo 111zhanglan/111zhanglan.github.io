@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/imgs/logo.jpg">
-  <title>张同学的Blog</title>
+  <title>关于node-svg-captcha生成图形验证码</title>
   
     
       <meta 
         property="og:title" 
-        content="张同学的Blog">
+        content="关于node-svg-captcha生成图形验证码">
     
     
       <meta 
         property="og:url" 
-        content="https://111zhanglan.github.io/2022/06/20/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8E%9F%E5%BD%A2ES5/js%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
+        content="https://111zhanglan.github.io/2022/09/09/%E5%85%B3%E4%BA%8Enode-svg-captcha%E7%94%9F%E6%88%90%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81/index.html">
     
     
       <meta 
@@ -46,10 +46,10 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2022-06-20">
+        content="2022-09-09">
       <meta 
         property="og:article:modified_time" 
-        content="2022-06-20">
+        content="2022-09-09">
       <meta 
         property="og:article:author" 
         content="ZhangKai">
@@ -264,21 +264,21 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      
+      关于node-svg-captcha生成图形验证码
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2022-06-20T00:56:52.434Z">
+    <time datetime="2022-09-09T07:53:02.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2022-06-20</span>
+      <span>2022-09-09</span>
     </time>
     
     
       <span class="dot"></span>
-      <span>112 字</span>
+      <span>403 字</span>
     
   </div>
   
@@ -286,13 +286,23 @@
   <div 
     id="section" 
     class="post-content">
-    <h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><h3 id="let-amp-const暂时性死区TDC"><a href="#let-amp-const暂时性死区TDC" class="headerlink" title="let&amp;const暂时性死区TDC"></a>let&amp;const暂时性死区TDC</h3><pre class="highlight"><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(web);   <span class="hljs-comment">//  undifined var申明变量产生变量提升</span><br><span class="hljs-keyword">var</span> web = <span class="hljs-string">&quot;zhangtongxue&quot;</span><br></code></pre>
+    <p>后端利用 node.js + express  生成图形验证码</p>
+<p>先使用 express 搭建一个简单的服务器 </p>
+<p><code>npm i express</code></p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>)<br><span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>()<br>app.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">static</span>(<span class="hljs-string">&#x27;public&#x27;</span>)) <span class="hljs-comment">// 配置静态资源</span><br><br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">80</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;http://127.0.0.1&#x27;</span>)<br>&#125;)<br><br></code></pre>
 
-<pre class="highlight"><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(web);   <span class="hljs-comment">//报错 let 需要在声明之后使用</span><br><span class="hljs-keyword">let</span> web = <span class="hljs-string">&quot;zhangtongxue&quot;</span><br></code></pre>
+<p>然后安装 svg-captcha 第三方模块 </p>
+<p><code>npm i svg-captcha</code></p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-comment">//引入</span><br><span class="hljs-keyword">const</span> svgCaptcha = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;svg-captcha&#x27;</span>)<br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/getInfo&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br> <span class="hljs-comment">// 下面这行代码是随机生成验证码图片和文本并返回给客户端 </span><br>  <span class="hljs-keyword">const</span> c = svgCaptcha.<span class="hljs-title function_">create</span>(&#123; <br>    <span class="hljs-attr">size</span>: <span class="hljs-number">6</span>, <span class="hljs-comment">// 验证码长度</span><br>    <span class="hljs-attr">ignoreChars</span>: <span class="hljs-string">&#x27;0o1i&#x27;</span>, <span class="hljs-comment">// 验证码字符中排除 0o1i</span><br>    <span class="hljs-attr">color</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 验证码是否有彩色</span><br>    <span class="hljs-attr">noise</span>: <span class="hljs-number">1</span>, <span class="hljs-comment">//干扰线</span><br>    <span class="hljs-attr">background</span>: <span class="hljs-string">&#x27;#666&#x27;</span> <span class="hljs-comment">// 背景颜色</span><br>  &#125;)<br>  res.<span class="hljs-title function_">send</span>(c)<br>&#125;)<br><br></code></pre>
 
-<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">let</span> web = <span class="hljs-string">&#x27;zhagkai&#x27;</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">func</span> () &#123;<br>    <span class="hljs-comment">//3.let web = &#x27;yanyan&#x27;</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(web)   <span class="hljs-comment">//1. zhangkai</span><br>    <span class="hljs-keyword">let</span> web = <span class="hljs-string">&#x27;yanyan&#x27;</span> <span class="hljs-comment">//2.在代码块中声明了与外部相同的变量名则报错 需放到上面</span><br>&#125;<br><span class="hljs-title function_">func</span>(); <br></code></pre>
+<p>前端进行调用</p>
+<pre class="highlight"><code class="hljs vue">&lt;template&gt;<br>  &lt;div class=&quot;container&quot;&gt;<br>  <br>    &lt;h1&gt;图形验证码&lt;/h1&gt;<br>     &lt;div v-html=&quot;Svg&quot;&gt;&lt;/div&gt;<br><br>    &lt;button id=&quot;btn&quot; @click=&quot;getinfo&quot;&gt;刷新&lt;/button&gt;<br>    &lt;input type=&quot;text&quot; id=&quot;ipt&quot; v-model=&quot;val&quot; @blur=&quot;bijiao()&quot; /&gt;<br>    &lt;span id=&quot;span&quot; ref=&quot;spanRef&quot;&gt;&lt;/span&gt;<br>  &lt;/div&gt;<br><br><br>&lt;/template&gt;<br><br>&lt;script&gt;<br><br>import axios from &#x27;axios&#x27;<br>export default &#123;<br>data()&#123;<br>  return&#123;<br>     Svg:&#x27;&#x27;,<br>     val:&#x27;&#x27;,<br>     result:&#x27;&#x27;<br>  &#125;<br>&#125;,<br>methods:&#123;<br>   // 调用封装为方法<br>  getinfo ()&#123;<br>  axios.get(&#x27;http://127.0.0.1:8848/getInfo&#x27;).then((res)=&gt;&#123;<br>        this.Svg = res.data.data<br>        this.result = res.data.text<br>        console.log(res.data.text)<br>        console.log(&quot;结果&quot;,this.Svg);<br>  &#125;)<br>&#125;,<br>bijiao()&#123;<br>   if(this.val.toLowerCase() === this.result.toLowerCase())&#123;<br>     console.log(this.val,this.result)<br>     alert(&quot;success&quot;)<br>     this.val = &#x27;&#x27;<br>   &#125;else&#123;<br>     console.log(this.val,this.result)<br>     alert(&quot;fail&quot;)<br>     this.getinfo();<br>   &#125;<br>&#125;<br>&#125;,<br>mounted()&#123;<br>  this.getinfo()<br>&#125;<br><br><br><br>&#125;;<br>&lt;/script&gt;<br><br></code></pre>
 
-<h3 id="关于-axios-和-ajax-的put-请求区别"><a href="#关于-axios-和-ajax-的put-请求区别" class="headerlink" title="关于 axios 和 ajax  的put 请求区别"></a>关于 axios 和 ajax  的put 请求区别</h3>
+
+
+
+
+
   </div>
   <div>
     
@@ -300,29 +310,15 @@
 </article>
 <div class="nav">
   
-    <div class="nav-item-prev">
-      <a 
-        href="/2022/06/20/JQuery/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">JQuery </div>
-          
-        </div>
-      </a>
-    </div>
-  
   
     <div class="nav-item-next">
       <a 
-        href="/2022/06/19/6-18-JavaScript%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" 
+        href="/2022/09/08/%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AAvue3%E9%A1%B9%E7%9B%AE/" 
         class="nav-link">
         <div>
           <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">6.18-JavaScript面向对象 </div>
+            <div class="nav-title">初始化一个vue3项目 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -340,7 +336,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#let-amp-const%E6%9A%82%E6%97%B6%E6%80%A7%E6%AD%BB%E5%8C%BATDC"><span class="toc-text">let&amp;const暂时性死区TDC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-axios-%E5%92%8C-ajax-%E7%9A%84put-%E8%AF%B7%E6%B1%82%E5%8C%BA%E5%88%AB"><span class="toc-text">关于 axios 和 ajax  的put 请求区别</span></a></li></ol></li></ol>
+
 </div></main>
             <aside class="left-column">
               
@@ -404,7 +400,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#let-amp-const%E6%9A%82%E6%97%B6%E6%80%A7%E6%AD%BB%E5%8C%BATDC"><span class="toc-text">let&amp;const暂时性死区TDC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-axios-%E5%92%8C-ajax-%E7%9A%84put-%E8%AF%B7%E6%B1%82%E5%8C%BA%E5%88%AB"><span class="toc-text">关于 axios 和 ajax  的put 请求区别</span></a></li></ol></li></ol>
+
       </div>
     </article>
   
@@ -434,9 +430,15 @@
   <div class="tags-list">
     
       <a 
-        href="/tags/%E9%9D%A2%E8%AF%95/" 
-        title="面试">
-        <div class="tags-list-item">面试</div>
+        href="/tags/%E5%88%86%E4%BA%AB/" 
+        title="分享">
+        <div class="tags-list-item">分享</div>
+      </a>
+    
+      <a 
+        href="/tags/js%E6%8F%92%E4%BB%B6/" 
+        title="js插件">
+        <div class="tags-list-item">js插件</div>
       </a>
     
       <a 
@@ -452,33 +454,9 @@
       </a>
     
       <a 
-        href="/tags/js%E6%8F%92%E4%BB%B6/" 
-        title="js插件">
-        <div class="tags-list-item">js插件</div>
-      </a>
-    
-      <a 
-        href="/tags/CSS/" 
-        title="CSS">
-        <div class="tags-list-item">CSS</div>
-      </a>
-    
-      <a 
-        href="/tags/Webpack/" 
-        title="Webpack">
-        <div class="tags-list-item">Webpack</div>
-      </a>
-    
-      <a 
-        href="/tags/uniapp-vue/" 
-        title="uniapp/vue">
-        <div class="tags-list-item">uniapp/vue</div>
-      </a>
-    
-      <a 
-        href="/tags/uniapp/" 
-        title="uniapp">
-        <div class="tags-list-item">uniapp</div>
+        href="/tags/HTML5/" 
+        title="HTML5">
+        <div class="tags-list-item">HTML5</div>
       </a>
     
       <a 
@@ -488,15 +466,33 @@
       </a>
     
       <a 
-        href="/tags/HTML5/" 
-        title="HTML5">
-        <div class="tags-list-item">HTML5</div>
+        href="/tags/%E9%9D%A2%E8%AF%95/" 
+        title="面试">
+        <div class="tags-list-item">面试</div>
       </a>
     
       <a 
-        href="/tags/%E5%88%86%E4%BA%AB/" 
-        title="分享">
-        <div class="tags-list-item">分享</div>
+        href="/tags/uniapp/" 
+        title="uniapp">
+        <div class="tags-list-item">uniapp</div>
+      </a>
+    
+      <a 
+        href="/tags/uniapp-vue/" 
+        title="uniapp/vue">
+        <div class="tags-list-item">uniapp/vue</div>
+      </a>
+    
+      <a 
+        href="/tags/Webpack/" 
+        title="Webpack">
+        <div class="tags-list-item">Webpack</div>
+      </a>
+    
+      <a 
+        href="/tags/CSS/" 
+        title="CSS">
+        <div class="tags-list-item">CSS</div>
       </a>
     
   </div>
@@ -517,7 +513,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#let-amp-const%E6%9A%82%E6%97%B6%E6%80%A7%E6%AD%BB%E5%8C%BATDC"><span class="toc-text">let&amp;const暂时性死区TDC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-axios-%E5%92%8C-ajax-%E7%9A%84put-%E8%AF%B7%E6%B1%82%E5%8C%BA%E5%88%AB"><span class="toc-text">关于 axios 和 ajax  的put 请求区别</span></a></li></ol></li></ol>
+
     </article>
   
   
