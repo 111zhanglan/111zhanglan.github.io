@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/imgs/logo.jpg">
-  <title>初始化一个vue3项目</title>
+  <title>关于node,express-jwt,jsonwebtoken生成验证token</title>
   
     
       <meta 
         property="og:title" 
-        content="初始化一个vue3项目">
+        content="关于node,express-jwt,jsonwebtoken生成验证token">
     
     
       <meta 
         property="og:url" 
-        content="https://111zhanglan.github.io/2022/09/08/%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AAvue3%E9%A1%B9%E7%9B%AE/index.html">
+        content="https://111zhanglan.github.io/2022/09/10/%E5%85%B3%E4%BA%8Enode-express-jwt-jsonwebtoken%E7%94%9F%E6%88%90%E9%AA%8C%E8%AF%81token/index.html">
     
     
       <meta 
@@ -46,14 +46,18 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2022-09-08">
+        content="2022-09-10">
       <meta 
         property="og:article:modified_time" 
-        content="2022-09-08">
+        content="2022-09-10">
       <meta 
         property="og:article:author" 
         content="ZhangKai">
       
+        
+          <meta 
+            property="og:article:tag" 
+            content="node.js">
         
       
     
@@ -264,37 +268,51 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      初始化一个vue3项目
+      关于node,express-jwt,jsonwebtoken生成验证token
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2022-09-08T08:22:51.000Z">
+    <time datetime="2022-09-10T06:53:51.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2022-09-08</span>
+      <span>2022-09-10</span>
     </time>
     
     
       <span class="dot"></span>
-      <span>249 字</span>
+      <span>129 字</span>
     
   </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/node-js/" 
+            class="post-meta-link">
+            node.js
+          </a>
+        
+      </div>
+    </div>
   
   </header>
   <div 
     id="section" 
     class="post-content">
-    <h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>我默认自己先熟悉一遍vue3 的路由以及main.js</p>
-<h4 id="1-配置-路由"><a href="#1-配置-路由" class="headerlink" title="1. 配置 路由"></a>1. 配置 路由</h4><p><code>npm下载 vue3 版本的路由</code></p>
-<pre class="highlight"><code class="hljs js"><span class="hljs-comment">// 下载支持vue3的路由  npm install vue-router@4</span><br></code></pre>
+    <h3 id="关于后台登录验证-token-的生成方法"><a href="#关于后台登录验证-token-的生成方法" class="headerlink" title="关于后台登录验证 token  的生成方法"></a>关于后台登录验证 token  的生成方法</h3><p>需要用到两个包 </p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">let</span> &#123; express : jwtt &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;express-jwt&quot;</span>);<br><span class="hljs-keyword">let</span> jwt = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;jsonwebtoken&quot;</span>);<br><span class="hljs-keyword">let</span> secretkey = <span class="hljs-string">&quot;xxx&quot;</span><br><span class="hljs-comment">//配置token </span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">jwtt</span>(&#123; <span class="hljs-attr">secret</span>:secretkey, <span class="hljs-attr">algorithms</span>: [<span class="hljs-string">&#x27;HS256&#x27;</span>] &#125;).<span class="hljs-title function_">unless</span>(&#123; <span class="hljs-attr">path</span>:[<span class="hljs-string">&#x27;/login&#x27;</span>] &#125;))<br>app.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">err,req,res,next</span>)=&gt;</span>&#123;<br>  <span class="hljs-keyword">if</span>(err.<span class="hljs-property">name</span> === <span class="hljs-string">&#x27;UnauthorizedError&#x27;</span>)&#123;<br>     res.<span class="hljs-title function_">status</span>(<span class="hljs-number">401</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;invalid token 还未登录哦 ... &#x27;</span>)<br>  &#125;<br>&#125;)<br><br><span class="hljs-comment">//当登录成功时</span><br><span class="hljs-keyword">if</span>(login == <span class="hljs-literal">true</span> )&#123;<br>    <span class="hljs-comment">//生成token</span><br>     <span class="hljs-keyword">const</span> token = jwt.<span class="hljs-title function_">sign</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(&#123;&#125;,resultData[<span class="hljs-number">0</span>]),secretkey,&#123;<span class="hljs-attr">expiresIn</span>:<span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">2</span>&#125;)<br>    res.<span class="hljs-title function_">send</span>(&#123;token &#125; )<br>&#125;<br></code></pre>
 
-<p>2.在 src 目录下创建 router 文件夹 里创建 index.js </p>
-<pre class="highlight"><code class="hljs js"><span class="hljs-comment">// 引入路由 </span><br><span class="hljs-keyword">import</span> &#123; createRouter, createWebHashHistory &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-router&#x27;</span><br><br><span class="hljs-keyword">const</span> routes = [<br>    &#123;<br>        <span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/&#x27;</span>,<br>        <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;login&#x27;</span>, <br>        <span class="hljs-comment">//按需引入方式</span><br>        <span class="hljs-attr">component</span>:<span class="hljs-function">()=&gt;</span> <span class="hljs-title function_">import</span>(<span class="hljs-comment">/*webpackChunkName:&#x27;Login&#x27;*/</span><span class="hljs-string">&#x27;@/page/login/login.vue&#x27;</span>)<br>    &#125;<br>] <br><br><span class="hljs-keyword">const</span> router = <span class="hljs-title function_">createRouter</span>(&#123;<br>    <span class="hljs-comment">//路由模式 </span><br>    <span class="hljs-attr">history</span>:<span class="hljs-title function_">createWebHashHistory</span>(),  <span class="hljs-comment">// </span><br>    routes <br>&#125;)<br><br><span class="hljs-comment">// 导出挂载到main.js </span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router <br></code></pre>
-
-<h4 id="3-配置-main-js-挂载-路由-element-plus-以及-vuex"><a href="#3-配置-main-js-挂载-路由-element-plus-以及-vuex" class="headerlink" title="3.配置 main.js   挂载 路由 element plus 以及 vuex"></a>3.配置 main.js   挂载 路由 element plus 以及 vuex</h4>  <pre class="highlight"><code class="hljs js"><span class="hljs-keyword">import</span> &#123; createApp &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span><br><span class="hljs-comment">//引入路由</span><br><span class="hljs-keyword">import</span> router <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/router/index&#x27;</span><br><span class="hljs-comment">//引入elementplus </span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">ElementPlus</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-plus&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;element-plus/dist/index.css&#x27;</span><br><br><span class="hljs-comment">//默认国际化是英文该为中文 </span><br><span class="hljs-keyword">import</span> zhCn <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-plus/es/locale/lang/zh-cn&#x27;</span><br><span class="hljs-title function_">createApp</span>(<span class="hljs-title class_">App</span>).<span class="hljs-title function_">use</span>(router).<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ElementPlus</span>,&#123;<span class="hljs-attr">locale</span>:zhCn&#125;).<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#x27;#app&#x27;</span>)<br><br><span class="hljs-comment">// 下载支持vue3的路由  npm install vue-router@4</span><br><span class="hljs-comment">// 下载Element plus   npm install element-plus  --save</span><br></code></pre>
-
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/2022/09/10/%E5%85%B3%E4%BA%8Enode-express-jwt-jsonwebtoken%E7%94%9F%E6%88%90%E9%AA%8C%E8%AF%81token/1.png" class="lozad post-image"src="/2022/09/10/%E5%85%B3%E4%BA%8Enode-express-jwt-jsonwebtoken%E7%94%9F%E6%88%90%E9%AA%8C%E8%AF%81token/1.png"></p>
 
   </div>
   <div>
@@ -303,29 +321,15 @@
 </article>
 <div class="nav">
   
-    <div class="nav-item-prev">
-      <a 
-        href="/2022/09/09/%E5%85%B3%E4%BA%8Enode-svg-captcha%E7%94%9F%E6%88%90%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">关于node-svg-captcha生成图形验证码 </div>
-          
-        </div>
-      </a>
-    </div>
-  
   
     <div class="nav-item-next">
       <a 
-        href="/2022/09/03/PC%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95-%E5%B0%8F%E8%AE%B0/" 
+        href="/2022/09/09/%E5%85%B3%E4%BA%8Enode-svg-captcha%E7%94%9F%E6%88%90%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81/" 
         class="nav-link">
         <div>
           <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">PC微信扫码登录--小记 </div>
+            <div class="nav-title">关于node-svg-captcha生成图形验证码 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -343,7 +347,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AE-%E8%B7%AF%E7%94%B1"><span class="toc-text">1. 配置 路由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE-main-js-%E6%8C%82%E8%BD%BD-%E8%B7%AF%E7%94%B1-element-plus-%E4%BB%A5%E5%8F%8A-vuex"><span class="toc-text">3.配置 main.js   挂载 路由 element plus 以及 vuex</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%90%8E%E5%8F%B0%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81-token-%E7%9A%84%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95"><span class="toc-text">关于后台登录验证 token  的生成方法</span></a></li></ol>
 </div></main>
             <aside class="left-column">
               
@@ -407,7 +411,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AE-%E8%B7%AF%E7%94%B1"><span class="toc-text">1. 配置 路由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE-main-js-%E6%8C%82%E8%BD%BD-%E8%B7%AF%E7%94%B1-element-plus-%E4%BB%A5%E5%8F%8A-vuex"><span class="toc-text">3.配置 main.js   挂载 路由 element plus 以及 vuex</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%90%8E%E5%8F%B0%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81-token-%E7%9A%84%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95"><span class="toc-text">关于后台登录验证 token  的生成方法</span></a></li></ol>
       </div>
     </article>
   
@@ -437,9 +441,15 @@
   <div class="tags-list">
     
       <a 
-        href="/tags/%E9%9D%A2%E8%AF%95/" 
-        title="面试">
-        <div class="tags-list-item">面试</div>
+        href="/tags/%E5%88%86%E4%BA%AB/" 
+        title="分享">
+        <div class="tags-list-item">分享</div>
+      </a>
+    
+      <a 
+        href="/tags/js%E6%8F%92%E4%BB%B6/" 
+        title="js插件">
+        <div class="tags-list-item">js插件</div>
       </a>
     
       <a 
@@ -455,39 +465,9 @@
       </a>
     
       <a 
-        href="/tags/node-js/" 
-        title="node.js">
-        <div class="tags-list-item">node.js</div>
-      </a>
-    
-      <a 
-        href="/tags/js%E6%8F%92%E4%BB%B6/" 
-        title="js插件">
-        <div class="tags-list-item">js插件</div>
-      </a>
-    
-      <a 
-        href="/tags/CSS/" 
-        title="CSS">
-        <div class="tags-list-item">CSS</div>
-      </a>
-    
-      <a 
-        href="/tags/Webpack/" 
-        title="Webpack">
-        <div class="tags-list-item">Webpack</div>
-      </a>
-    
-      <a 
-        href="/tags/uniapp-vue/" 
-        title="uniapp/vue">
-        <div class="tags-list-item">uniapp/vue</div>
-      </a>
-    
-      <a 
-        href="/tags/uniapp/" 
-        title="uniapp">
-        <div class="tags-list-item">uniapp</div>
+        href="/tags/HTML5/" 
+        title="HTML5">
+        <div class="tags-list-item">HTML5</div>
       </a>
     
       <a 
@@ -497,15 +477,39 @@
       </a>
     
       <a 
-        href="/tags/HTML5/" 
-        title="HTML5">
-        <div class="tags-list-item">HTML5</div>
+        href="/tags/%E9%9D%A2%E8%AF%95/" 
+        title="面试">
+        <div class="tags-list-item">面试</div>
       </a>
     
       <a 
-        href="/tags/%E5%88%86%E4%BA%AB/" 
-        title="分享">
-        <div class="tags-list-item">分享</div>
+        href="/tags/uniapp/" 
+        title="uniapp">
+        <div class="tags-list-item">uniapp</div>
+      </a>
+    
+      <a 
+        href="/tags/uniapp-vue/" 
+        title="uniapp/vue">
+        <div class="tags-list-item">uniapp/vue</div>
+      </a>
+    
+      <a 
+        href="/tags/Webpack/" 
+        title="Webpack">
+        <div class="tags-list-item">Webpack</div>
+      </a>
+    
+      <a 
+        href="/tags/CSS/" 
+        title="CSS">
+        <div class="tags-list-item">CSS</div>
+      </a>
+    
+      <a 
+        href="/tags/node-js/" 
+        title="node.js">
+        <div class="tags-list-item">node.js</div>
       </a>
     
   </div>
@@ -526,7 +530,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AE-%E8%B7%AF%E7%94%B1"><span class="toc-text">1. 配置 路由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE-main-js-%E6%8C%82%E8%BD%BD-%E8%B7%AF%E7%94%B1-element-plus-%E4%BB%A5%E5%8F%8A-vuex"><span class="toc-text">3.配置 main.js   挂载 路由 element plus 以及 vuex</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%90%8E%E5%8F%B0%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81-token-%E7%9A%84%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95"><span class="toc-text">关于后台登录验证 token  的生成方法</span></a></li></ol>
     </article>
   
   
