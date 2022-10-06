@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="张同学的个人小站">
+  <link 
+    rel="icon" 
+    href="/imgs/logo.jpg">
+  <title>9.29</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="9.29">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://111zhanglan.github.io/2022/10/06/9-29/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="/imgs/logo.jpg">
+    
+    
+      <meta 
+        property="og:img" 
+        content="张同学的个人小站">
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2022-10-06">
+      <meta 
+        property="og:article:modified_time" 
+        content="2022-10-06">
+      <meta 
+        property="og:article:author" 
+        content="ZhangKai">
+      
+        
+      
+    
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <span class="navbar-logo-main">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="/imgs/logo.jpg" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">张同学的Blog</span>
+    </span>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          首页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          归档
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <a 
+      class="navbar-menu-item darknavbar" 
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </a>
+    <a 
+      class="navbar-menu-item searchnavbar" 
+      id="search">
+      <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i>
+    </a>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <main class="main-column">
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      9.29
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2022-10-06T12:10:47.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2022-10-06</span>
+    </time>
+    
+    
+      <span class="dot"></span>
+      <span>960 字</span>
+    
+  </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h3 id="Vue项目，使用响应式布局插件-postcss-px-to-viewport，达成自适应宽高比"><a href="#Vue项目，使用响应式布局插件-postcss-px-to-viewport，达成自适应宽高比" class="headerlink" title="Vue项目，使用响应式布局插件      postcss-px-to-viewport，达成自适应宽高比"></a>Vue项目，使用响应式布局插件      postcss-px-to-viewport，达成自适应宽高比</h3><p><strong>安装</strong></p>
+<p><code>npm install postcss-px-to-viewport --save-dev</code></p>
+<p>在项目的根目录下创建 postcss.config.js</p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>    <span class="hljs-attr">plugins</span>:&#123;<br>        <span class="hljs-attr">autoprefixer</span>:&#123;&#125;,<br>        <span class="hljs-string">&quot;postcss-px-to-viewport&quot;</span>:&#123;<br>            <span class="hljs-attr">viewportWidth</span>:<span class="hljs-number">375</span>,<span class="hljs-comment">//视窗的宽度，对应的是我们设计稿的宽度</span><br>            <span class="hljs-attr">viewportHeight</span>:<span class="hljs-number">667</span>,<span class="hljs-comment">//视窗的高度，对应的是我们设计稿的高度</span><br>            <span class="hljs-attr">unitPrecision</span>:<span class="hljs-number">5</span>,<span class="hljs-comment">//制定‘px’转换为视窗单位的小数位数（很多时候无法整除）</span><br>            <span class="hljs-attr">viewportUnit</span>:<span class="hljs-string">&#x27;vw&#x27;</span>,<span class="hljs-comment">//指定需要转换成的视窗单位，建议使用vw</span><br>            <span class="hljs-attr">selectorBlackList</span>:[<span class="hljs-string">&#x27;ignore&#x27;</span>,<span class="hljs-string">&#x27;tab-bar&#x27;</span>,<span class="hljs-string">&#x27;tab-bar-item&#x27;</span>],<span class="hljs-comment">//指定不需要转换的类，</span><br>            <span class="hljs-attr">minPixelValue</span>:<span class="hljs-number">1</span>,<span class="hljs-comment">//小于或等于‘1px’不转换为视窗单位</span><br>            <span class="hljs-attr">mediaQuery</span>:<span class="hljs-literal">false</span><span class="hljs-comment">//允许在媒体查询中转换为‘px’</span><br>        &#125;,<br><br>    &#125;<br>&#125;<br></code></pre>
+
+<h3 id="vue修辞符-注没用过！！！"><a href="#vue修辞符-注没用过！！！" class="headerlink" title="vue修辞符-注没用过！！！"></a>vue修辞符-注没用过！！！</h3><p><strong>.native</strong> 将一个vue组件变成一个普通的html，使其可以监听click等原生事件</p>
+<pre class="highlight"><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">Tag</span> @<span class="hljs-attr">click.native</span>=<span class="hljs-string">&quot;handleClick&quot;</span>&gt;</span>ok<span class="hljs-tag">&lt;/<span class="hljs-name">Tag</span>&gt;</span><br></code></pre>
+
+<h3 id="Vue常用工具函数总结"><a href="#Vue常用工具函数总结" class="headerlink" title="Vue常用工具函数总结"></a>Vue常用工具函数总结</h3><p>1.识别ie浏览器</p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">IsIE</span> = (<span class="hljs-params"></span>)=&gt;&#123;<br>    <span class="hljs-keyword">let</span> explorer = <span class="hljs-variable language_">window</span>.<span class="hljs-property">navigator</span>.<span class="hljs-property">userAgent</span>;<br>    <span class="hljs-comment">//判断是否为IE浏览器</span><br>    <span class="hljs-keyword">if</span>(explorer.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;MSIE&#x27;</span>) &gt;= <span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> ;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>    &#125;<br>&#125;<br></code></pre>
+
+<h3 id="如何基于axios二次封装一个具有-请求-x2F-响应拦截的http请求"><a href="#如何基于axios二次封装一个具有-请求-x2F-响应拦截的http请求" class="headerlink" title="如何基于axios二次封装一个具有 请求&#x2F;响应拦截的http请求"></a>如何基于axios二次封装一个具有 请求&#x2F;响应拦截的http请求</h3><p>index.js</p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span><br><span class="hljs-keyword">import</span> qs <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;qs&#x27;</span><br><br><span class="hljs-comment">//请求拦截</span><br>axios.<span class="hljs-property">interceptors</span>.<span class="hljs-property">request</span>.<span class="hljs-title function_">use</span>(<span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;<br>    <span class="hljs-comment">//此处可以封装一些加载状态</span><br>    <span class="hljs-keyword">return</span> config<br>&#125;,<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(error)<br>&#125;)<br><br><span class="hljs-comment">//响应拦截</span><br>axios.<span class="hljs-property">interceptors</span>.<span class="hljs-property">response</span>.<span class="hljs-title function_">use</span>(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> response<br>&#125;,<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(error.<span class="hljs-property">response</span>)<br>&#125;)<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">checkStatus</span> (response) &#123;  <br>  <span class="hljs-comment">// 此处可以封装一些加载状态  </span><br>  <span class="hljs-comment">// 如果http状态码正常，则直接返回数据  </span><br>  <span class="hljs-keyword">if</span>(response) &#123;  <br>    <span class="hljs-keyword">if</span> (response.<span class="hljs-property">status</span> === <span class="hljs-number">200</span> || response.<span class="hljs-property">status</span> === <span class="hljs-number">304</span>) &#123;  <br>      <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>  <br>      <span class="hljs-comment">// 如果不需要除了data之外的数据，可以直接 return response.data  </span><br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (response.<span class="hljs-property">status</span> === <span class="hljs-number">401</span>) &#123; <span class="hljs-comment">//401代表用户没有访问权限，需要进行身份认证  </span><br>      location.<span class="hljs-property">href</span> = <span class="hljs-string">&#x27;/login&#x27;</span>;  <br>    &#125; <span class="hljs-keyword">else</span> &#123;  <br>      <span class="hljs-keyword">throw</span> response.<span class="hljs-property">data</span>  <br>    &#125;  <br>  &#125; <span class="hljs-keyword">else</span> &#123;  <br>    <span class="hljs-keyword">throw</span> &#123;<span class="hljs-attr">data</span>:<span class="hljs-string">&#x27;网络错误&#x27;</span>&#125;  <br>  &#125;  <br>&#125; <br><span class="hljs-comment">//axios 默认参数配置</span><br>axios.<span class="hljs-property">default</span>.<span class="hljs-property">baseURL</span> = <span class="hljs-string">&#x27;/api/v0&#x27;</span>;<br>axios.<span class="hljs-property">default</span>.<span class="hljs-property">timeout</span> = <span class="hljs-number">10000</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">post</span> (url,data) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">axios</span>(&#123;<br>        <span class="hljs-attr">method</span>:<span class="hljs-string">&#x27;post&#x27;</span>,<br>        url,<br>        <span class="hljs-attr">data</span>:qs.<span class="hljs-title function_">stringify</span>(data),<br>        <span class="hljs-attr">headers</span>:&#123;<br>            <span class="hljs-string">&#x27;X-request-With&#x27;</span>:<span class="hljs-string">&#x27;XMLHTTPRequest&#x27;</span>,<br>        	<span class="hljs-string">&#x27;Content-Type&#x27;</span>:<span class="hljs-string">&#x27;application/x-www-form-urlencoded;charest=UTF-8&#x27;</span><br>        &#125;<br>    &#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">res</span>)=&gt;</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-title function_">checkStatus</span>(res)<br>    &#125;)<br>&#125;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">get</span> (url, params) &#123;  <br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">axios</span>(&#123;  <br>      <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;get&#x27;</span>,  <br>      url,  <br>      params, <span class="hljs-comment">// get 请求时带的参数  </span><br>      <span class="hljs-attr">headers</span>: &#123;  <br>        <span class="hljs-string">&#x27;X-Requested-With&#x27;</span>: <span class="hljs-string">&#x27;XMLHttpRequest&#x27;</span>  <br>      &#125;  <br>    &#125;).<span class="hljs-title function_">then</span>(  <br>      <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;  <br>        <span class="hljs-keyword">return</span> <span class="hljs-title function_">checkStatus</span>(res)  <br>      &#125;  <br>    )  <br>  &#125;,  <br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">del</span> (url, params) &#123; <br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">axios</span>(&#123;  <br>      <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;delete&#x27;</span>,  <br>      url,  <br>      params, <span class="hljs-comment">// get 请求时带的参数  </span><br>      <span class="hljs-attr">headers</span>: &#123;  <br>        <span class="hljs-string">&#x27;X-Requested-With&#x27;</span>: <span class="hljs-string">&#x27;XMLHttpRequest&#x27;</span>  <br>      &#125;  <br>    &#125;).<span class="hljs-title function_">then</span>(  <br>      <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;  <br>        <span class="hljs-keyword">return</span> <span class="hljs-title function_">checkStatus</span>(res)  <br>      &#125;  <br>    )  <br>  &#125;  <br>&#125;  <br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> axios;<br></code></pre>
+
+<p>配置完 main.js 上</p>
+<p>这个是挂原型链上的</p>
+<p>import Axios from “.&#x2F;tools&#x2F;axios”;</p>
+<p>Vue.prototype.$http &#x3D; Axios;</p>
+<p>serve.js  封装API  </p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-comment">//导入axios配置... </span><br> <span class="hljs-keyword">import</span> request <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/tools/axios&#x27;</span><br><br><span class="hljs-comment">//导出封装的api请求方法</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">loginApi</span> (data) &#123;<br>    <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> <span class="hljs-title function_">request</span>(&#123;<br>         <span class="hljs-attr">url</span>:<span class="hljs-string">`<span class="hljs-subst">$&#123;API_ROUTER.BASE_URL&#125;</span>/Indentity/ChangePasswordAsync`</span>,<br>         <span class="hljs-attr">method</span>:<span class="hljs-string">&#x27;post&#x27;</span>,<br>         data,<br>    &#125;);<br>    <span class="hljs-keyword">return</span> res         <br>&#125;<br></code></pre>
+
+<pre class="highlight"><code class="hljs js"><span class="hljs-comment">//调用后</span><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">UserInfoAsync</span>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./servers&quot;</span>;<br><span class="hljs-keyword">const</span>  <span class="hljs-title class_">UserInfoAsync</span>(parama)<br><br><br><br></code></pre>
+
+<h3 id="vue项目中实用的自定义指令"><a href="#vue项目中实用的自定义指令" class="headerlink" title="vue项目中实用的自定义指令"></a>vue项目中实用的自定义指令</h3><p>例子注册一个全局自定义指令 ‘v-focus’</p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">directive</span>(<span class="hljs-string">&#x27;focus&#x27;</span>,&#123;<br>    <span class="hljs-comment">//单绑定的元素插入dom时</span><br>    <span class="hljs-attr">inserted</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params">el</span>)&#123;<br>        el.<span class="hljs-title function_">focus</span>()<br>    &#125;<br>&#125;);<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-focus</span> /&gt;</span></span><br></code></pre>
+
+<h3 id="V-clipboard-点击复制内容到粘贴板功能"><a href="#V-clipboard-点击复制内容到粘贴板功能" class="headerlink" title="V-clipboard ( 点击复制内容到粘贴板功能)"></a>V-clipboard ( 点击复制内容到粘贴板功能)</h3><p><strong>安装</strong></p>
+<p><code>npm install -save v-clipboard</code></p>
+<p><strong>引用</strong></p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vue</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Clipboard</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;v-clipboard&#x27;</span><br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">Clipboard</span>)<br><br> &lt;div @click=<span class="hljs-string">&quot;handleCopy(scope.row.name)&quot;</span>&gt;&#123;&#123; scope.<span class="hljs-property">row</span>.<span class="hljs-property">name</span> &#125;&#125;&lt;/div&gt;<br> <span class="hljs-attr">methods</span>: &#123;<br>    <span class="hljs-title function_">handleCopy</span>(<span class="hljs-params">value</span>) &#123;<br>      <span class="hljs-variable language_">this</span>.$clipboard(value)<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">$message</span>.<span class="hljs-title function_">success</span>(<span class="hljs-string">&#x27;已复制到粘贴板&#x27;</span>)<br>    &#125;<br>  &#125;<br></code></pre>
+
+<h3 id="Vue-Lazyload-图片懒加载"><a href="#Vue-Lazyload-图片懒加载" class="headerlink" title="Vue-Lazyload (图片懒加载)"></a>Vue-Lazyload (图片懒加载)</h3><p><strong>安装</strong></p>
+<p><code>npm install --save vue-lazyload</code></p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">import</span> loading <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./assets/common/loading.gif&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">VueLazyload</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-lazyload&#x27;</span><br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">VueLazyload</span>, &#123;<br>  <span class="hljs-attr">preload</span>: <span class="hljs-number">.8</span>,<br>  loading,<br>  <span class="hljs-comment">// error,</span><br>&#125;)<br></code></pre>
+
+<h4 id="3、使用"><a href="#3、使用" class="headerlink" title="3、使用"></a>3、使用</h4><pre class="highlight"><code class="hljs swift"><span class="hljs-operator">&lt;</span>img v<span class="hljs-operator">-</span><span class="hljs-keyword">lazy</span><span class="hljs-operator">=</span><span class="hljs-string">&quot;https://www.domain.com/image.jpg&quot;</span><span class="hljs-operator">&gt;</span><br></code></pre>
+  </div>
+  <div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2022/10/06/9-28/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">9.28 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E9%A1%B9%E7%9B%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E6%8F%92%E4%BB%B6-postcss-px-to-viewport%EF%BC%8C%E8%BE%BE%E6%88%90%E8%87%AA%E9%80%82%E5%BA%94%E5%AE%BD%E9%AB%98%E6%AF%94"><span class="toc-text">Vue项目，使用响应式布局插件      postcss-px-to-viewport，达成自适应宽高比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue%E4%BF%AE%E8%BE%9E%E7%AC%A6-%E6%B3%A8%E6%B2%A1%E7%94%A8%E8%BF%87%EF%BC%81%EF%BC%81%EF%BC%81"><span class="toc-text">vue修辞符-注没用过！！！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93"><span class="toc-text">Vue常用工具函数总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8Eaxios%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85%E4%B8%80%E4%B8%AA%E5%85%B7%E6%9C%89-%E8%AF%B7%E6%B1%82-x2F-%E5%93%8D%E5%BA%94%E6%8B%A6%E6%88%AA%E7%9A%84http%E8%AF%B7%E6%B1%82"><span class="toc-text">如何基于axios二次封装一个具有 请求&#x2F;响应拦截的http请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%AE%9E%E7%94%A8%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4"><span class="toc-text">vue项目中实用的自定义指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#V-clipboard-%E7%82%B9%E5%87%BB%E5%A4%8D%E5%88%B6%E5%86%85%E5%AE%B9%E5%88%B0%E7%B2%98%E8%B4%B4%E6%9D%BF%E5%8A%9F%E8%83%BD"><span class="toc-text">V-clipboard ( 点击复制内容到粘贴板功能)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-Lazyload-%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="toc-text">Vue-Lazyload (图片懒加载)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E4%BD%BF%E7%94%A8"><span class="toc-text">3、使用</span></a></li></ol></li></ol>
+</div></main>
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="/imgs/logo.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">ZhangKai</p>
+<p class="author-description">designed by zhangkai</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>44</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>0</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>12</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/389569434?spm_id_from=333.1007.0.0">
+          <i class="iconfont icon-bilibili society-icon"></i>
+        </a>
+      </div>
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://gitee.com/zhang-lanxxx">
+          <i class="iconfont icon-github society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E9%A1%B9%E7%9B%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E6%8F%92%E4%BB%B6-postcss-px-to-viewport%EF%BC%8C%E8%BE%BE%E6%88%90%E8%87%AA%E9%80%82%E5%BA%94%E5%AE%BD%E9%AB%98%E6%AF%94"><span class="toc-text">Vue项目，使用响应式布局插件      postcss-px-to-viewport，达成自适应宽高比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue%E4%BF%AE%E8%BE%9E%E7%AC%A6-%E6%B3%A8%E6%B2%A1%E7%94%A8%E8%BF%87%EF%BC%81%EF%BC%81%EF%BC%81"><span class="toc-text">vue修辞符-注没用过！！！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93"><span class="toc-text">Vue常用工具函数总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8Eaxios%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85%E4%B8%80%E4%B8%AA%E5%85%B7%E6%9C%89-%E8%AF%B7%E6%B1%82-x2F-%E5%93%8D%E5%BA%94%E6%8B%A6%E6%88%AA%E7%9A%84http%E8%AF%B7%E6%B1%82"><span class="toc-text">如何基于axios二次封装一个具有 请求&#x2F;响应拦截的http请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%AE%9E%E7%94%A8%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4"><span class="toc-text">vue项目中实用的自定义指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#V-clipboard-%E7%82%B9%E5%87%BB%E5%A4%8D%E5%88%B6%E5%86%85%E5%AE%B9%E5%88%B0%E7%B2%98%E8%B4%B4%E6%9D%BF%E5%8A%9F%E8%83%BD"><span class="toc-text">V-clipboard ( 点击复制内容到粘贴板功能)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-Lazyload-%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="toc-text">Vue-Lazyload (图片懒加载)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E4%BD%BF%E7%94%A8"><span class="toc-text">3、使用</span></a></li></ol></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E5%88%86%E4%BA%AB/" 
+        title="分享">
+        <div class="tags-list-item">分享</div>
+      </a>
+    
+      <a 
+        href="/tags/js%E6%8F%92%E4%BB%B6/" 
+        title="js插件">
+        <div class="tags-list-item">js插件</div>
+      </a>
+    
+      <a 
+        href="/tags/JavaScript/" 
+        title="JavaScript">
+        <div class="tags-list-item">JavaScript</div>
+      </a>
+    
+      <a 
+        href="/tags/Vue/" 
+        title="Vue">
+        <div class="tags-list-item">Vue</div>
+      </a>
+    
+      <a 
+        href="/tags/HTML5/" 
+        title="HTML5">
+        <div class="tags-list-item">HTML5</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" 
+        title="浏览器">
+        <div class="tags-list-item">浏览器</div>
+      </a>
+    
+      <a 
+        href="/tags/%E9%9D%A2%E8%AF%95/" 
+        title="面试">
+        <div class="tags-list-item">面试</div>
+      </a>
+    
+      <a 
+        href="/tags/uniapp/" 
+        title="uniapp">
+        <div class="tags-list-item">uniapp</div>
+      </a>
+    
+      <a 
+        href="/tags/uniapp-vue/" 
+        title="uniapp/vue">
+        <div class="tags-list-item">uniapp/vue</div>
+      </a>
+    
+      <a 
+        href="/tags/Webpack/" 
+        title="Webpack">
+        <div class="tags-list-item">Webpack</div>
+      </a>
+    
+      <a 
+        href="/tags/CSS/" 
+        title="CSS">
+        <div class="tags-list-item">CSS</div>
+      </a>
+    
+      <a 
+        href="/tags/node-js/" 
+        title="node.js">
+        <div class="tags-list-item">node.js</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E9%A1%B9%E7%9B%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E6%8F%92%E4%BB%B6-postcss-px-to-viewport%EF%BC%8C%E8%BE%BE%E6%88%90%E8%87%AA%E9%80%82%E5%BA%94%E5%AE%BD%E9%AB%98%E6%AF%94"><span class="toc-text">Vue项目，使用响应式布局插件      postcss-px-to-viewport，达成自适应宽高比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue%E4%BF%AE%E8%BE%9E%E7%AC%A6-%E6%B3%A8%E6%B2%A1%E7%94%A8%E8%BF%87%EF%BC%81%EF%BC%81%EF%BC%81"><span class="toc-text">vue修辞符-注没用过！！！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93"><span class="toc-text">Vue常用工具函数总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8Eaxios%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85%E4%B8%80%E4%B8%AA%E5%85%B7%E6%9C%89-%E8%AF%B7%E6%B1%82-x2F-%E5%93%8D%E5%BA%94%E6%8B%A6%E6%88%AA%E7%9A%84http%E8%AF%B7%E6%B1%82"><span class="toc-text">如何基于axios二次封装一个具有 请求&#x2F;响应拦截的http请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%AE%9E%E7%94%A8%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4"><span class="toc-text">vue项目中实用的自定义指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#V-clipboard-%E7%82%B9%E5%87%BB%E5%A4%8D%E5%88%B6%E5%86%85%E5%AE%B9%E5%88%B0%E7%B2%98%E8%B4%B4%E6%9D%BF%E5%8A%9F%E8%83%BD"><span class="toc-text">V-clipboard ( 点击复制内容到粘贴板功能)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-Lazyload-%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="toc-text">Vue-Lazyload (图片懒加载)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E4%BD%BF%E7%94%A8"><span class="toc-text">3、使用</span></a></li></ol></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-10-06</div>
+        <a href="/2022/10/06/9-29/"><div class="recent-posts-item-content">9.29</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-10-06</div>
+        <a href="/2022/10/06/9-28/"><div class="recent-posts-item-content">9.28</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-10-06</div>
+        <a href="/2022/10/06/9-27/"><div class="recent-posts-item-content">9.27</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-10-06</div>
+        <a href="/2022/10/06/9-26/"><div class="recent-posts-item-content">9.26</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2020
+          
+          
+                - 
+                2022
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          张同学的Blog
+        </a>
+      </div>
+    </div>
+
+    
+      <div class="footer-dsc">
+        
+          Powered by
+          <a 
+            href="https://hexo.io/" 
+            class="footer-link" 
+            target="_blank" 
+            rel="nofollow noopener noreferrer">
+            &nbsp;Hexo
+          </a>
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          Theme -
+          <a 
+            href="https://github.com/theme-kaze" 
+            class="footer-link" 
+            target="_blank"
+            rel="nofollow noopener noreferrer">
+            &nbsp;Kaze
+          </a>
+        
+      </div>
+    
+    
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+     
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>

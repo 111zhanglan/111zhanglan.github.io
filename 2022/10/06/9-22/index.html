@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="张同学的个人小站">
+  <link 
+    rel="icon" 
+    href="/imgs/logo.jpg">
+  <title>9.22</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="9.22">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://111zhanglan.github.io/2022/10/06/9-22/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="/imgs/logo.jpg">
+    
+    
+      <meta 
+        property="og:img" 
+        content="张同学的个人小站">
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2022-10-06">
+      <meta 
+        property="og:article:modified_time" 
+        content="2022-10-06">
+      <meta 
+        property="og:article:author" 
+        content="ZhangKai">
+      
+        
+      
+    
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <span class="navbar-logo-main">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="/imgs/logo.jpg" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">张同学的Blog</span>
+    </span>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          首页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          归档
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <a 
+      class="navbar-menu-item darknavbar" 
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </a>
+    <a 
+      class="navbar-menu-item searchnavbar" 
+      id="search">
+      <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i>
+    </a>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <main class="main-column">
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      9.22
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2022-10-06T12:07:44.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2022-10-06</span>
+    </time>
+    
+    
+      <span class="dot"></span>
+      <span>818 字</span>
+    
+  </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h2 id="view-design"><a href="#view-design" class="headerlink" title="view-design"></a>view-design</h2><p><strong>安装</strong></p>
+<p><code>npm install view-design --save</code> </p>
+<p><strong>引入</strong></p>
+<p>main.js </p>
+<h4 id="1-全局引入"><a href="#1-全局引入" class="headerlink" title="1.全局引入"></a>1.全局引入</h4><p><code>import ViewUI from &#39;view-design&#39;;</code></p>
+<p><code> import &#39;view-design/dist/styles/iview.css</code></p>
+<p><code>Vue.use(ViewUI);</code></p>
+<h4 id="2-按需引用"><a href="#2-按需引用" class="headerlink" title="2.按需引用"></a>2.按需引用</h4><p><code>npm install babel-plugin-import --save-dev</code></p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-comment">// .babelrc</span><br>&#123;<br>  <span class="hljs-string">&quot;plugins&quot;</span>: [[<span class="hljs-string">&quot;import&quot;</span>, &#123;<br>    <span class="hljs-string">&quot;libraryName&quot;</span>: <span class="hljs-string">&quot;view-design&quot;</span>,<br>    <span class="hljs-string">&quot;libraryDirectory&quot;</span>: <span class="hljs-string">&quot;src/components&quot;</span><br>  &#125;]]<br>&#125;<br></code></pre>
+
+<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Button</span>, <span class="hljs-title class_">Table</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;view-design&#x27;</span>;<br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">component</span>(<span class="hljs-string">&#x27;Button&#x27;</span>, <span class="hljs-title class_">Button</span>);<br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">component</span>(<span class="hljs-string">&#x27;Table&#x27;</span>, <span class="hljs-title class_">Table</span>);<br></code></pre>
+
+<h3 id="国际化-兼容-118-x75-x65-x2d-105-49-x38-x6e-64-x36-x2e-120"><a href="#国际化-兼容-118-x75-x65-x2d-105-49-x38-x6e-64-x36-x2e-120" class="headerlink" title="国际化 兼容  &#118;&#x75;&#x65;&#x2d;&#105;&#49;&#x38;&#x6e;&#64;&#x36;&#x2e;&#120;"></a>国际化 兼容  <a href="mailto:&#118;&#x75;&#x65;&#x2d;&#105;&#49;&#x38;&#x6e;&#64;&#x36;&#x2e;&#120;">&#118;&#x75;&#x65;&#x2d;&#105;&#49;&#x38;&#x6e;&#64;&#x36;&#x2e;&#120;</a></h3><pre class="highlight"><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">ViewUI</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;view-design&#x27;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">VueI18</span>n <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-i18n&#x27;</span>;<br><span class="hljs-comment">//  view design 语言包</span><br><span class="hljs-keyword">import</span> en <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;view-design/dist/locale/en-US&#x27;</span>;<br><span class="hljs-keyword">import</span> zh <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;view-design/dist/locale/zh-CN&#x27;</span>;<br><br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">VueI18</span>n);<br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ViewUI</span>);<br><span class="hljs-title class_">Vue</span>.<span class="hljs-property">locale</span> = <span class="hljs-function">() =&gt;</span> &#123;&#125;;<br><span class="hljs-comment">// Create VueI18n instance with options</span><br><span class="hljs-keyword">const</span> i18n = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueI18</span>n(&#123;<br>    <span class="hljs-attr">locale</span>: <span class="hljs-string">&#x27;en&#x27;</span>,  <span class="hljs-comment">// set locale</span><br>    messages  <span class="hljs-comment">// set locale messages</span><br>&#125;);<br><span class="hljs-comment">// 合并语言包</span><br><span class="hljs-keyword">const</span> messages = &#123;<br>    <span class="hljs-attr">en</span>: <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(&#123; <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;hello&#x27;</span> &#125;, en),<br>    <span class="hljs-attr">zh</span>: <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(&#123; <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;你好&#x27;</span> &#125;, zh)<br>&#125;;<br></code></pre>
+
+<h2 id="Muse-UI"><a href="#Muse-UI" class="headerlink" title="Muse UI"></a>Muse UI</h2><p><strong>安装</strong></p>
+<p><code>npm i muse-ui -S</code></p>
+<h4 id="全局引入"><a href="#全局引入" class="headerlink" title="全局引入"></a>全局引入</h4><pre class="highlight"><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">MuseUI</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;muse-ui&#x27;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;muse-ui/dist/muse-ui.css&#x27;</span>;<br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">MuseUI</span>);<br></code></pre>
+
+<h2 id="ECharts"><a href="#ECharts" class="headerlink" title="ECharts"></a>ECharts</h2><p><strong>安装</strong></p>
+<p><code>npm install echarts --save</code></p>
+<pre class="highlight"><code class="hljs vue"> &lt;template&gt;<br>	组件中出现<br>    &lt;div id=&quot;main&quot; style=&quot;width: 500px;height: 500px;&quot;&gt;&lt;/div&gt;<br> &lt;/template&gt;<br><br>&lt;script&gt;<br>    import * as echarts form &#x27;echarts&#x27;<br>    export default &#123;<br>        name:&quot;Hello world&quot;,<br>        mounted()&#123;<br>            <br>        &#125;,<br>        methods:&#123;<br>            aa()&#123;<br>                 //基于准备好的DOM，初始化echarts实例 <br>                var myChart = echarts.init(document.getElementById(&#x27;main&#x27;));<br>                // 绘制图表<br>          	myChart.setOption(&#123;<br>            title: &#123;<br>              text: &#x27;ECharts 入门示例&#x27;<br>            &#125;,<br>            tooltip: &#123;&#125;,<br>            xAxis: &#123;<br>              data: [&#x27;衬衫&#x27;, &#x27;羊毛衫&#x27;, &#x27;雪纺衫&#x27;, &#x27;裤子&#x27;, &#x27;高跟鞋&#x27;, &#x27;袜子&#x27;]<br>            &#125;,<br>            yAxis: &#123;&#125;,<br>            series: [<br>              &#123;<br>                name: &#x27;销量&#x27;,<br>                type: &#x27;bar&#x27;,<br>                data: [5, 20, 36, 10, 10, 20]<br>              &#125;<br>            ]<br>          &#125;);<br>            &#125;<br>        &#125;<br>    &#125;<br>&lt;/script&gt;<br></code></pre>
+
+<h3 id="HightCharts"><a href="#HightCharts" class="headerlink" title="HightCharts"></a>HightCharts</h3><p><strong>安装</strong></p>
+<p><code>npm install hightcharts --save  </code></p>
+<h2 id="v-calendar-日历组件"><a href="#v-calendar-日历组件" class="headerlink" title="v-calendar 日历组件"></a>v-calendar 日历组件</h2><p><strong>安装</strong></p>
+<p><code>npm i v-calendar</code></p>
+<p><strong>main.js 引入</strong></p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">VCalendar</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;v-calendar&#x27;</span>; <span class="hljs-comment">// 引入日历插件 </span><br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">VCalendar</span>, &#123;<br>  <span class="hljs-attr">componentPrefix</span>: <span class="hljs-string">&#x27;vc&#x27;</span>,<br>&#125;);<br></code></pre>
+
+<p><strong>使用</strong></p>
+<pre class="highlight"><code class="hljs html"><span class="hljs-comment">&lt;!-- 测试日历用例 --&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">vc-calendar</span>  <span class="hljs-attr">:attributes</span>=<span class="hljs-string">&#x27;attrs&#x27;</span>  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vc-calendar</span>&gt;</span><br></code></pre>
+
+<h3 id="vue-introjs-实现网站引导功能"><a href="#vue-introjs-实现网站引导功能" class="headerlink" title="vue-introjs-实现网站引导功能"></a>vue-introjs-实现网站引导功能</h3><p><strong>安装</strong></p>
+<p><code>npm install intro.js --save </code></p>
+<p><strong>配置</strong></p>
+<h4 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h4><pre class="highlight"><code class="hljs js"><span class="hljs-keyword">import</span> intro <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;intro.js&#x27;</span> <span class="hljs-comment">// introjs库</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;intro.js/introjs.css&#x27;</span> <span class="hljs-comment">// introjs默认css样式</span><br><span class="hljs-comment">// introjs还提供了多种主题，可以通过以下方式引入</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;intro.js/themes/introjs-modern.css&#x27;</span> <span class="hljs-comment">// introjs主题</span><br></code></pre>
+
+<p>把<code>intro.js</code>加入到<code>vue</code>的<code>prototype</code>中，方便使用，就可以直接通过<code>this.$intro()</code>来调用了</p>
+<pre class="highlight"><code class="hljs js"><span class="hljs-comment">// 加到prototype中，直接通过vue实例就能调用intro了</span><br><span class="hljs-title class_">Vue</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">$intro</span> = intro<br></code></pre>
+
+<p><strong>使用</strong></p>
+<p>选定一个<code>html</code>标签，加上<code>data-intro</code>属性，赋值内容，以下面为例  </p>
+<p><code>data-step</code>是展示的步骤设置，填写数字即可</p>
+<pre class="highlight"><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">data-intro</span>=<span class="hljs-string">&quot;这是一张普通的图片&quot;</span> <span class="hljs-attr">data-step</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./assets/logo.png&quot;</span>&gt;</span><br></code></pre>
+
+<p>在<code>script</code>中，加入<code>mounted</code>方法，启动<code>intro</code></p>
+<pre class="highlight"><code class="hljs js">mounted () &#123;<br>   <span class="hljs-variable language_">this</span>.$intro().<span class="hljs-title function_">start</span>()<br>&#125;,<br></code></pre>
+
+<p>一些问题<br>只首次进入的时候显示引导<br>新手引导一般只有我们第一次进入这个网站的时候才会出现引导内容，后续都不会再显示，我们这里如何实现？</p>
+<p>可以通过localstorge来存储一个key，来判断用户是否是第一次进入这个网站，只需要在引导启动时候加个判断就行，代码如下：</p>
+<pre class="highlight"><code class="hljs js">mounted () &#123;<br>    <span class="hljs-variable language_">this</span>.$nextTick(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;isFirst&#x27;</span>) === <span class="hljs-literal">null</span> || <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;isFirst&#x27;</span>) !== <span class="hljs-string">&#x27;1&#x27;</span>) &#123;<br>        <span class="hljs-variable language_">this</span>.$intro().<span class="hljs-title function_">start</span>()<br>        <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;isFirst&#x27;</span>, <span class="hljs-number">1</span>)<br>      &#125;<br>    &#125;)<br>  &#125;<br></code></pre>
+
+
+  </div>
+  <div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2022/10/06/9-23/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">9.23 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2022/10/06/9-21/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">9.21 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#view-design"><span class="toc-text">view-design</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">1.全局引入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8C%89%E9%9C%80%E5%BC%95%E7%94%A8"><span class="toc-text">2.按需引用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BD%E9%99%85%E5%8C%96-%E5%85%BC%E5%AE%B9-118-x75-x65-x2d-105-49-x38-x6e-64-x36-x2e-120"><span class="toc-text">国际化 兼容  vue-i18n@6.x</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Muse-UI"><span class="toc-text">Muse UI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">全局引入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECharts"><span class="toc-text">ECharts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HightCharts"><span class="toc-text">HightCharts</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-calendar-%E6%97%A5%E5%8E%86%E7%BB%84%E4%BB%B6"><span class="toc-text">v-calendar 日历组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-introjs-%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E5%BC%95%E5%AF%BC%E5%8A%9F%E8%83%BD"><span class="toc-text">vue-introjs-实现网站引导功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#main-js"><span class="toc-text">main.js</span></a></li></ol></li></ol></li></ol>
+</div></main>
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="/imgs/logo.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">ZhangKai</p>
+<p class="author-description">designed by zhangkai</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>44</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>0</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>12</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/389569434?spm_id_from=333.1007.0.0">
+          <i class="iconfont icon-bilibili society-icon"></i>
+        </a>
+      </div>
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://gitee.com/zhang-lanxxx">
+          <i class="iconfont icon-github society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#view-design"><span class="toc-text">view-design</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">1.全局引入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8C%89%E9%9C%80%E5%BC%95%E7%94%A8"><span class="toc-text">2.按需引用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BD%E9%99%85%E5%8C%96-%E5%85%BC%E5%AE%B9-118-x75-x65-x2d-105-49-x38-x6e-64-x36-x2e-120"><span class="toc-text">国际化 兼容  vue-i18n@6.x</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Muse-UI"><span class="toc-text">Muse UI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">全局引入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECharts"><span class="toc-text">ECharts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HightCharts"><span class="toc-text">HightCharts</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-calendar-%E6%97%A5%E5%8E%86%E7%BB%84%E4%BB%B6"><span class="toc-text">v-calendar 日历组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-introjs-%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E5%BC%95%E5%AF%BC%E5%8A%9F%E8%83%BD"><span class="toc-text">vue-introjs-实现网站引导功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#main-js"><span class="toc-text">main.js</span></a></li></ol></li></ol></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/%E9%9D%A2%E8%AF%95/" 
+        title="面试">
+        <div class="tags-list-item">面试</div>
+      </a>
+    
+      <a 
+        href="/tags/JavaScript/" 
+        title="JavaScript">
+        <div class="tags-list-item">JavaScript</div>
+      </a>
+    
+      <a 
+        href="/tags/Vue/" 
+        title="Vue">
+        <div class="tags-list-item">Vue</div>
+      </a>
+    
+      <a 
+        href="/tags/node-js/" 
+        title="node.js">
+        <div class="tags-list-item">node.js</div>
+      </a>
+    
+      <a 
+        href="/tags/js%E6%8F%92%E4%BB%B6/" 
+        title="js插件">
+        <div class="tags-list-item">js插件</div>
+      </a>
+    
+      <a 
+        href="/tags/CSS/" 
+        title="CSS">
+        <div class="tags-list-item">CSS</div>
+      </a>
+    
+      <a 
+        href="/tags/Webpack/" 
+        title="Webpack">
+        <div class="tags-list-item">Webpack</div>
+      </a>
+    
+      <a 
+        href="/tags/uniapp-vue/" 
+        title="uniapp/vue">
+        <div class="tags-list-item">uniapp/vue</div>
+      </a>
+    
+      <a 
+        href="/tags/uniapp/" 
+        title="uniapp">
+        <div class="tags-list-item">uniapp</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" 
+        title="浏览器">
+        <div class="tags-list-item">浏览器</div>
+      </a>
+    
+      <a 
+        href="/tags/HTML5/" 
+        title="HTML5">
+        <div class="tags-list-item">HTML5</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%88%86%E4%BA%AB/" 
+        title="分享">
+        <div class="tags-list-item">分享</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#view-design"><span class="toc-text">view-design</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">1.全局引入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8C%89%E9%9C%80%E5%BC%95%E7%94%A8"><span class="toc-text">2.按需引用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BD%E9%99%85%E5%8C%96-%E5%85%BC%E5%AE%B9-118-x75-x65-x2d-105-49-x38-x6e-64-x36-x2e-120"><span class="toc-text">国际化 兼容  vue-i18n@6.x</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Muse-UI"><span class="toc-text">Muse UI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">全局引入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECharts"><span class="toc-text">ECharts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HightCharts"><span class="toc-text">HightCharts</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-calendar-%E6%97%A5%E5%8E%86%E7%BB%84%E4%BB%B6"><span class="toc-text">v-calendar 日历组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-introjs-%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E5%BC%95%E5%AF%BC%E5%8A%9F%E8%83%BD"><span class="toc-text">vue-introjs-实现网站引导功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#main-js"><span class="toc-text">main.js</span></a></li></ol></li></ol></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-10-06</div>
+        <a href="/2022/10/06/9-29/"><div class="recent-posts-item-content">9.29</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-10-06</div>
+        <a href="/2022/10/06/9-28/"><div class="recent-posts-item-content">9.28</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-10-06</div>
+        <a href="/2022/10/06/9-27/"><div class="recent-posts-item-content">9.27</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-10-06</div>
+        <a href="/2022/10/06/9-26/"><div class="recent-posts-item-content">9.26</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2020
+          
+          
+                - 
+                2022
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          张同学的Blog
+        </a>
+      </div>
+    </div>
+
+    
+      <div class="footer-dsc">
+        
+          Powered by
+          <a 
+            href="https://hexo.io/" 
+            class="footer-link" 
+            target="_blank" 
+            rel="nofollow noopener noreferrer">
+            &nbsp;Hexo
+          </a>
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          Theme -
+          <a 
+            href="https://github.com/theme-kaze" 
+            class="footer-link" 
+            target="_blank"
+            rel="nofollow noopener noreferrer">
+            &nbsp;Kaze
+          </a>
+        
+      </div>
+    
+    
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+     
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>
