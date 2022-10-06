@@ -18,12 +18,12 @@
   <link 
     rel="icon" 
     href="/imgs/logo.jpg">
-  <title>9.22</title>
+  <title>9.22 关于一些三方UI组件的使用;intro.js指引效果</title>
   
     
       <meta 
         property="og:title" 
-        content="9.22">
+        content="9.22 关于一些三方UI组件的使用;intro.js指引效果">
     
     
       <meta 
@@ -264,7 +264,7 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      9.22
+      9.22 关于一些三方UI组件的使用;intro.js指引效果
     </h1>
   </header>
   <div class="post-meta post-show-meta">
@@ -298,7 +298,7 @@
 
 <pre class="highlight"><code class="hljs js"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Button</span>, <span class="hljs-title class_">Table</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;view-design&#x27;</span>;<br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">component</span>(<span class="hljs-string">&#x27;Button&#x27;</span>, <span class="hljs-title class_">Button</span>);<br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">component</span>(<span class="hljs-string">&#x27;Table&#x27;</span>, <span class="hljs-title class_">Table</span>);<br></code></pre>
 
-<h3 id="国际化-兼容-118-x75-x65-x2d-105-49-x38-x6e-64-x36-x2e-120"><a href="#国际化-兼容-118-x75-x65-x2d-105-49-x38-x6e-64-x36-x2e-120" class="headerlink" title="国际化 兼容  &#118;&#x75;&#x65;&#x2d;&#105;&#49;&#x38;&#x6e;&#64;&#x36;&#x2e;&#120;"></a>国际化 兼容  <a href="mailto:&#118;&#x75;&#x65;&#x2d;&#105;&#49;&#x38;&#x6e;&#64;&#x36;&#x2e;&#120;">&#118;&#x75;&#x65;&#x2d;&#105;&#49;&#x38;&#x6e;&#64;&#x36;&#x2e;&#120;</a></h3><pre class="highlight"><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">ViewUI</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;view-design&#x27;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">VueI18</span>n <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-i18n&#x27;</span>;<br><span class="hljs-comment">//  view design 语言包</span><br><span class="hljs-keyword">import</span> en <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;view-design/dist/locale/en-US&#x27;</span>;<br><span class="hljs-keyword">import</span> zh <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;view-design/dist/locale/zh-CN&#x27;</span>;<br><br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">VueI18</span>n);<br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ViewUI</span>);<br><span class="hljs-title class_">Vue</span>.<span class="hljs-property">locale</span> = <span class="hljs-function">() =&gt;</span> &#123;&#125;;<br><span class="hljs-comment">// Create VueI18n instance with options</span><br><span class="hljs-keyword">const</span> i18n = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueI18</span>n(&#123;<br>    <span class="hljs-attr">locale</span>: <span class="hljs-string">&#x27;en&#x27;</span>,  <span class="hljs-comment">// set locale</span><br>    messages  <span class="hljs-comment">// set locale messages</span><br>&#125;);<br><span class="hljs-comment">// 合并语言包</span><br><span class="hljs-keyword">const</span> messages = &#123;<br>    <span class="hljs-attr">en</span>: <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(&#123; <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;hello&#x27;</span> &#125;, en),<br>    <span class="hljs-attr">zh</span>: <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(&#123; <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;你好&#x27;</span> &#125;, zh)<br>&#125;;<br></code></pre>
+<h3 id="国际化-兼容-x76-117-x65-45-105-49-x38-110-x40-x36-x2e-x78"><a href="#国际化-兼容-x76-117-x65-45-105-49-x38-110-x40-x36-x2e-x78" class="headerlink" title="国际化 兼容  &#x76;&#117;&#x65;&#45;&#105;&#49;&#x38;&#110;&#x40;&#x36;&#x2e;&#x78;"></a>国际化 兼容  <a href="mailto:&#x76;&#117;&#x65;&#45;&#105;&#49;&#x38;&#110;&#x40;&#x36;&#x2e;&#x78;">&#x76;&#117;&#x65;&#45;&#105;&#49;&#x38;&#110;&#x40;&#x36;&#x2e;&#x78;</a></h3><pre class="highlight"><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">ViewUI</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;view-design&#x27;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">VueI18</span>n <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-i18n&#x27;</span>;<br><span class="hljs-comment">//  view design 语言包</span><br><span class="hljs-keyword">import</span> en <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;view-design/dist/locale/en-US&#x27;</span>;<br><span class="hljs-keyword">import</span> zh <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;view-design/dist/locale/zh-CN&#x27;</span>;<br><br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">VueI18</span>n);<br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ViewUI</span>);<br><span class="hljs-title class_">Vue</span>.<span class="hljs-property">locale</span> = <span class="hljs-function">() =&gt;</span> &#123;&#125;;<br><span class="hljs-comment">// Create VueI18n instance with options</span><br><span class="hljs-keyword">const</span> i18n = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueI18</span>n(&#123;<br>    <span class="hljs-attr">locale</span>: <span class="hljs-string">&#x27;en&#x27;</span>,  <span class="hljs-comment">// set locale</span><br>    messages  <span class="hljs-comment">// set locale messages</span><br>&#125;);<br><span class="hljs-comment">// 合并语言包</span><br><span class="hljs-keyword">const</span> messages = &#123;<br>    <span class="hljs-attr">en</span>: <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(&#123; <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;hello&#x27;</span> &#125;, en),<br>    <span class="hljs-attr">zh</span>: <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(&#123; <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;你好&#x27;</span> &#125;, zh)<br>&#125;;<br></code></pre>
 
 <h2 id="Muse-UI"><a href="#Muse-UI" class="headerlink" title="Muse UI"></a>Muse UI</h2><p><strong>安装</strong></p>
 <p><code>npm i muse-ui -S</code></p>
@@ -354,7 +354,7 @@
         <div>
           <div class="nav-label">上一篇</div>
           
-            <div class="nav-title">9.23 </div>
+            <div class="nav-title">9.23Webapi;Vue的拖拽组件使用draggable </div>
           
         </div>
       </a>
@@ -368,7 +368,7 @@
         <div>
           <div class="nav-label">下一篇</div>
           
-            <div class="nav-title">9.21 </div>
+            <div class="nav-title">9.21入职第一天看看技术栈 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -386,7 +386,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#view-design"><span class="toc-text">view-design</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">1.全局引入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8C%89%E9%9C%80%E5%BC%95%E7%94%A8"><span class="toc-text">2.按需引用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BD%E9%99%85%E5%8C%96-%E5%85%BC%E5%AE%B9-118-x75-x65-x2d-105-49-x38-x6e-64-x36-x2e-120"><span class="toc-text">国际化 兼容  vue-i18n@6.x</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Muse-UI"><span class="toc-text">Muse UI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">全局引入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECharts"><span class="toc-text">ECharts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HightCharts"><span class="toc-text">HightCharts</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-calendar-%E6%97%A5%E5%8E%86%E7%BB%84%E4%BB%B6"><span class="toc-text">v-calendar 日历组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-introjs-%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E5%BC%95%E5%AF%BC%E5%8A%9F%E8%83%BD"><span class="toc-text">vue-introjs-实现网站引导功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#main-js"><span class="toc-text">main.js</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#view-design"><span class="toc-text">view-design</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">1.全局引入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8C%89%E9%9C%80%E5%BC%95%E7%94%A8"><span class="toc-text">2.按需引用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BD%E9%99%85%E5%8C%96-%E5%85%BC%E5%AE%B9-x76-117-x65-45-105-49-x38-110-x40-x36-x2e-x78"><span class="toc-text">国际化 兼容  vue-i18n@6.x</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Muse-UI"><span class="toc-text">Muse UI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">全局引入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECharts"><span class="toc-text">ECharts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HightCharts"><span class="toc-text">HightCharts</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-calendar-%E6%97%A5%E5%8E%86%E7%BB%84%E4%BB%B6"><span class="toc-text">v-calendar 日历组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-introjs-%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E5%BC%95%E5%AF%BC%E5%8A%9F%E8%83%BD"><span class="toc-text">vue-introjs-实现网站引导功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#main-js"><span class="toc-text">main.js</span></a></li></ol></li></ol></li></ol>
 </div></main>
             <aside class="left-column">
               
@@ -450,7 +450,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#view-design"><span class="toc-text">view-design</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">1.全局引入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8C%89%E9%9C%80%E5%BC%95%E7%94%A8"><span class="toc-text">2.按需引用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BD%E9%99%85%E5%8C%96-%E5%85%BC%E5%AE%B9-118-x75-x65-x2d-105-49-x38-x6e-64-x36-x2e-120"><span class="toc-text">国际化 兼容  vue-i18n@6.x</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Muse-UI"><span class="toc-text">Muse UI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">全局引入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECharts"><span class="toc-text">ECharts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HightCharts"><span class="toc-text">HightCharts</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-calendar-%E6%97%A5%E5%8E%86%E7%BB%84%E4%BB%B6"><span class="toc-text">v-calendar 日历组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-introjs-%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E5%BC%95%E5%AF%BC%E5%8A%9F%E8%83%BD"><span class="toc-text">vue-introjs-实现网站引导功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#main-js"><span class="toc-text">main.js</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#view-design"><span class="toc-text">view-design</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">1.全局引入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8C%89%E9%9C%80%E5%BC%95%E7%94%A8"><span class="toc-text">2.按需引用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BD%E9%99%85%E5%8C%96-%E5%85%BC%E5%AE%B9-x76-117-x65-45-105-49-x38-110-x40-x36-x2e-x78"><span class="toc-text">国际化 兼容  vue-i18n@6.x</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Muse-UI"><span class="toc-text">Muse UI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">全局引入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECharts"><span class="toc-text">ECharts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HightCharts"><span class="toc-text">HightCharts</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-calendar-%E6%97%A5%E5%8E%86%E7%BB%84%E4%BB%B6"><span class="toc-text">v-calendar 日历组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-introjs-%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E5%BC%95%E5%AF%BC%E5%8A%9F%E8%83%BD"><span class="toc-text">vue-introjs-实现网站引导功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#main-js"><span class="toc-text">main.js</span></a></li></ol></li></ol></li></ol>
       </div>
     </article>
   
@@ -569,7 +569,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#view-design"><span class="toc-text">view-design</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">1.全局引入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8C%89%E9%9C%80%E5%BC%95%E7%94%A8"><span class="toc-text">2.按需引用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BD%E9%99%85%E5%8C%96-%E5%85%BC%E5%AE%B9-118-x75-x65-x2d-105-49-x38-x6e-64-x36-x2e-120"><span class="toc-text">国际化 兼容  vue-i18n@6.x</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Muse-UI"><span class="toc-text">Muse UI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">全局引入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECharts"><span class="toc-text">ECharts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HightCharts"><span class="toc-text">HightCharts</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-calendar-%E6%97%A5%E5%8E%86%E7%BB%84%E4%BB%B6"><span class="toc-text">v-calendar 日历组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-introjs-%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E5%BC%95%E5%AF%BC%E5%8A%9F%E8%83%BD"><span class="toc-text">vue-introjs-实现网站引导功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#main-js"><span class="toc-text">main.js</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#view-design"><span class="toc-text">view-design</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">1.全局引入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8C%89%E9%9C%80%E5%BC%95%E7%94%A8"><span class="toc-text">2.按需引用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BD%E9%99%85%E5%8C%96-%E5%85%BC%E5%AE%B9-x76-117-x65-45-105-49-x38-110-x40-x36-x2e-x78"><span class="toc-text">国际化 兼容  vue-i18n@6.x</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Muse-UI"><span class="toc-text">Muse UI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-text">全局引入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECharts"><span class="toc-text">ECharts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HightCharts"><span class="toc-text">HightCharts</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-calendar-%E6%97%A5%E5%8E%86%E7%BB%84%E4%BB%B6"><span class="toc-text">v-calendar 日历组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-introjs-%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E5%BC%95%E5%AF%BC%E5%8A%9F%E8%83%BD"><span class="toc-text">vue-introjs-实现网站引导功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#main-js"><span class="toc-text">main.js</span></a></li></ol></li></ol></li></ol>
     </article>
   
   
@@ -585,22 +585,22 @@
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2022-10-06</div>
-        <a href="/2022/10/06/9-29/"><div class="recent-posts-item-content">9.29</div></a>
+        <a href="/2022/10/06/9-29/"><div class="recent-posts-item-content">9.29Vue常用的自定义指令</div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2022-10-06</div>
-        <a href="/2022/10/06/9-28/"><div class="recent-posts-item-content">9.28</div></a>
+        <a href="/2022/10/06/9-28/"><div class="recent-posts-item-content">9.28前端规范提交git，</div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2022-10-06</div>
-        <a href="/2022/10/06/9-27/"><div class="recent-posts-item-content">9.27</div></a>
+        <a href="/2022/10/06/9-27/"><div class="recent-posts-item-content">9.27 Mock模拟后端,miniVuex</div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2022-10-06</div>
-        <a href="/2022/10/06/9-26/"><div class="recent-posts-item-content">9.26</div></a>
+        <a href="/2022/10/06/9-26/"><div class="recent-posts-item-content">9.26关于使用三方地图  mapboxgl</div></a>
       </div>
     
   </div>
